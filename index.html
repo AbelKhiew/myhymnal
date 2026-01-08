@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hymnal App</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Hymnal">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .lyrics-text { white-space: pre-line; font-family: 'Georgia', serif; }
+        .dark-mode { background-color: #111827; color: #f3f4f6; }
+        .dark-mode .card { background-color: #1f2937; border-color: #374151; color: white; }
+        .dark-mode .back-btn { color: #818cf8; }
+    </style>
+</head>
+<body id="body-tag" class="bg-gray-100 transition-colors duration-200">
+
+    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl bg-white dark:bg-gray-900">
+        
+        <header class="bg-indigo-700 text-white p-5 sticky top-0 z-20 shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-2xl font-bold tracking-tight">Hymnal</h1>
+                <button onclick="toggleDarkMode()" class="p-2 bg-indigo-800 rounded-full hover:bg-indigo-600 transition">
+                    🌙
+                </button>
+            </div>
+            <input type="text" id="searchBar" onkeyup="filterHymns()" placeholder="Search hymn name or number..." 
+                class="w-full p-3 rounded-lg text-gray-900 focus:ring-4 focus:ring-indigo-300 outline-none shadow-inner">
+        </header>
+
+        <div id="listView" class="p-4 space-y-3 overflow-y-auto">
+            </div>
+
+        <div id="detailView" class="hidden fixed inset-0 bg-white z-30 p-6 overflow-y-auto dark:bg-gray-900">
+            <button onclick="goBack()" class="back-btn text-indigo-600 font-bold mb-6 flex items-center text-lg">
+                ← Back to List
+            </button>
+            <h2 id="hymnTitle" class="text-3xl font-bold mb-4 border-b pb-4 leading-tight"></h2>
+            <div id="hymnLyrics" class="lyrics-text text-xl leading-relaxed italic text-gray-800 dark:text-gray-200"></div>
+            <div class="h-20"></div> </div>
+
+    </div>
+
+    <script>
+        const hymns = [
+            { id: 1, title: "Amazing Grace", lyrics: "Amazing grace! How sweet the sound\nThat saved a wretch like me!\nI once was lost, but now am found;\nWas blind, but now I see.\n\n'Twas grace that taught my heart to fear,\nAnd grace my fears relieved;\nHow precious did that grace appear\nThe hour I first believed." },
+            { id: 2, title: "How Great Thou Art", lyrics: "O Lord, my God, when I in awesome wonder\nConsider all the worlds Thy hands have made\nI see the stars, I hear the rolling thunder\nThy power throughout the universe displayed\n\nThen sings my soul, my Savior God, to Thee\nHow great Thou art! How great Thou art!" },
+            { id: 3, title: "Great Is Thy Faithfulness", lyrics: "Great is Thy faithfulness, O God my Father\nThere is no shadow of turning with Thee\nThou changest not, Thy compassions, they fail not\nAs Thou hast been, Thou forever wilt be." },
+            { id: 4, title: "It Is Well With My Soul", lyrics: "When peace like a river attendeth my way\nWhen sorrows like sea billows roll\nWhatever my lot, Thou hast taught me to say\nIt is well, it is well with my soul." },
+            { id: 5, title: "In Christ Alone", lyrics: "In Christ alone my hope is found\nHe is my light, my strength, my song\nThis Cornerstone, this solid Ground\nFirm through the fiercest drought and storm." },
+            { id: 6, title: "Blessed Assurance", lyrics: "Blessed assurance, Jesus is mine!\nO what a foretaste of glory divine!\nHeir of salvation, purchase of God,\nBorn of His Spirit, washed in His blood." },
+            { id: 7, title: "Rock of Ages", lyrics: "Rock of Ages, cleft for me,\nLet me hide myself in Thee;\nLet the water and the blood,\nFrom Thy wounded side which flowed,\nBe of sin the double cure." },
+            { id: 8, title: "Holy, Holy, Holy", lyrics: "Holy, holy, holy! Lord God Almighty!\nEarly in the morning our song shall rise to Thee;\nHoly, holy, holy, merciful and mighty!\nGod in three Persons, blessed Trinity!" },
+            { id: 9, title: "Abide With Me", lyrics: "Abide with me; fast falls the eventide;\nThe darkness deepens; Lord, with me abide;\nWhen other helpers fail and comforts flee,\nHelp of the helpless, O abide with me." },
+            { id: 10, title: "The Old Rugged Cross", lyrics: "On a hill far away stood an old rugged cross,\nThe emblem of suffering and shame;\nAnd I love that old cross where the dearest and best\nFor a world of lost sinners was slain." }
+        ];
+
+        function renderList(data) {
+            const list = document.getElementById('listView');
+            list.innerHTML = '';
+            data.forEach(h => {
+                const div = document.createElement('div');
+                div.className = "card p-4 bg-gray-900
