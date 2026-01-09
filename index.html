@@ -12,17 +12,38 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    .lyrics-text { 
+    /* 移除所有可能导致颜色问题的Tailwind类 */
+    #hymnLyrics { 
         white-space: pre-line; 
         font-family: 'Georgia', serif; 
-        color: #000000 !important; 
+        font-size: 1.25rem; /* 相当于text-xl */
+        line-height: 1.75; /* 相当于leading-relaxed */
+        font-style: italic;
+        color: #000000; /* 浅色模式纯黑色 */
     }
-    .dark-mode { background-color: #111827; color: #f3f4f6; }
-    .dark-mode .card { background-color: #1f2937; border-color: #374151; color: white; }
-    .dark-mode .back-btn { color: #818cf8; }
-    .dark-mode #detailView { background-color: #111827; }
-    .dark-mode .lyrics-text {
-        color: #ffffff !important; 
+    
+    /* 深色模式 */
+    .dark-mode #hymnLyrics {
+        color: #ffffff !important; /* 深色模式纯白色 */
+    }
+    
+    .dark-mode { 
+        background-color: #111827; 
+        color: #f3f4f6; 
+    }
+    .dark-mode .card { 
+        background-color: #1f2937; 
+        border-color: #374151; 
+        color: white; 
+    }
+    .dark-mode .back-btn { 
+        color: #818cf8; 
+    }
+    .dark-mode #detailView { 
+        background-color: #111827; 
+    }
+    .dark-mode #hymnTitle {
+        color: #ffffff;
     }
     </style>
 
@@ -47,11 +68,11 @@
             </div>
 
         <div id="detailView" class="hidden fixed inset-0 bg-white z-30 p-6 overflow-y-auto">
-            <button onclick="goBack()" class="back-btn text-indigo-600 font-bold mb-6 flex items-center text-lg">
+            <button onclick="goBack()" class="back-btn text-indigo-600 font-bold mb-6 flex items-center text-lg dark:text-indigo-400">
                 ← Back to List
             </button>
-            <h2 id="hymnTitle" class="text-3xl font-bold mb-4 border-b pb-4 leading-tight"></h2>
-            <div id="hymnLyrics" class="lyrics-text text-xl leading-relaxed italic text-gray-800 dark:text-gray-200"></div>
+            <h2 id="hymnTitle" class="text-3xl font-bold mb-4 border-b pb-4 leading-tight text-gray-900 dark:text-white"></h2>
+            <div id="hymnLyrics" class=""></div>
             <div class="h-20"></div>
         </div>
 
@@ -59,8 +80,7 @@
 
     <script>
         const hymns = [
-    {
-        id: 1,
+                id: 1,
         title: "颂赞独一真神 (Sòngzàn Dúyī Zhēnshén)",
         lyrics: `①圣哉，圣哉，圣哉，全能大主宰！\nshèng zài, shèng zāi, shèng zāi, quán néng dà zhǔ zǎi!\n②圣哉，圣哉，圣哉，群圣皆跪拜！\nshèng zāi, shèng zāi, shèng zāi, qún shèng jiē guì bài!\n③圣哉，圣哉，圣哉，鸿恩遍宇内！\nshèng zāi, shèng zāi, shèng zāi, hóng ēn biàn yǔ nèi!`
     },
@@ -188,127 +208,7 @@
         id: 26,
         title: "耶稣爱我 (Yēsū Ài Wǒ)",
         lyrics: `①今我甚喜乐，耶稣已降生，祂是救赎主，最爱普世人：\njīn wǒ shèn xǐ lè，yē sū yǐ jiàng shēng，tā shì jiù shú zhǔ，zuì ài pǔ shì rén；\n希奇的爱中，最希奇的爱，就是主耶稣舍身来救我。\nxī qí de ài zhōng，zuì xī qí de ài，jiù shì zhǔ yē sū shě shēn lái jiù wǒ。\n副歌 我真喜乐，因耶稣爱我，耶稣爱我，耶稣爱我：\nwǒ zhēn xǐ lè，yīn yē sū ài wǒ，yē sū ài wǒ，yē sū ài wǒ；\n我真喜乐，因耶稣爱我，奇哉，耶稣爱我！\nwǒ zhēn xǐ lè，yīn yē sū ài wǒ，qí zāi，yē sū ài wǒ！\n②世上有何人能比主耶稣，撇弃大荣耀，来释放罪奴，\nshì shàng yǒu hé rén néng bǐ zhǔ yē sū，piē qì dà róng yào，lái shì fàng zuì nú，\n受人的凌辱，把生命甘舍？当时刻纪念，我主是爱我。\nshòu rén de líng rǔ，bǎ shēng mìng gān shě？dāng shí kè jì niàn，wǒ zhǔ shì ài wǒ。\n③虽然远离开，迷路如亡羊，主还是寻找，祂爱心最长；\nsuī rán yuǎn lí kāi，mí lù rú wáng yáng，zhǔ hái shì xún zhǎo，tā ài xīn zuì cháng；\n见祂伸慈手接回又抚慰，更抱于怀中，诚然是爱我。\njiàn tā shēn cí shǒu jiē huí yòu fǔ wèi，gèng bào yú huái zhōng，chéng rán shì ài wǒ。\n④时候快临到，得见主荣颜，众圣徒一同被接到云间；\nshí hòu kuài lín dào，dé jiàn zhǔ róng yán，zhòng shèng tú yī tóng bèi jiē dào yún jiān；\n如今当赞美，献颂莫迟延，天上仍歌唱，耶稣是爱我。\nrú jīn dāng zàn měi，xiàn sòng mò chí yán，tiān shàng réng gē chàng，yē sū shì ài wǒ。`
-    },
-    {
-        id: 27,
-        title: "耶稣是我最好朋友 (Yēsū Shì Wǒ Zuìhǎo Péngyǒu)",
-        lyrics: `①主比众亲，爱我更深，哈利路亚\nzhǔ bǐ zhòng qīn，ài wǒ gèng shēn，hā lì lù yà\n赏赐圣灵永住内心，哈利路亚\nshǎng cì shèng líng yǒng zhù nèi xīn，hā lì lù yà\n朋友情谊冷暖无常，今日亲近，明日弃嫌，\npéng yǒu qíng yì lěng nuǎn wú cháng，jīn rì qīn jìn，míng rì qì xián，\n惟独救主恩慈绵绵，哈利路亚\nwéi dú jiù zhǔ ēn cí mián mián，hā lì lù yà\n②凡人信主，可得永生，哈利路亚\nfán rén xìn zhǔ，kě dé yǒng shēng，hā lì lù yà\n思想深思实在难报，哈利路亚\nsī xiǎng shēn sī shí zài nán bào，hā lì lù yà\n主用宝血永远救赎，旷野迷路，主来寻找，\nzhǔ yòng bǎo xuè yǒng yuǎn jiù shú，kuàng yě mí lù，zhǔ lái xún zhǎo，\n引入羊栏眷顾养育，哈利路亚\nyǐn rù yáng lán juàn gù yǎng yù，hā lì lù yà\n③耶稣是我最好朋友，哈利路亚\nyē sū shì wǒ zuì hǎo péng yǒu，hā lì lù yà\n所赐恩典丰富长久，哈利路亚\nsuǒ cì ēn diǎn fēng fù cháng jiǔ，hā lì lù yà\n听主声音我就喜悦，有主同在，不受苛虐，\ntīng zhǔ shēng yīn wǒ jiù xǐ yuè，yǒu zhǔ tóng zài，bù shòu kē nuè，\n加我信心，扶我软弱，哈利路亚\njiā wǒ xìn xīn，fú wǒ ruǎn ruò，hā lì lù yà\n④靠主圣手领我一生，哈利路亚\nkào zhǔ shèng shǒu lǐng wǒ yī shēng，hā lì lù yà\n主的慈爱不离我身，哈利路亚\nzhǔ de cí ài bù lí wǒ shēn，hā lì lù yà\n到处领导，平安无碍，随时随地都蒙恩待，\ndào chù lǐng dǎo，píng ān wú ài，suí shí suí dì dōu méng ēn dài，\n引导我们荣光所在，哈利路亚\nyǐn dǎo wǒ men róng guāng suǒ zài，hā lì lù yà`
-    },
-    {
-        id: 28,
-        title: "妙爱找我 (Miào Ài Zhǎo Wǒ)",
-        lyrics: `①主大慈爱寻找我，前曾沉罪恶间；\nzhǔ dà cí ài xún zhǎo wǒ，qián céng chén zuì è jiān；\n且显大力怀抱我，安放羊圈里面；\nqiě xiǎn dà lì huái bào wǒ，ān fàng yáng quān lǐ miàn；\n激动天使欢欣歌唱，颂赞歌声充满天上。\njī dòng tiān shǐ huān xīn gē chàng，sòng zàn gē shēng chōng mǎn tiān shàng。\n副歌 爱何大，寻找我！血何宝，洗净我！恩何多，领我与神复和！主爱我，我不惧怕风波。\nài hé dà，xún zhǎo wǒ！xuè hé bǎo，xǐ jìng wǒ！ēn hé duō，lǐng wǒ yǔ shén fù hé！zhǔ ài wǒ，wǒ bù jù pà fēng bō。\n②主看见我爱损伤，用油和酒包裹，\nzhǔ kàn jiàn wǒ shòu sǔn shāng，yòng yóu hé jiǔ bāo guǒ，\n又以恩言安慰我，并说：“你永属我”；\nyòu yǐ ēn yán ān wèi wǒ，bìng shuō：nǐ yǒng shǔ wǒ；\n我未曾听如此佳音，能叫我心满足、欢欣。\nwǒ wèi céng tīng rú cǐ jiā yīn，néng jiào wǒ xīn mǎn zú、huān xīn。\n③主的两手有钉痕，宝血为我流出，\nzhǔ de liǎng shǒu yǒu dìng hén，bǎo xuè wèi wǒ liú chū，\n人用荆棘做冠冕，戏弄加上凌辱；\nrén yòng jīng jí zuò guān miǎn，xì nòng jiā shàng líng rǔ；\n主爱极大，怜我罪人，甘愿为我受苦、舍身。\nzhǔ ài jí dà，lián wǒ zuì rén，gān yuàn wèi wǒ shòu kǔ、shě shēn。\n④我虽在世为客旅，心里却无忧虑，\nwǒ suī zài shì wèi kè lǚ，xīn lǐ què wú yōu lǜ，\n忍耐行完主旨意，到主降临日子；\nrěn nài xíng wán zhǔ zhǐ yì，dào zhǔ jiàng lín rì zǐ；\n那时接我到祂身边，与祂同在，圣洁无怨。\nnà shí jiē wǒ dào tā shēn biān，yǔ tā tóng zài，shèng jié wú yuàn。`
-    },
-    {
-        id: 29,
-        title: "主全为我 (Zhǔ Quán Wèi Wǒ)",
-        lyrics: `①昔日主耶稣降生于世界，舍弃大荣耀，救赎施慈爱；\nxī rì zhǔ yē sū jiàng shēng yú shì jiè，shě qì dà róng yào，jiù shú shī cí ài；\n奇哉，祂来临感动我心怀！主来找我，找我；\nqí zāi，tā lái lín gǎn dòng wǒ xīn huái！zhǔ lái zhǎo wǒ，zhǎo wǒ；\n主来找我，找我；\nzhǔ lái zhǎo wǒ，zhǎo wǒ；\n奇哉，祂来临感动我心怀！主来找我，找我。\nqí zāi，tā lái lín gǎn dòng wǒ xīn huái！zhǔ lái zhǎo wǒ，zhǎo wǒ。\n②耶稣我恩主受苦钉十架，救赎我灵魂，还清我罪价；\nyē sū wǒ ēn zhǔ shòu kǔ dìng shí jià，jiù shú wǒ líng hún，huán qīng wǒ zuì jià；\n耶稣被钉死，天地都惊怕。主死为我，为我；\nyē sū bèi dìng sǐ，tiān dì dōu jīng pà。zhǔ sǐ wèi wǒ，wèi wǒ；\n主死为我，为我；\nzhǔ sǐ wèi wǒ，wèi wǒ；\n耶稣被钉死，天地都惊怕；主死为我，为我。\nyē sū bèi dìng sǐ，tiān dì dōu jīng pà；zhǔ sǐ wèi wǒ，wèi wǒ。\n③我曾经流荡，远离主牧场，耶稣来寻找我这只亡羊；\nwǒ céng jīng liú dàng，yuǎn lí zhǔ mù chǎng，yē sū lái xún zhǎo wǒ zhè zhī wáng yáng；\n呼叫我名字，慈声入心肠。我主叫我，叫我；\nhū jiào wǒ míng zì，cí shēng rù xīn cháng。wǒ zhǔ jiào wǒ，jiào wǒ；\n我主叫我，叫我；\nwǒ zhǔ jiào wǒ，jiào wǒ；\n呼叫我名字，慈声入心肠；我主叫我，叫我。\nhū jiào wǒ míng zì，cí shēng rù xīn cháng；wǒ zhǔ jiào wǒ，jiào wǒ。\n④耶稣曾应许末日必再临，圣徒闻主声，喜乐充满心；\nyē sū céng yīng xǔ mò rì bì zài lín，shèng tú wén zhǔ shēng，xǐ lè chōng mǎn xīn；\n耶稣再来临，是极大佳音。祂来接我，接我；\nyē sū zài lái lín，shì jí dà jiā yīn。tā lái jiē wǒ，jiē wǒ；\n祂来接我，接我；\ntā lái jiē wǒ，jiē wǒ；\n耶稣再来临，是极大佳音；祂来接我，接我。\nyē sū zài lái lín，shì jí dà jiā yīn；tā lái jiē wǒ，jiē wǒ。`
-    },
-    {
-        id: 30,
-        title: "耶稣肯收纳罪人 (Yēsū Kěn Shōunà Zuìrén)",
-        lyrics: `①“耶稣肯收纳罪人！”将此恩言传远近；虽离正路，\nyē sū kěn shōu nà zuì rén！jiāng cǐ ēn yán chuán yuǎn jìn；suī lí zhèng lù，\n主寻找；纵入迷途，主怜悯。要不断高声\nzhǔ xún zhǎo；zòng rù mí tú，zhǔ lián mǐn。yào bù duàn gāo shēng\n宣告：“耶稣肯收纳罪人！”让众人清楚知道：耶稣肯收纳罪人！\nxuān gào：yē sū kěn shōu nà zuì rén！ràng zhòng rén qīng chǔ zhī dào：yē sū kěn shōu nà zuì rén！\n②前来就主得安宁！主之应许可信凭；虽然恶重，\nqián lái jiù zhǔ dé ān níng！zhǔ zhī yīng xǔ kě xìn píng；suī rán è zhòng，\n罪孽深，耶稣肯收纳罪人。\nzuì niè shēn，yē sū kěn shōu nà zuì rén。\n③今我内心无责谴！坦然立在律法前；耶稣除我\njīn wǒ nèi xīn wú zé qiǎn，tǎn rán lì zài lǜ fǎ qián；yē sū chú wǒ\n众愆尤，使我尽符神所求。\nzhòng qiān yóu，shǐ wǒ jìn fú shén suǒ qiú。\n④“耶稣肯收纳罪人！”我罪虽重也蒙恩；蒙主洗去\nyē sū kěn shōu nà zuì rén！wǒ zuì suī zhòng yě méng ēn；méng zhǔ xǐ qù\n众污痕，得随救主进天门。\nzhòng wū hén，dé suí jiù zhǔ jìn tiān mén。`
-    },
-        {
-        id: 31,
-        title: "到新耶路撒冷 (Dào Xīn Yēlùsālěng)",
-        lyrics: `①这等是何人，处处传福音？祈祷并歌颂，日日亲近神？\nzhè děng shì hé rén，chù chù chuán fú yīn？qí dǎo bìng gē sòng，rì rì qīn jìn shén？\n他是耶稣的子民，凡他所行靠主名。\ntā shì yē sū de zǐ mín，fán tā suǒ xíng kào zhǔ míng。\n耶稣召我等前往新耶路撒冷，蒙主引导进天城，\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，méng zhǔ yǐn dǎo jìn tiān chéng，\n耶稣召我等前往新耶路撒冷，蒙主引导进天城。\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，méng zhǔ yǐn dǎo jìn tiān chéng。\n②这人有何功，盼望到高天？岂能无罪过，已成圣完全？\nzhè rén yǒu hé gōng，pàn wàng dào gāo tiān？qǐ néng wú zuì guò，yǐ chéng shèng wán quán？\n他靠主血洗罪愆，得成圣洁到主前。\ntā kào zhǔ xuè xǐ zuì qiān，dé chéng shèng jié dào zhǔ qián。\n耶稣召我等前往新耶路撒冷，我靠其功福无边，\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，wǒ kào qí gōng fú wú biān，\n耶稣召我等前往新耶路撒冷，我靠其功福无边。\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，wǒ kào qí gōng fú wú biān。\n③这人的德行，究竟是如何？他焉有能力，得胜众鬼魔？\nzhè rén de dé xíng，jiù jìng shì rú hé？tā yān yǒu néng lì，dé shèng zhòng guǐ mó？\n他受圣灵的恩膏，心性、行为改变多。\ntā shòu shèng líng de ēn gāo，xīn xìng xíng wéi gǎi biàn duō。\n耶稣召我等前往新耶路撒冷，我靠其力唱凯歌，\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，wǒ kào qí lì chàng kǎi gē，\n耶稣召我等前往新耶路撒冷，我靠其力唱凯歌。\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，wǒ kào qí lì chàng kǎi gē。\n④这人到危时，为何不畏难？岂能无惧怕，临死仍平安？\nzhè rén dào wēi shí，wèi hé bú wèi nán？qǐ néng wú jù pà，lín sǐ réng píng ān？\n他得永生满心欢，能进天国戴华冠。\ntā dé yǒng shēng mǎn xīn huān，néng jìn tiān guó dài huá guān。\n耶稣召我等前往新耶路撒冷，颂主奇恩永欢颜，\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，sòng zhǔ qí ēn yǒng huān yán，\n耶稣召我等前往新耶路撒冷，颂主奇恩永欢颜。\nyē sū zhào wǒ děng qián wǎng xīn yē lù sā lěng，sòng zhǔ qí ēn yǒng huān yán。`
-    },
-    {
-        id: 32,
-        title: "耶稣恩召 (Yēsū Ēnzhào)",
-        lyrics: `①耶稣之温柔声召你回家，今日召你，今日召你；\nyē sū zhī wēn róu shēng zhào nǐ huí jiā，jīn rì zhào nǐ，jīn rì zhào nǐ；\n为何离主游荡，贪爱虚邪？越久越远，越走差？\nwèi hé lí zhǔ yóu dàng，tān ài xū xié？yuè jiǔ yuè yuǎn，yuè zǒu chà？\n今日召你，今日召你；\njīn rì zhào nǐ，jīn rì zhào nǐ；\n耶稣今召你，他温柔声今日召你。\nyē sū jīn zhào nǐ，tā wēn róu shēng jīn rì zhào nǐ。\n②有罪之人！主召你得救恩，今日召你，今日召你；\nyǒu zuì zhī rén！zhǔ zhào nǐ dé jiù ēn，jīn rì zhào nǐ，jīn rì zhào nǐ；\n将你罪担交托主得赦免，主必拯救你灵魂。\njiāng nǐ zuì dān jiāo tuō zhǔ dé shè miǎn，zhǔ bì zhěng jiù nǐ líng hún。\n③劳苦之人！主召你得安宁，今日召你，今日召你；\nláo kǔ zhī rén！zhǔ zhào nǐ dé ān níng，jīn rì zhào nǐ，jīn rì zhào nǐ；\n将你重担交托主便身轻，主必解除你苦情。\njiāng nǐ zhòng dān jiāo tuō zhǔ biàn shēn qīng，zhǔ bì jiě chú nǐ kǔ qíng。\n④迷路之人！主召你走正路，今日召你，今日召你；\nmí lù zhī rén！zhǔ zhào nǐ zǒu zhèng lù，jīn rì zhào nǐ，jīn rì zhào nǐ；\n倚靠主能力，引导你脚步，一生一世蒙眷顾。\nyǐ kào zhǔ néng lì，yǐn dǎo nǐ jiǎo bù，yī shēng yī shì méng juàn gù。`
-    },
-    {
-        id: 33,
-        title: "雨夜过后见光明 (Yǔyè Guòhòu Jiàn Guāngmíng)",
-        lyrics: `①迷路的人！你当静听，仰望上面慈爱呼声；\nmí lù de rén！nǐ dāng jìng tīng，yǎng wàng shàng miàn cí ài hū shēng；\n是你救主施大恩惠，听他福音必得安慰。\nshì nǐ jiù zhǔ shī dà ēn huì，tīng tā fú yīn bì dé ān wèi。\n忧闷夜雨必放晴，转眼之间显光明；\nyōu mèn yè yǔ bì fàng qíng，zhuǎn yǎn zhī jiān xiǎn guāng míng；\n晨曦一照遍地辉煌颂赞，欢乐永远不停。\nchén xī yī zhào biàn dì huī huáng sòng zàn，huān lè yǒng yuǎn bù tíng。\n②世路黑暗，行人忧戚，万般劳苦愁烦叹息；\nshì lù hēi àn，xíng rén yōu qī，wàn bān láo kǔ chóu fán tàn xī；\n只赖救主圣手扶持，一切忧苦就得消逝。\nzhǐ lài jiù zhǔ shèng shǒu fú chí，yī qiè yōu kǔ jiù dé xiāo shì。\n③人生盼望全在真神，无穷恩惠普赐万民；\nrén shēng pàn wàng quán zài zhēn shén，wú qióng ēn huì pǔ cì wàn mín；\n跟随恩主日日相亲，在光明中称颂真神。\ngēn suí ēn zhǔ rì rì xiāng qīn，zài guāng míng zhōng chēng sòng zhēn shén。`
-    },
-    {
-        id: 34,
-        title: "微声盼望 (Wēishēng Pànwàng)",
-        lyrics: `①在这忙碌生活当中，疲倦寂寞多感喟，\nzài zhè máng lù shēng huó dāng zhōng，pí juàn jì mò duō gǎn kuì，\n你心灵饥渴与虚空，却无法法得安慰：\nnǐ xīn líng jī kě yǔ xū kōng，què wú fāng fǎ dé ān wèi；\n听！这声音何等美妙，是温柔真实言词！\ntīng！zhè shēng yīn hé děng měi miào，shì wēn róu zhēn shí yán cí！\n听！慈爱声向你呼召，带来好信息与你！\ntīng！cí ài shēng xiàng nǐ hū zhào，dài lái hǎo xìn xī yǔ nǐ！\n副歌 微声盼望，我喜听；主慈爱声，\nwēi shēng pàn wàng，wǒ xǐ tīng；zhǔ cí ài shēng，\n使我心灵痛苦中得安宁。\nshǐ wǒ xīn líng tòng kǔ zhōng dé ān níng。\n②世界一切浮华、宴乐，只是欺骗与束缚，\nshì jiè yī qiè fú huá yàn lè，zhǐ shì qī piàn yǔ shù fù，\n真实与不变的珍宝，在这世间找不到：\nzhēn shí yǔ bù biàn de zhēn bǎo，zài zhè shì jiān zhǎo bù dào；\n来！你要向高山举目，你心灵必得满足！\nlái！nǐ yào xiàng gāo shān jǔ mù，nǐ xīn líng bì dé mǎn zú！\n来！饮于生命活水泉，必享平安在主前！\nlái！yǐn yú shēng mìng huó shuǐ quán，bì xiǎng píng ān zài zhǔ qián！`
-    },
-    {
-        id: 35,
-        title: "硃红罪变如雪 (Zhūhóng Zuì Biàn Rú Xuě)",
-        lyrics: `①你的罪虽像硃红，主必使它白如雪，\nnǐ de zuì suī xiàng zhū hóng，zhǔ bì shǐ tā bái rú xuě，\n如雪，你的罪虽像硃红，主必使它白如雪，\nrú xuě，nǐ de zuì suī xiàng zhū hóng，zhǔ bì shǐ tā bái rú xuě，\n你的罪虽像硃红，你的罪虽像硃红，\nnǐ de zuì suī xiàng zhū hóng，nǐ de zuì suī xiàng zhū hóng，\n主必使它白如雪，主必使它白如雪。\nzhǔ bì shǐ tā bái rú xuě，zhǔ bì shǐ tā bái rú xuě。\n②请听主慈爱呼声，快回转归向真神！\nqǐng tīng zhǔ cí ài hū shēng，kuài huí zhuǎn guī xiàng zhēn shén！\n请听主慈爱呼声，快回转归向真神！\nqǐng tīng zhǔ cí ài hū shēng，kuài huí zhuǎn guī xiàng zhēn shén！\n请听主慈爱呼声，请听主慈爱呼声，\nqǐng tīng zhǔ cí ài hū shēng，qǐng tīng zhǔ cí ài hū shēng，\n快回转归向真神！快回转归向真神！\nkuài huí zhuǎn guī xiàng zhēn shén！kuài huí zhuǎn guī xiàng zhēn shén！\n③你的罪祂肯赦免，从今后永不纪念，\nnǐ de zuì tā kěn shè miǎn，cóng jīn hòu yǒng bù jì niàn，\n你的罪祂肯赦免，从今后永不纪念，\nnǐ de zuì tā kěn shè miǎn，cóng jīn hòu yǒng bù jì niàn，\n你的罪祂肯赦免，你的罪祂肯赦免，\nnǐ de zuì tā kěn shè miǎn，nǐ de zuì tā kěn shè miǎn，\n从今后永不纪念，从今后永不纪念。\ncóng jīn hòu yǒng bù jì niàn，cóng jīn hòu yǒng bù jì niàn。`
-    },
-    {
-        id: 36,
-        title: "我闻耶稣呼声 (Wǒ Wén Yēsū Hūshēng)",
-        lyrics: `①我闻耶稣柔声说道：“就我来得平安！\nwǒ wén yē sū róu shēng shuō dào：jiù wǒ lái dé píng ān！\n息你劳苦，卸你重担，怡然靠我怀间！”\nxī nǐ láo kǔ，xiè nǐ zhòng dān，yí rán kào wǒ huái jiān！\n我不憔悴、忧伤，困倦，闻此即有欢颜；\nwǒ běn qiáo cuì、yōu shāng，kùn juàn，wén cǐ jí yǒu huān yán；\n在主怀中，果得安乐，主使我灵腾欢。\nzài zhǔ huái zhōng，guǒ dé ān lè，zhǔ shǐ wǒ líng téng huān。\n②我闻耶稣高声说道：“口渴的人要来！\nwǒ wén yē sū gāo shēng shuō dào：kǒu kě de rén yào lái！\n我赐活水，人人可喝，藉我得救免灾！”\nwǒ cì huó shuǐ，rén rén kě hē，jiè wǒ dé jiù miǎn zāi！\n我闻此言，即刻前来，畅饮生命之杯；\nwǒ wén cǐ yán，jí kè qián lái，chàng yǐn shēng mìng zhī bēi；\n我灵重生，我心喜乐，主恩大哉，奇哉！\nwǒ líng chóng shēng，wǒ xīn xǐ lè，zhǔ ēn dà zāi，qí zāi！\n③我闻耶稣慈声说道：“我是暗世之光！\nwǒ wén yē sū cí shēng shuō dào：wǒ shì àn shì zhī guāng！\n在我里面，便有光明，见我如见朝阳！”\nzài wǒ lǐ miàn，biàn yǒu guāng míng，jiàn wǒ rú jiàn cháo yáng！\n我闻此言，即来跟主，果如晨曦辉煌；\nwǒ wén cǐ yán，jí lái gēn zhǔ，guǒ rú chén xī huī huáng；\n我要在主光中行走，从今直到天堂。\nwǒ yào zài zhǔ guāng zhōng xíng zǒu，cóng jīn zhí dào tiān táng。`
-    },
-    {
-        id: 37,
-        title: "惟独主血有效 (Wéidú Zhǔ Xuè Yǒuxiào)",
-        lyrics: `①心中污秽怎能洗？惟独耶稣血有功效；\nxīn zhōng wū huì zěn néng xǐ？wéi dú yē sū xuè yǒu gōng xiào；\n再无方法指示你，惟独耶稣血有功效。\nzài wú fāng fǎ zhǐ shì nǐ，wéi dú yē sū xuè yǒu gōng xiào。\n美泉无价之宝，污秽必能洗掉；\nměi quán wú jià zhī bǎo，wū huì bì néng xǐ diào；\n此泉永世无双，惟独耶稣血有功效。\ncǐ quán yǒng shì wú shuāng，wéi dú yē sū xuè yǒu gōng xiào。\n②靠己修行全无用，惟独耶稣血有功效；\nkào jǐ xiū xíng quán wú yòng，wéi dú yē sū xuè yǒu gōng xiào；\n更莫倚靠拜偶像，惟独耶稣血有功效。\ngèng mò yǐ kào bài ǒu xiàng，wéi dú yē sū xuè yǒu gōng xiào。\n③人要逃出魔鬼网，惟独耶稣血有功效；\nrén yào táo chū mó guǐ wǎng，wéi dú yē sū xuè yǒu gōng xiào；\n要从罪恶得释放。惟独耶稣血有功效。\nyào cóng zuì è dé shì fàng。wéi dú yē sū xuè yǒu gōng xiào。\n④倘若你要免永死，惟独耶稣血有功效；\ntǎng ruò nǐ yào miǎn yǒng sǐ，wéi dú yē sū xuè yǒu gōng xiào；\n要进天国得永生，惟独耶稣血有功效。\nyào jìn tiān guó dé yǒng shēng，wéi dú yē sū xuè yǒu gōng xiào。`
-    },
-        {
-        id: 38,
-        title: "主之宝血 (Zhǔ Zhī Bǎoxuè)",
-        lyrics: `①我现在得宝血洁净，已离弃拢总罪孽：\nwǒ xiàn zài dé bǎo xuè jié jìng，yǐ lí qì lǒng zǒng zuì niè；\n我听救主慈声叫我，要我跟随祂脚迹。\nwǒ tīng jiù zhǔ cí shēng jiào wǒ，yào wǒ gēn suí tā jiǎo jì。\n赞美耶稣，赞美耶稣，荣耀主代罪人死！\nzàn měi yē sū，zàn měi yē sū，róng yào zhǔ dài zuì rén sǐ！\n荣耀，荣耀归给耶稣！主宝血洗除一切罪孽！\nróng yào，róng yào guī gěi yē sū！zhǔ bǎo xuè xǐ chú yī qiē zuì niè！\n②主之宝血洗我罪愆，跟从救主直向前：\nzhǔ zhī bǎo xuè xǐ wǒ zuì qiān，gēn cóng jiù zhǔ zhí xiàng qián；\n一切虚华，我愿丢弃，看它像过眼云烟。\nyī qiē xū huá，wǒ yuàn diū qì，kàn tā xiàng guò yǎn yún yān。\n③顶有权能，我主耶稣，喜欢拯救众子民：\ndǐng yǒu quán néng，wǒ zhǔ yē sū，xǐ huān zhěng jiù zhòng zǐ mín；\n我要永远赞美耶稣，荣耀，荣耀归主名！\nwǒ yào yǒng yuǎn zàn měi yē sū，róng yào，róng yào guī zhǔ míng！`
-    },
-    {
-        id: 39,
-        title: "主血有权能 (Zhǔ Xuè Yǒu Quánnéng)",
-        lyrics: `①问你是否愿意除净罪污？主血有权能，血有权能：\nwèn nǐ shì fǒu yuàn yì chú jìng zuì wū？zhǔ xuè yǒu quán néng，xuè yǒu quán néng；\n洗净良心必得胜诸恶行；主血有希奇之权能。\nxǐ jìng liáng xīn bì dé shèng zhū è xíng；zhǔ xuè yǒu xī qí zhī quán néng。\n副歌 有权能，能！希奇之权能，圣羔血必得胜！\nyǒu quán néng，néng！xī qí zhī quán néng，shèng gāo xuè bì dé shèng！\n有权能，能！希奇之权能，圣羔羊宝血必得胜！\nyǒu quán néng，néng！xī qí zhī quán néng，shèng gāo yáng bǎo xuè bì dé shèng！\n②问你是否愿意比雪皎洁？主血有权能，血有权能：\nwèn nǐ shì fǒu yuàn yì bǐ xuè jiǎo jié？zhǔ xuè yǒu quán néng，xuè yǒu quán néng；\n在髑髅地血泉内洗得清；主血有希奇之权能。\nzài dú lóu dì xuè quán nèi xǐ dé qīng；zhǔ xuè yǒu xī qí zhī quán néng。\n③问你是否愿意弃卸罪担？主血有权能，血有权能：\nwèn nǐ shì fǒu yuàn yì qì xiè zuì dān？zhǔ xuè yǒu quán néng，xuè yǒu quán néng；\n身体、灵魂都成圣进神前；主血有希奇之权能。\nshēn tǐ、líng hún dōu chéng shèng jìn shén qián；zhǔ xuè yǒu xī qí zhī quán néng。\n④问你是否愿意见主真体？主血有权能，血有权能：\nwèn nǐ shì fǒu yuàn yì jiàn zhǔ zhēn tǐ？zhǔ xuè yǒu quán néng，xuè yǒu quán néng；\n在末日必改变像主形状；主血有希奇之权能。\nzài mò rì bì gǎi biàn xiàng zhǔ xíng zhuàng；zhǔ xuè yǒu xī qí zhī quán néng。`
-    },
-    {
-        id: 40,
-        title: "宝血泉源 (Bǎoxuè Quányuán)",
-        lyrics: `①美哉，大哉，宝血泉源！向全世界罪人显明，\nměi zāi，dà zāi，bǎo xuè quán yuán！xiàng quán shì jiè zuì rén xiǎn míng，\n可赞，可颂神独生子，钉十架上，救功完成；\nkě zàn，kě sòng shén dú shēng zǐ，dìng shí jià shàng，jiù gōng wán chéng；\n虽我久已离主远游，自寻祸患，当受重刑，\nsuī wǒ jiǔ yǐ lí zhǔ yuǎn yóu，zì xún huò huàn，dāng shòu zhòng xíng，\n用羔羊宝血洗涤我，我便较比雪更洁白。\nyòng gāo yáng bǎo xuè xǐ dí wǒ，wǒ biàn jiào bǐ xuè gèng jié bái。\n副歌 比雪更洁白，比雪更洁白；\nbǐ xuè gèng jié bái，bǐ xuè gèng jié bái；\n用羔羊宝血洗涤我，我便较比雪更洁白。\nyòng gāo yáng bǎo xuè xǐ dí wǒ，wǒ biàn jiào bǐ xuè gèng jié bái。\n②荆棘冠冕，甘戴不辞，十架苦痛，我主忍受，\njīng jí guān miǎn，gān dài bù cí，shí jià kǔ tòng，wǒ zhǔ rěn shòu，\n因主受伤，我得医治，奇妙救恩，何等深厚！\nyīn zhǔ shòu shāng，wǒ dé yī zhì，qí miào jiù ēn，hé děng shēn hòu！\n我今奔向洗罪泉源，愿得宝血洗尽罪垢，\nwǒ jīn bēn xiàng xǐ zuì quán yuán，yuàn dé bǎo xuè xǐ jìn zuì gòu，\n求主洗净我诸罪恶，我便较比雪更洁白。\nqiú zhǔ xǐ jìng wǒ zhū zuì è，wǒ biàn jiào bǐ xuè gèng jié bái。\n③可怜我久在外飘荡，偏行己路，喜邪厌正，\nkě lián wǒ jiǔ zài wài piāo dàng，piān xíng jǐ lù，xǐ xié yàn zhèng，\n我众罪孽正如硃红，用世上水不能洗净；\nwǒ zhòng zuì niè zhèng rú zhū hóng，yòng shì shàng shuǐ bù néng xǐ jìng；\n我只倚靠洗罪泉源，就是耶稣宝血盈盈，\nwǒ zhǐ yǐ kào xǐ zuì quán yuán，jiù shì yē sū bǎo xuè yíng yíng，\n恳求施恩将我洗净，我便较比雪更洁白。\nkěn qiú shī ēn jiāng wǒ xǐ jìng，wǒ biàn jiào bǐ xuè gèng jié bái。`
-    },
-    {
-        id: 41,
-        title: "宝血洗净 (Bǎoxuè Xǐjìng)",
-        lyrics: `①请问可曾倚靠主宝血洗净？可曾倚靠羔羊血洗得净？\nqǐng wèn kě céng yǐ kào zhǔ bǎo xuè xǐ jìng？kě céng yǐ kào gāo yáng xuè xǐ dé jìng？\n可曾依靠救主得着新生命？可曾倚靠主血洗得净？\nkě céng yǐ kào jiù zhǔ dé zhe xīn shēng mìng？kě céng yǐ kào zhǔ xuè xǐ dé jìng？\n副歌 你总要倚靠血，倚靠血始可能脱罪孽；\nnǐ zǒng yào yǐ kào xuè，yǐ kào xuè shǐ kě néng tuō zuì niè；\n衣服毫无玷污，必洁白如雪，你总要倚靠血洗得净。\nyī fú háo wú diàn wū，bì jié bái rú xuè，nǐ zǒng yào yǐ kào xuè xǐ dé jìng。\n②你愿顺从救主行此艰难路，可曾倚靠主血洗得净？\nnǐ yuàn shùn cóng jiù zhǔ xíng cǐ jiān nán lù，kě céng yǐ kào zhǔ xuè xǐ dé jìng？\n可曾蒙主引导，靠着主保护？可曾倚靠主血洗得净？\nkě céng méng zhǔ yǐn dǎo，kào zhe zhǔ bǎo hù？kě céng yǐ kào zhǔ xuè xǐ dé jìng？\n③耶稣来时，白衣是否仍清洁？总要倚靠主血洗得净。\nyē sū lái shí，bái yī shì fǒu réng qīng jié？zǒng yào yǐ kào zhǔ xuè xǐ dé jìng；\n信徒被接那时，你能否相携？总要倚靠主血洗得净。\nxìn tú bèi jiē nà shí，nǐ néng fǒu xiāng xié？zǒng yào yǐ kào zhǔ xuè xǐ dé jìng。\n④往日污秽衣服，今须全然丢，总要倚靠主血洗得净；\nwǎng rì wū huì yī fú，jīn xū quán rán diū，zǒng yào yǐ kào zhǔ xuè xǐ dé jìng；\n曾有耶稣宝血为你白白流，总要倚靠主血洗得净。\ncéng yǒu yē sū bǎo xuè wèi nǐ bái bái liú，zǒng yào yǐ kào zhǔ xuè xǐ dé jìng。`
-    },
-    {
-        id: 42,
-        title: "惟有主能救我 (Wéiyǒu Zhǔ Néng Jiù Wǒ)",
-        lyrics: `①哀哭岂能救我？我虽然不住流泪，\nāi kū qǐ néng jiù wǒ？wǒ suī rán bù zhù liú lèi，\n心仍未能得安慰，又不能洗我罪累。\nxīn réng wèi néng dé ān wèi，yòu bù néng xǐ wǒ zuì lèi。\n哀哭岂能救我？幸耶稣怜我苦况，为我钉死\nāi kū qǐ néng jiù wǒ？xìng yē sū lián wǒ kǔ kuàng，wèi wǒ dìng sǐ\n十架上；耶稣今把我释放，惟有主能救我。\nshí jià shàng；yē sū jīn bǎ wǒ shì fàng，wéi yǒu zhǔ néng jiù wǒ。\n②自恃岂能救我？一切善功与善行，\nzì shì qǐ néng jiù wǒ？yī qiē shàn gōng yǔ shàn xíng，\n虽能使我得好名，总不能得真生命。\nsuī néng shǐ wǒ dé hǎo míng，zǒng bù néng dé zhēn shēng mìng。\n③迷信岂能救我？敬拜偶像全虚妄，\nmí xìn qǐ néng jiù wǒ？jìng bài ǒu xiàng quán xū wàng，\n旁门左道更危险，最后都必至灭亡。\npáng mén zuǒ dào gèng wēi xiǎn，zuì hòu dōu bì zhì miè wáng。\n④惟有主能救我，只要我靠主救恩，\nwéi yǒu zhǔ néng jiù wǒ，zhǐ yào wǒ kào zhǔ jiù ēn，\n祂必为我开天门，我因此向祂直奔。\ntā bì wèi wǒ kāi tiān mén，wǒ yīn cǐ xiàng tā zhí bēn。`
-    },
-    {
-        id: 43,
-        title: "搭救罪人 (Dājiù Zuìrén)",
-        lyrics: `①苦恼罪人！请你前来，现在信主有恩典，\nkǔ nǎo zuì rén！qǐng nǐ qián lái，xiàn zài xìn zhǔ yǒu ēn diǎn，\n耶稣救主欢迎你来，满心慈悲和爱怜；\nyē sū jiù zhǔ huān yíng nǐ lái，mǎn xīn cí bēi hé ài lián；\n祂有能力，祂有能力，劝你信服莫迟延。\ntā yǒu néng lì，tā yǒu néng lì，quàn nǐ xìn fú mò chí yán。\n②不要空想将功补过，自满、自恃不回头，\nbù yào kōng xiǎng jiāng gōng bǔ guò，zì mǎn、zì shì bù huí tóu，\n只要觉悟一身罪恶，切实悔改必得救；\nzhǐ yào jué wù yī shēn zuì è，qiè shí huǐ gǎi bì dé jiù；\n如此觉悟，如此觉悟，救主赦罪恩丰厚。\nrú cǐ jué wù，rú cǐ jué wù，jiù zhǔ shè zuì ēn fēng hòu。\n③劳苦损伤，背负重担，只管走来，主肯救，\nláo kǔ sǔn shāng，bēi fù zhòng dān，zhǐ guǎn zǒu lái，zhǔ kěn jiù，\n若是你要等候好久，直等死了，恨长留；\nruò shì nǐ yào děng hòu hǎo jiǔ，zhí děng sǐ le，hèn cháng liú；\n良机勿失，良机勿失，今日信主便无愁。\niáng jī wù shī，liáng jī wù shī，jīn rì xìn zhǔ biàn wú chóu。\n④莫怀疑虑，放心前来，接受主的大慈爱，\nmò huái yí lǜ，fàng xīn qián lái，jiē shòu zhǔ de dà cí ài，\n专心信服诚心求告，耶稣必然肯厚待；\nzhuān xīn xìn fú chéng xīn qiú gào，yē sū bì rán kěn hòu dài；\n不用金钱，不用金钱，白白得恩，请快来。\nbù yòng jīn qián，bù yòng jīn qián，bái bái dé ēn，qǐng kuài lái。`
-    },
-    {
-        id: 44,
-        title: "主开心眼 (Zhǔ Kāi Xīnyǎn)",
-        lyrics: `①我前行走罪孽道路，被魔弄瞎心眼；\nwǒ qián xíng zǒu zuì niè dào lù，bèi mó nòng xiā xīn yǎn；\n耶稣基督一入我心，即有光明无限。\nyē sū jī dū yī rù wǒ xīn，jí yǒu guāng míng wú xiàn。\n副歌 主耶稣医治我，前虽瞎眼，哈利路亚，今看见！\nzhǔ yē sū yī zhì wǒ，qián suī xiā yǎn，hā lì lù yà，jīn kàn jiàn！\n主耶稣医治我，前虽瞎眼，今看见！\nzhǔ yē sū yī zhì wǒ，qián suī xiā yǎn，jīn kàn jiàn！\n②自主耶稣开心眼，可以见神圣面；\nzì zhǔ yē sū kāi wǒ xīn yǎn，kě yǐ jiàn tā shèng miàn；\n知主恩召何等指望，基业永不改变。\nzhī zhǔ ēn zhào hé děng zhǐ wàng，jī yè yǒng bù gǎi biàn。\n③耶稣真光照我心眼，平安，喜乐即显；\nyē sū zhēn guāng zhào wǒ xīn yǎn，píng ān，xǐ lè jí xiǎn；\n我要跟主行走天路，见证主大恩典。\nwǒ yào gēn zhǔ xíng zǒu tiān lù，jiàn zhèng zhǔ dà ēn diǎn。`
-    },
-    {
-        id: 45,
-        title: "耶稣救我 (Yēsū Jiù Wǒ)",
-        lyrics: `①离去患难、黑暗等苦情，耶稣救我，耶稣救我；\nlí qù huàn nàn、hēi àn děng kǔ qíng，yē sū jiù wǒ，yē sū jiù wǒ；\n入主所赐安宁与光明，耶稣已经救我。\nrù zhǔ suǒ cì ān níng yǔ guāng míng，yē sū yǐ jīng jiù wǒ。\n离去束缚，入主之自由；离去缺乏，入主之丰盈；\nlí qù shù fù，rù zhǔ zhī zì yóu；lí qù quē fá，rù zhǔ zhī fēng yíng；\n离去罪恶，与主日相亲；耶稣已经救我。\nlí qù zuì è，yǔ zhǔ rì xiāng qīn；yē sū yǐ jīng jiù wǒ。\n②离去羞耻、骄傲与妒忌，耶稣救我，耶稣救我；\nlí qù xiū chǐ、jiāo ào yǔ dù jì，yē sū jiù wǒ，yē sū jiù wǒ；\n背十字架顺从主旨意，耶稣已经救我。\nbēi shí zì jià shùn cóng zhǔ zhǐ yì，yē sū yǐ jīng jiù wǒ。\n离去怨叹，赞美主恩深；离去绝望，得主之圣灵；\nlí qù yuàn tàn，zàn měi zhǔ ēn shēn；lí qù jué wàng，dé zhǔ zhī shèng líng；\n如鸟生翼，永远能奋兴；耶稣已经救我。\nrú niǎo shēng yì，yǒng yuǎn néng fèn xīng；yē sū yǐ jīng jiù wǒ。\n③离去坟墓幽冥之惊慌，耶稣救我，耶稣救我；\nlí qù fén mù yōu míng zhī jīng huāng，yē sū jiù wǒ，yē sū jiù wǒ；\n入主所住荣光之天堂，耶稣已经救我。\nrù zhǔ suǒ zhù róng guāng zhī tiān táng，yē sū yǐ jīng jiù wǒ。\n离去火湖永刑之苦难，入主所赐无限之平安，\nlí qù huǒ hú yǒng xíng zhī kǔ nàn，rù zhǔ suǒ cì wú xiàn zhī píng ān，\n永远见主灿烂戴华冠；耶稣已经救我。\nyǒng yuǎn jiàn zhǔ càn làn dài huá guān；yē sū yǐ jīng jiù wǒ。`
-    },
-    {
-        id: 46,
-        title: "救恩借着十架 (Jiùēn Jièzhe Shíjià)",
-        lyrics: `①救恩借着十字架，此有宝血活泉；\njiù ēn jiè zhe shí zì jià，cǐ yǒu bǎo xuè huó quán；\n从髑髅山长流出，洗去万民罪愆。\ncóng dú lóu shān cháng liú chū，xǐ qù wàn mín zuì qiān。\n副歌 十字架，十字架，就是我的背负；\nshí zì jià，shí zì jià，jiù shì wǒ de bēi fù；\n我的罪孽全洗净，靠着耶稣功劳。\nwǒ de zuì niè quán xǐ jìng，kào zhe yē sū gōng láo。\n②我自己没有力量，诸义如同污衣；\nwǒ zì jǐ méi yǒu lì liàng，zhū yì rú tóng wū yī；\n惟你基督耶稣恩，使我成圣、称义。\nwéi nǐ jī dū yē sū ēn，shǐ wǒ chéng shèng chēng yì。\n③耶稣钉在十字架，顶难受的苦刑；\nyē sū dìng zài shí zì jià，dǐng nán shòu de kǔ xíng；\n使信徒免下地狱，拯救至宝魂灵。\nshǐ xìn tú miǎn xià dì yù，zhěng jiù zhì bǎo hún líng。\n④耶稣现今在天上，坐在天父右边；\nyē sū xiàn jīn zài tiān shàng，zuò zài tiān fù yòu biān；\n仍为信徒代祈求，救恩永远成全。\nréng wèi xìn tú dài qí qiú，jiù ēn yǒng yuǎn chéng quán。`
-    },
-    {
-        id: 47,
-        title: "主拯救我 (Zhǔ Zhěngjiù Wǒ)",
-        lyrics: `①深夜何其幽暗！我心何处望！祸患频来逼我，正惊惶：\nshēn yè hé qí yōu àn！wǒ xīn hé chù wàng！huò huàn pín lái bī wǒ，zhèng jīng huáng；\n当主荣耀光辉照入我心内，黑暗忧苦，烦闷，都消亡。\ndāng zhǔ róng yào guāng huī zhào rù wǒ xīn nèi，hēi àn yōu kǔ，fán mèn，dōu xiāo wáng。\n副歌 主去各各他山，特为拯救我，为拯救我为拯救我；\nzhǔ qù gè gè tā shān，tè wèi zhěng jiù wǒ，wèi zhěng jiù wǒ wèi zhěng jiù wǒ；\n主去各各他山，特为拯救我，主死，使我免祸。\nzhǔ qù gè gè tā shān，tè wèi zhěng jiù wǒ，zhǔ sǐ，shǐ wǒ miǎn huò。\n②战兢忧惧罪人！当来主面前，不知赦罪恩典，真堪怜；\nzhàn jīng yōu jù zuì rén！dāng lái zhǔ miàn qián，bù zhī shè zuì ēn diǎn，zhēn kān lián；\n忽闻慈爱声音：“你心可畅快，我已为你还债，赦你愆。”\nhū wén cí ài shēng yīn：nǐ xīn kě chàng kuài，wǒ yǐ wèi nǐ huán zhài，shè nǐ qiān。\n③何等奇异慈爱，主向我显明！离天降世救我，甘舍生；\nhé děng qí yì cí ài，zhǔ xiàng wǒ xiǎn míng！lí tiān jiàng shì jiù wǒ，gān shě shēng；\n为使我蒙拯救，主饮尽苦杯，赞美我主圣名，救功成。\nwèi shǐ wǒ méng zhěng jiù，zhǔ yǐn jìn kǔ bēi，zàn měi wǒ zhǔ shèng míng，jiù gōng chéng。`
-    },
-    {
-        id: 48,
-        title: "惟独耶稣 (Wéidú Yēsū)",
-        lyrics: `①惟独耶稣是我信息，我所讲论就是耶稣；\nwéi dú yē sū shì wǒ xìn xī，wǒ suǒ jiǎng lùn jiù shì yē sū；\n永远举起耶稣基督，我所仰望惟有耶稣。\nyǒng yuǎn jǔ qǐ yē sū jī dū，wǒ suǒ yǎng wàng wéi yǒu yē sū。\n②惟独耶稣是我救主，钉十字架为我舍身；\nwéi dú yē sū shì wǒ jiù zhǔ，dìng shí zì jià wèi wǒ shě shēn；\n流出宝血赎我罪愆，救我灵魂出死入生。\nliú chū bǎo xuè shú wǒ zuì qiān，jiù wǒ líng hún chū sǐ rù shēng。\n③惟独耶稣使我成圣，一切污秽，宝血洗清；\nwéi dú yē sū shǐ wǒ chéng shèng，yī qiē wū huì，bǎo xuè xǐ qīng；\n降下圣灵改变我心，使我德行日日更新。\njiàng xià shèng líng gǎi biàn wǒ xīn，shǐ wǒ dé xíng rì rì gēng xīn。\n④惟独耶稣医我疾病，扶我软弱，保我灵命；\nwéi dú yē sū yī wǒ jí bìng，fú wǒ ruǎn ruò，bǎo wǒ líng mìng；\n我属耶稣为祂肢体，全能耶稣救我到底。\nwǒ shǔ yē sū wèi tā zhī tǐ，quán néng yē sū jiù wǒ dào dǐ。\n副歌 惟独耶稣是我救主，我心赞美，我口扬传；\nwéi dú yē sū shì wǒ jiù zhǔ，wǒ xīn zàn měi，wǒ kǒu yáng chuán；\n救我，医我，使我成圣，全能之主，荣耀之王。\njiù wǒ，yī wǒ，shǐ wǒ chéng shèng，quán néng zhī zhǔ，róng yào zhī wáng。`
-    },
-    {
-        id: 49,
-        title: "万古灵磐 (Wàn Gǔ Língpán)",
-        lyrics: `①万古灵磐为我开，容我藏于主心怀；\nwàn gǔ líng pán wèi wǒ kāi，róng wǒ cáng yú zhǔ xīn huái；\n主受枪刺肋下伤，水、血和流恩绵长。\nzhǔ shòu qiāng cì lèi xià shāng，shuǐ、xuè hé liú ēn mián cháng。\n②纵然靠己立善功，或行律法皆落空；\nzòng rán kào jǐ lì shàn gōng，huò xíng lǜ fǎ jiē luò kōng；\n虽是殷勤无罢休，不能称义心多忧！\nsuī shì yīn qín wú bà xiū，bù néng chēng yì xīn duō yōu！\n③我今在世度此生，或在主里暂安眠；\nwǒ jīn zài shì dù cǐ shēng，huò zài zhǔ lǐ zàn ān mián；\n必在末日离土尘，复活见主审万民。\nbì zài mò rì lí tǔ chén，fù huó jiàn zhǔ shěn wàn mín。\n副歌 如此受苦救我灵，洗我罪污免我刑。\nrú cǐ shòu kǔ jiù wǒ líng，xǐ wǒ zuì wū miǎn wǒ xíng。\n惟靠主血赎罪愆，成圣，称义到神前。\nwéi kào zhǔ xuè shú zuì qiān，chéng shèng chēng yì dào shén qián。\n万古灵磐为我开，容我藏于主心怀。\nwàn gǔ líng pán wèi wǒ kāi，róng wǒ cáng yú zhǔ xīn huái。`
-    },
-    {
-        id: 50,
-        title: "主恩浩大 (Zhǔ Ēn Hàodà)",
-        lyrics: `①我听主慈声说：“你力量实微小，\nwǒ tīng zhǔ cí shēng shuō：nǐ lì liàng shí wēi xiǎo，\n应当做醒祈祷，恩惠必不缺少。”\nyīng dāng jǐng xǐng qí dǎo，ēn huì bì bù quē shǎo。\n我所欠罪债，主已还清结；\nwǒ suǒ qiàn zuì zhài，zhǔ yǐ huán qīng jié；\n罪孽虽显如硃红，主使变白如雪。\nzuì niè suī xiǎn rú zhū hóng，zhǔ shǐ biàn bái rú xuě。\n②主啊！我今确知：惟主权能浩大，\nzhǔ a！wǒ jīn què zhī：wéi zhǔ quán néng hào dà，\n污秽罪行能除，铁石心肠能化。\nwū huì zuì xíng néng chú，tiě shí xīn cháng néng huà。\n③我本没有功德，不敢向主求恩：\nwǒ běn méi yǒu gōng dé，bù gǎn xiàng zhǔ qiú ēn；\n凡我所得所望，皆以主爱为根。\nfán wǒ suǒ dé suǒ wàng，jiē yǐ zhǔ ài wéi gēn。\n④在我离世之时，必然不致战兢：\nzài wǒ lí shì zhī shí，bì rán bù zhì zhàn jīng；\n因我所欠诸债，主早代我还清。\nyīn wǒ suǒ qiàn zhū zhài，zhǔ zǎo dài wǒ huán qīng。`
-    }
+       }
 ];
 
             
@@ -317,8 +217,8 @@
             list.innerHTML = '';
             data.forEach(h => {
                 const div = document.createElement('div');
-                div.className = "card p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer active:bg-indigo-50 transition";
-                div.innerHTML = `<span class="font-bold text-indigo-600 mr-3 text-lg">${h.id}</span> ${h.title}`;
+                div.className = "card p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer active:bg-indigo-50 transition dark:bg-gray-800 dark:border-gray-700 dark:text-white";
+                div.innerHTML = `<span class="font-bold text-indigo-600 mr-3 text-lg dark:text-indigo-400">${h.id}</span> ${h.title}`;
                 div.onclick = () => showHymn(h);
                 list.appendChild(div);
             });
@@ -332,12 +232,10 @@
                 return;
             }
 
-            // Filter logic
             let filtered = hymns.filter(h => 
                 h.title.toLowerCase().includes(query) || h.id.toString() === query
             );
 
-            // Sort logic: If the ID matches exactly, put it at the very top
             filtered.sort((a, b) => {
                 if (a.id.toString() === query) return -1;
                 if (b.id.toString() === query) return 1;
@@ -356,12 +254,14 @@
 
         function goBack() {
             document.getElementById('detailView').classList.add('hidden');
-            document.getElementById('searchBar').value = ''; // Clears search when you go back
+            document.getElementById('searchBar').value = '';
             renderList(hymns);
         }
 
         function toggleDarkMode() {
             document.getElementById('body-tag').classList.toggle('dark-mode');
+            // 同时切换Tailwind的暗黑模式
+            document.documentElement.classList.toggle('dark');
         }
 
         // Load list on start
