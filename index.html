@@ -8,217 +8,85 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Hymnal">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#111827">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    /* 移除所有可能导致颜色问题的Tailwind类 */
-    #hymnLyrics { 
-        white-space: pre-line; 
-        font-family: 'Georgia', serif; 
-        font-size: 1.25rem; /* 相当于text-xl */
-        line-height: 1.75; /* 相当于leading-relaxed */
-        font-style: italic;
-        color: #000000; /* 浅色模式纯黑色 */
-    }
-    
-    /* 深色模式 */
-    .dark-mode #hymnLyrics {
-        color: #ffffff !important; /* 深色模式纯白色 */
-    }
-    
-    .dark-mode { 
-        background-color: #111827; 
-        color: #f3f4f6; 
-    }
-    .dark-mode .card { 
-        background-color: #1f2937; 
-        border-color: #374151; 
-        color: white; 
-    }
-    .dark-mode .back-btn { 
-        color: #818cf8; 
-    }
-    .dark-mode #detailView { 
-        background-color: #111827; 
-    }
-    .dark-mode #hymnTitle {
-        color: #ffffff;
-    }
-    </style>
-
-
-</head>
-<body id="body-tag" class="bg-gray-100 transition-colors duration-200">
-
-    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl bg-white dark:bg-gray-900">
+        /* Permanent Dark Mode Colors */
+        body { background-color: #111827; color: #f3f4f6; }
+        #app { background-color: #111827; }
         
-        <header class="bg-indigo-700 text-white p-5 sticky top-0 z-20 shadow-lg">
+        /* Lyrics forced to WHITE */
+        .lyrics-text { 
+            white-space: pre-line; 
+            font-family: 'Georgia', serif; 
+            color: #ffffff !important; 
+        }
+        
+        /* List Cards */
+        .card { 
+            background-color: #1f2937; 
+            border: 1px solid #374151; 
+            color: #ffffff; 
+            transition: background 0.2s;
+        }
+        .card:active { background-color: #374151; }
+        
+        /* Full Screen Detail View */
+        #detailView { 
+            background-color: #111827 !important; 
+        }
+        
+        .back-btn { color: #818cf8; }
+        
+        /* Remove blue highlights on mobile tap */
+        * { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body id="body-tag">
+
+    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
+        
+        <header class="bg-indigo-900 text-white p-5 sticky top-0 z-20 shadow-lg">
             <div class="flex justify-between items-center mb-4">
-                <h1 class="text-2xl font-bold tracking-tight">Hymnal</h1>
-                <button onclick="toggleDarkMode()" class="p-2 bg-indigo-800 rounded-full hover:bg-indigo-600 transition">
-                    🌙
-                </button>
+                <h1 class="text-2xl font-bold tracking-tight text-indigo-100">Hymnal</h1>
             </div>
             <input type="text" id="searchBar" onkeyup="filterHymns()" placeholder="Type hymn number or name..." 
-                class="w-full p-3 rounded-lg text-gray-900 focus:ring-4 focus:ring-indigo-300 outline-none shadow-inner">
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none shadow-inner placeholder-gray-400">
         </header>
 
         <div id="listView" class="p-4 space-y-3 overflow-y-auto">
             </div>
 
-        <div id="detailView" class="hidden fixed inset-0 bg-white z-30 p-6 overflow-y-auto">
-            <button onclick="goBack()" class="back-btn text-indigo-600 font-bold mb-6 flex items-center text-lg dark:text-indigo-400">
+        <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto">
+            <button onclick="goBack()" class="back-btn font-bold mb-6 flex items-center text-lg">
                 ← Back to List
             </button>
-            <h2 id="hymnTitle" class="text-3xl font-bold mb-4 border-b pb-4 leading-tight text-gray-900 dark:text-white"></h2>
-            <div id="hymnLyrics" class=""></div>
+            <h2 id="hymnTitle" class="text-3xl font-bold mb-4 border-b border-gray-700 pb-4 leading-tight text-white"></h2>
+            <div id="hymnLyrics" class="lyrics-text text-xl leading-relaxed italic"></div>
             <div class="h-20"></div>
         </div>
 
     </div>
 
     <script>
+        // Your hymn list continues here...
         const hymns = [
-                id: 1,
-        title: "颂赞独一真神 (Sòngzàn Dúyī Zhēnshén)",
-        lyrics: `①圣哉，圣哉，圣哉，全能大主宰！\nshèng zài, shèng zāi, shèng zāi, quán néng dà zhǔ zǎi!\n②圣哉，圣哉，圣哉，群圣皆跪拜！\nshèng zāi, shèng zāi, shèng zāi, qún shèng jiē guì bài!\n③圣哉，圣哉，圣哉，鸿恩遍宇内！\nshèng zāi, shèng zāi, shèng zāi, hóng ēn biàn yǔ nèi!`
-    },
-    {
-        id: 2,
-        title: "赞美圣父 (Zànměi Shèngfù)",
-        lyrics: `①哈利路亚，赞美圣父！阿们，阿们，哈利路亚！\nhā li lù yà, zàn měi shèng fù！a men, a men, hā li lù yà！\n②哈利路亚，赞美耶稣！阿们，阿们，哈利路亚！\nhā li lù yà, zàn měi yē sū！a men, a men, hā li lù yà！\n③哈利路亚，赞美圣灵！阿们，阿们，哈利路亚！\nhā li lù yà, zàn měi shèng líng！a men, a men, hā li lù yà！\n④荣耀荣耀，哈利路亚！荣耀，荣耀，哈利路亚！\nróng yào, róng yào, hā li lù yà！róng yào, róng yào, hā li lù yà！`
-    },
-    {
-        id: 3,
-        title: "赞美真神 (Zànměi Zhēnshén)",
-        lyrics: `①哈利路亚，赞美真神！哈利路亚，阿们！\nhā li lù yà, zàn méi zhēn shén！hā li lù yà, ā men！\n②哈利路亚，赞美耶稣！哈利路亚，阿们！\nhā li lù yà, zàn méi yē sū！hā li lù yà, ā men！\n③哈利路亚，赞美圣灵！哈利路亚，阿们！\nhā li lù yà, zàn méi shèng líng！hā li lù yà, ā men！\n①哈利路亚，赞美真神！加添我爱心！\nhā li lù yà, zàn méi zhēn shén！jiā tiān wǒ ài xīn！\n②哈利路亚，赞美耶稣！加添我信心！\nhā li lù yà, zàn méi yē sū！jiā tiān wǒ xìn xīn！\n③哈利路亚，赞美圣灵！加添我能力！\nhā li lù yà, zàn méi shèng líng！jiā tiān wǒ néng lì！`
-    },
-    {
-        id: 4,
-        title: "我心赞美天父 (Wǒ Xīn Zànměi Tiānfù)",
-        lyrics: `①我心赞美天父，尽心尽意，尽性尽力，赞祂极美圣名！\nwǒ xīn zàn měi tiān fù, jìn xīn jìn yì jìn xìng jìn lì, zàn tā jí měi shèng míng！\n②我心赞美天父，不可忘记主大慈爱，不可忘记主恩。\nwǒ xīn zàn měi tiān fù, bù kě wàng jì zhǔ dà cí ài, bù kě wàng jì zhǔ ēn。\n③天父已发慈悲，为我医治一切疾病，使我得福百倍。\ntiān fù yǐ fā cí bēi, wèi wǒ yī zhì yī qiē jí bìng, shǐ wǒ dé fú bǎi bèi。\n④患难困苦临到，主怜悯我，伸出右手，能救我脱苦楚。\nhuàn nán kùn kǔ lín dào, zhǔ lián mǐn wǒ, shēn chū yòu shǒu, néng jiù wǒ tuō kǔ chǔ。\n⑤像父母爱儿女，从天父如此慈悲，怜悯，常赐恩典眷顾。\nxiàng fù mǔ ài ér nǚ, cóng tiān fù rú cǐ cí bēi, lián mǐn, cháng cì ēn diǎn juàn gù。\n⑥天上圣使千万，地上一同敬拜，一同称赞，荣耀归于天父。\ntiān shàng shèng shǐ qiān wàn, dì shàng yī tóng jìng bài, yī tóng chēng zàn, róng yào guī yú tiān fù。`
-    },
-    {
-        id: 5,
-        title: "万有赞美天父 (Wàn Yǒu Zànměi Tiānfù)",
-        lyrics: `①万有赞美天父，永在、全能之神，\nwàn yǒu zàn měi tiān fù，yǒng zài quán néng zhī shén，\n天地万物互相应声，赞美祂大尊名；\ntiān dì wàn wù hù xiāng yīng shēng, zàn měi tā dà zūn míng；\n花、草、树木、水泉、穹苍、海洋、山岭，\nhuā、cǎo、shù mù、shuǐ quán、qióng cāng、hǎi yáng、shān líng，\n述说祂大权能荣耀，显明信实慈仁。\nshù shuō tā dà quán néng róng yào，xiǎn míng xìn shí cí rén。\n②万有赞美天父，永在、全智之神，\nwàn yǒu zàn měi tiān fù，yǒng zài quán zhì zhī shén，\n天地万物齐声唱诗，赞美祂大圣名；\ntiān dì wàn wù qí shēng chàng shī，zàn měi tā dà shèng míng；\n走兽、飞鸟、昆虫、水族、牲畜、家禽，\nzǒu shòu、fēi niǎo、kūn chóng、shuǐ zú、shēng chù、jiā qín，\n都是天父创造，养活，各从其类滋生。\ndōu shì tiān fù chuàng zào yǎng huó，gè cóng qí lèi zī shēng。\n③我心赞美天父，人类本为一家，\nwǒ xīn zàn měi tiān fù，rén lèi běn wéi yī jiā，\n虽然始祖犯罪堕落，神恩格外增加；\nsuī rán shǐ zǔ fàn zuì duò luò，shén ēn gé wài zēng jiā；\n差遣救主、降世，宝血洗净无瑕，\nchāi qiǎn jiù zhǔ、jiàng shì，bǎo xuè xǐ jìng wú xiá，\n成圣称义，出死入生，得享天国荣华。\nchéng shèng chēng yì，chū sǐ rù shēng, dé xiǎng tiān guó róng huá。`
-    },
-    {
-        id: 6,
-        title: "颂主造化大功 (Sòng Zhǔ Zàohuà Dàgōng)",
-        lyrics: `①大哉，穹苍，冥冥无疆！极目天象，铺张八方；\ndà zāi, qióng cāng, míng míng wú jiāng! jí mù tiān xiàng, pū zhāng bā fāng;\n万星罗列，灿烂争光；红日升落，昼来夜往。\nwàn xīng luó liè, càn làn zhēng guāng; hóng rì shēng luò, zhòu lái yè wǎng。\n真神造化之功显扬，托住万有，权能昭彰；\nzhēn shén zào huà zhī gōng xiǎn yáng, tuō zhù wàn yǒu, quán néng zhāo zhāng;\n深哉，神智，神能无量！我们应当赞美颂扬。\nshēn zāi, shén zhì, shén néng wú liàng! wǒ men yīng dāng zàn měi sòng yáng。\n②太阳，西坠，明月东升，二光照耀，轮转不停；\ntài yáng, xī zhuì, míng yuè dōng shēng, èr guāng zhào yào, lún zhuǎn bù tíng;\n众星无数，闪烁运行；各依轨道，秩序不更。\nzhòng xīng wú shù, shǎn shuò yùn xíng, gè yī guǐ dào, zhì xù bù gēng。\n都由主宰管理周详，偌大宇宙，保持安宁；\ndōu yóu zhǔ zài guǎn lǐ zhōu xiáng, ruò dà yǔ zhòu, bǎo chí ān níng;\n诸天万象述主荣耀，我们更当赞美主名。\nzhū tiān wàn xiàng shù zhǔ róng yào, wǒ men gèng dāng zàn měi zhǔ míng。\n③一切，生物布满寰宇，各从其类，皆主造成；\nyī qiē, shēng wù bù mǎn huán yǔ, gè cóng qí lèi, jiē zhǔ zào chéng;\n赐福繁殖，养育群生，自古以来，主恩昌盛。\ncì fú fán zhí, yǎng yù qún shēng, zì gǔ yǐ lái, zhǔ ēn chāng shèng。\n上主在天，虽不能见，藉着万物可以证明；\nshàng zhǔ zài tiān, suī bù néng jiàn, jiè zhe wàn wù kě yǐ zhèng míng;\n万有所本，万有所靠，万有所归，独一真神。\nwàn yǒu suǒ běn, wàn yǒu suǒ kào, wàn yǒu suǒ guī, dú yī zhēn shén。`
-    },
-    {
-        id: 7,
-        title: "万有齐颂主 (Wàn Yǒu Qí Sòng Zhǔ)",
-        lyrics: `①欢乐，欢乐，属主之人，赞美至尊独一神；\nhuān lè, huān lè shǔ zhǔ zhī rén, zàn měi zhì zūn dú yī shén；\n心化开放，灵命更新，齐向朝阳吐清馨。\nxīn huā kāi fàng, líng mìng gēng xīn, qí xiàng cháo yáng tǔ qīng xīn。\n罪帐、恶氛，求主扫尽，愁雾、疑云俱廓清！\nzuì zhàng、è fēn, qiú zhǔ sǎo jìn, chóu wù、yí yún jù kuò qīng！\n我们当以颂赞为祭，结出美果在嘴唇。\nwǒ men dāng yǐ sòng zàn wéi jì, jié chū měi guǒ zài zuǐ chún。\n②宇宙，万有，太空无际，一同显映主荣光；\nyǔ zhòu wàn yǒu, tài kōng wú jì, yī tóng xiǎn yìng zhǔ róng guāng；\n千万天使，灿烂群星，排列环绕齐颂扬。\nqiān wàn tiān shǐ, càn làn qún xīng, pái liè huán rào qí sòng yáng。\n高山、茂林、清风、明月，好鸟吟叫，百花香；\ngāo shān、mào lín、qīng fēng、míng yuè, hǎo niǎo yín jiào, bǎi huā xiāng；\n鸣泉漱石，海浪拍岸，都在颂主而欢唱。\nmíng quán shù shí, hǎi làng pāi àn, dōu zài sòng zhǔ ér huān chàng。\n③永存怜悯，广行赦免，万恩万福出天宫；\nyǒng cún lián mǐn, guǎng xíng shè miǎn, wàn ēn wàn fú chū tiān gōng；\n平安泉源，欢乐江河，一切福气永充丰。\npíng ān quán yuán, huān lè jiāng hé, yī qiē fú qì yǒng chōng fēng。\n慈爱天父！养育群生，活命存留称爱中：\ncí ài tiān fù! yǎng yù qún shēng, huó mìng cún liú chēng ài zhōng；\n我等圣民蒙主救赎，属灵福气更无穷！\nwǒ děng shèng mín méng zhǔ jiù shú, shǔ líng fú qì gèng wú qióng！\n④天父大爱，自天显明，阳光、雨、露、常照临；\ntiān fù dà ài, zì tiān xiǎn míng, yáng guāng、yǔ、lù、cháng zhào lín；\n诸天欢乐，万有称颂，荣耀归与主圣名！\nzhū tiān huān lè, wàn yǒu chēng sòng, róng yào guī yǔ zhǔ shèng míng！\n受造之物服在虚空，一同叹息到如今：\nshòu zào zhī wù fú zài xū kōng, yī tóng tàn xī dào rú jīn；\n切望种子显现出来，脱离辖制庆复兴！\nqiē wàng zhǒng zǐ xiǎn xiàn chū lái, tuō lí xiá zhì qìng fù xīng！`
-    },
-    {
-        id: 8,
-        title: "当向神歌颂 (Dāng Xiàng Shén Gēsòng)",
-        lyrics: `①我们当向万王之王，齐声歌唱、颂扬；\nwǒ men dāng xiàng wàn wáng zhī wáng, qí shēng gē chàng sòng yáng；\n同心赞美宇宙主宰，恩惠广被万方！\ntóng xīn zàn měi yǔ zhòu zhǔ zài, ēn huì guǎng bèi wàn fāng！\n②我们来到真神面前，心灵诚实、敬虔；\nwǒ men lái dào zhēn shén miàn qián, xīn líng chéng shí jìng qián；\n当用颂词、灵歌诗章，赞祂恩爱无边！\ndāng yòng sòng cí líng gē shī zhāng, zàn tā ēn ài wú biān！`
-    },
-    {
-        id: 9,
-        title: "向主欢呼 (Xiàng Zhǔ Huānhū)",
-        lyrics: `①普世万族向主欢呼，怀恩、感德，庆幸鼓舞！\npǔ shì wàn zú xiàng zhǔ huān hū, huái ēn gǎn dé, qìng xìng gǔ wǔ！\n齐来主前放声歌颂，以灵以诚，敬拜天父。\nqí lái zhǔ qián fàng shēng gē sòng, yǐ líng yǐ chéng, jìng bài tiān fù。\n②应当称谢进主恩门，在主圣堂，赞主荣尊；\nyīng dāng chēng xiè jìn zhǔ ēn mén, zài zhǔ shèng táng, zàn zhǔ róng zūn；\n聚精会神恭听圣言，心悦诚服，谢主鸿恩。\njù jīng huì shén gōng tīng shèng yán, xīn yuè chéng fú, xiè zhǔ hóng ēn。\n③天父真神至善完全，慈爱、怜悯，古今皆然；\ntiān fù zhēn shén zhì shàn wán quán, cí ài lián mǐn, gǔ jīn jiē rán；\n应许信实坚定不变，全能、公义，永远绵延。\nyìng xǔ xìn shí jiān dìng bú biàn, quán néng gōng yì, yǒng yuǎn mián yán。`
-    },
-    {
-        id: 10,
-        title: "荣耀归耶稣 (Róngyào Guī Yēsū)",
-        lyrics: `①荣耀归耶稣，大权能的主，荣耀归耶稣，我的主；\nróng yào guī yē sū, dà quán néng de zhǔ, róng yào guī yē sū, wǒ de zhǔ；\n哈利路亚，哈利路亚！荣耀归耶稣，我的主！\nhā lì lù yà, hā lì lù yà！róng yào guī yē sū, wǒ de zhǔ！\n②荣耀归耶稣，永不改的主，荣耀归耶稣，我的主；\nróng yào guī yē sū, yǒng bù gǎi de zhǔ, róng yào guī yē sū, wǒ de zhǔ；\n哈利路亚，哈利路亚！荣耀归耶稣，我的主！\nhā lì lù yà, hā lì lù yà！róng yào guī yē sū, wǒ de zhǔ！\n③荣耀归耶稣，快要来的主，荣耀归耶稣，我的主！\nróng yào guī yē sū, kuài yào lái de zhǔ, róng yào guī yē sū, wǒ de zhǔ！\n哈利路亚，哈利路亚！荣耀归耶稣，我的主！\nhā lì lù yà, hā lì lù yà！róng yào guī yē sū, wǒ de zhǔ！`
-    },
-    {
-        id: 11,
-        title: "在主内顶快乐 (Zài Zhǔ Nèi Dǐng Kuàilè)",
-        lyrics: `①我在耶稣身边，快乐顶快乐！\nwǒ zài yē sū shēn biān, kuài lè dǐng kuài lè！\n我和他一同走，心里顶知足！\nwǒ hé tā yī tóng zǒu, xīn lǐ dǐng zhī zú！\n哈利路亚哈利路亚！\nhā lì lù yà hā lì lù yà！\n②我在生命河边，可喝生命水，\nwǒ zài shēng mìng hé biān, kě hē shēng mìng shuǐ，\n常蒙耶稣赐福，心里好满足！\ncháng méng yē sū cì fú, xīn lǐ hǎo mǎn zú！\n哈利路亚哈利路亚！\nhā lì lù yà hā lì lù yà！`
-    },
-    {
-        id: 12,
-        title: "耶稣尊名 (Yēsū Zūnmíng)",
-        lyrics: `①耶稣尊名入我耳中，好像和谐美妙乐声；\nyē sū zūn míng rù wǒ ěr zhōng, hǎo xiàng hé xié měi miào yuè shēng；\n愿传此名音大声洪，天上地下都听。\nyuàn chuán cǐ míng yīn dà shēng hóng, tiān shàng dì xià dōu tīng。\n美哉大哉耶稣我主！创造今赎全能无比；\nměi zāi dà zāi yē sū wǒ zhǔ! chuàng zào jīn shú quán néng wú bǐ；\n离去天上降生世间，舍身替我受死。\nlí qù tiān shàng jiàng shēng shì jiān, shě shēn tì wǒ shòu sǐ。\n②耶稣尊名至高至荣，超乎世间古今万名；\nyē sū zūn míng zhì gāo zhì róng, chāo hū shì jiān gǔ jīn wàn míng；\n医我疾病，使我得福，全能永远长存。\nyī wǒ jí bìng, shǐ wǒ dé fú, quán néng yǒng yuǎn cháng cún。\n③耶稣尊名至宝至美，世间诸宝黄金难比；\nyē sū zūn míng zhì bǎo zhì měi, shì jiān zhū bǎo huáng jīn nán bǐ；\n赦我罪愆，使我得生，万民所望所依。\nshè wǒ zuì qiān, shǐ wǒ dé shēng, wàn mín suǒ wàng suǒ yī。\n④耶稣尊名至善至圣，好比园中兰桂清香；\nyē sū zūn míng zhì shàn zhì shèng, hǎo bǐ yuán zhōng lán guì qīng xiāng；\n能解世间苦楚愁闷，使我面去心伤。\nnéng jiě shì jiān kǔ chǔ chóu mèn, shǐ wǒ miàn qù xīn shāng。`
-    },
-    {
-        id: 13,
-        title: "无人能比耶稣 (Wú Rén Néng Bǐ Yēsū)",
-        lyrics: `①没有人能比全能的耶稣，没有人，没有人；\nméi yǒu rén néng bǐ quán néng de yē sū，méi yǒu rén，méi yǒu rén；\n没有人能医我灵魂疾病，没有人，没有人。\nméi yǒu rén néng yī wǒ líng hún jí bìng，méi yǒu rén，méi yǒu rén。\n副歌 主耶稣全能、全智、全爱，祂终日肯与我相亲；\nzhǔ yē sū quán néng quán zhì quán ài，tā zhōng rì kěn yǔ wǒ xiāng qīn；\n没有人能比完全的耶稣，没有人，没有人。\nméi yǒu rén néng bǐ wán quán de yē sū，méi yǒu rén，méi yǒu rén。\n②没有人能比我主的圣洁，没有人，没有人；\nméi yǒu rén néng bǐ wǒ zhǔ de shèng jié，méi yǒu rén，méi yǒu rén；\n没有人能比主柔和谦卑，没有人，没有人。\nméi yǒu rén néng bǐ zhǔ róu hé qiān bēi，méi yǒu rén，méi yǒu rén。\n③没有人能比我主的慈爱，没有人，没有人；\nméi yǒu rén néng bǐ wǒ zhǔ de cí ài，méi yǒu rén，méi yǒu rén；\n有何罪人信主不蒙赦免？没有人，没有人。\nyǒu hé zuì rén xìn zhǔ bù méng shè miǎn？méi yǒu rén，méi yǒu rén。\n④没有人能比我主的牺牲，没有人，没有人；\nméi yǒu rén néng bǐ wǒ zhǔ de xī shēng，méi yǒu rén，méi yǒu rén；\n有何罪人信主不得永生？没有人，没有人。\nyǒu hé zuì rén xìn zhǔ bù dé yǒng shēng？méi yǒu rén，méi yǒu rén。`
-    },
-    {
-        id: 14,
-        title: "万王之王 (Wàn Wáng Zhī Wáng)",
-        lyrics: `①基督万王之王，为人苦味先尝；\njī dū wàn wáng zhī wáng，wéi rén kǔ wèi xiān cháng；\n现在登上宝座，应受赞美颂扬。\nxiàn zài dēng shàng bǎo zuò，yīng shòu zàn měi sòng yáng。\n禧年已到，圣灵大降，禧年已到，圣灵大降；\nxǐ nián yǐ dào，shèng líng dà jiàng，xǐ nián yǐ dào，shèng líng dà jiàng；\n复活之人，福乐无疆。\nfù huó zhī rén，fú lè wú jiāng。\n②基督万王之王，为我复活盼望；\njī dū wàn wáng zhī wáng，wéi wǒ fù huó pàn wàng；\n因祂直活永远，胜过阴间死亡。\nyīn tā zhí huó yǒng yuǎn，shèng guò yīn jiān sǐ wáng。\n③基督万王之王，照亮世界真光；\njī dū wàn wáng zhī wáng，zhào liàng shì jiè zhēn guāng；\n圣灵已经降临，真道必快传扬。\nshèng líng yǐ jīng jiàng lín，zhēn dào bì kuài chuán yáng。\n④基督万王之王，揭开七印秘藏；\njī dū wàn wáng zhī wáng，jiē kāi qī yìn mì cáng；\n荣耀、尊贵、智慧，归与被杀羔羊。\nróng yào、zūn guì、zhì huì，guī yǔ bèi shā gāo yáng。`
-    },
-    {
-        id: 15,
-        title: "敬拜天地主宰 (Jìngbài Tiāndì Zhǔzǎi)",
-        lyrics: `①耶稣圣名，普天崇敬，天使一同跪拜，\nyē sū shèng míng，pǔ tiān chóng jìng，tiān shǐ yī tóng guì bài，\n奉献冠冕，大家行礼，尊祂天地主宰。\nfèng xiàn guān miǎn，dà jiā xíng lǐ，zūn tā tiān dì zhǔ zǎi。\n②吾人蒙恩，免坠永火，显明主心慈爱，\nwú rén méng ēn，miǎn zhuì yǒng huǒ，xiǎn míng zhǔ xīn cí ài，\n颂扬耶稣世人救主，称祂天地主宰。\nsòng yáng yē sū shì rén jiù zhǔ，chēng tā tiān dì zhǔ zǎi。\n③世人都是主所创造，一本生出万代，\nshì rén dōu shì zhǔ suǒ chuàng zào，yī běn shēng chū wàn dài，\n都当崇拜耶稣基督，敬祂天地主宰。\ndōu dāng chóng bài yē sū jī dū，jìng tā tiān dì zhǔ zǎi。\n④现在圣徒早晚聚集，齐向耶稣下拜，\nxiàn zài shèng tú zǎo wǎn jù jí，qí xiàng yē sū xià bài，\n同声唱诗，同心欢乐，赞祂天地主宰。\ntóng shēng chàng shī，tóng xīn huān lè，zàn tā tiān dì zhǔ zǎi。`
-    },
-    {
-        id: 16,
-        title: "颂赞主慈爱 (Sòngzàn Zhǔ Cíài)",
-        lyrics: `①我深知道耶稣慈爱，胜过世上一切；\nwǒ shēn zhī dào yē sū cí ài，shèng guò shì shàng yī qiē；\n因祂舍命救我灵魂，平安永远不绝。\nyīn tā shě mìng jiù wǒ líng hún，píng ān yǒng yuǎn bù jué。\n副歌 耶稣慈爱，我难计算，永远继续不断；\nyē sū cí ài，wǒ nán jì suàn，yǒng yuǎn jì xù bù duàn；\n耶稣慈爱，我难计算，只有常常颂赞。\nyē sū cí ài，wǒ nán jì suàn，zhǐ yǒu cháng cháng sòng zàn。\n②我深知道耶稣慈爱，足解我心忧闷；\nwǒ shēn zhī dào yē sū cí ài，zú jiě wǒ xīn yōu mèn；\n主既使我时常安乐，我当感谢颂赞。\nzhǔ jì shǐ wǒ shí cháng ān lè，wǒ dāng gǎn xiè sòng zàn。\n③我深知道寄居世间，虽有试验、艰难；\nwǒ shēn zhī dào jì jū shì jiān，suī yǒu shì yàn jiān nán；\n一想主爱永不隔绝，何等快乐、平安！\nyī xiǎng zhǔ ài yǒng bù gé jué，hé děng kuài lè píng ān！`
-    },
-    {
-        id: 17,
-        title: "歌颂主恩 (Gēsòng Zhǔ Ēn)",
-        lyrics: `①歌颂耶稣权能、仁爱，天国恩门为我开；\ngē sòng yē sū quán néng、rén ài，tiān guó ēn mén wéi wǒ kāi；\n在那光明荣耀福地，主备安宅要再来。\nzài nà guāng míng róng yào fú dì，zhǔ bèi ān zhái yào zài lái。\n副歌 我们都要回天家，今思想那日乐无涯；\nwǒ men dōu yào huí tiān jiā，jīn sī xiǎng nà rì lè wú yá；\n我们要与主同住，颂主恩，永远享荣华。\nwǒ men yào yǔ zhǔ tóng zhù，sòng zhǔ ēn yǒng yuǎn xiǎng róng huá。\n②我们在世如同客旅，满天黑云遮前途；\nwǒ men zài shì rú tóng kè lǚ，mǎn tiān hēi yún zhē qián tú；\n等归天家荣华美地，就无叹息和忧苦。\nděng guī tiān jiā róng huá měi dì，jiù wú tàn xī hé yōu kǔ。\n③我们应当坚心忍耐，日日殷勤做主工；\nwǒ men yīng dāng jiān xīn rěn nài，rì rì yīn qín zuò zhǔ gōng；\n警醒预备，等主再临，一同被接于空中。\njǐng xǐng yù bèi，děng zhǔ zài lín，yī tóng bèi jiē yú kōng zhōng。`
-    },
-    {
-        id: 18,
-        title: "和散那 (Hésànnà)",
-        lyrics: `①大家同欢喜，高声齐赞美，\ndà jiā tóng huān xǐ，gāo shēng qí zàn měi，\n眼跟从主的百姓锡安众子民；\nyǎn gēn cóng zhǔ de bǎi xìng xī ān zhòng zǐ mín；\n天上至大君王和平的君临；\ntiān shàng zhì dà jūn wáng hé píng de jūn lín；\n此时骑着驴驹，来临极威仪。\ncǐ shí qí zhe lǘ jū，lái lín jí wēi yí。\n②天父众子民，有极大福气，\ntiān fù zhòng zǐ mín，yǒu jí dà fú qì，\n和散那，和散那，归大卫后裔；\nhé sǎn nà，hé sǎn nà，guī dà wèi hòu yì；\n昔日所应许，荣耀快来临，\nxī rì suǒ yīng xǔ，róng yào kuài lái lín，\n现在已经临到，普世永不移。\nxiàn zài yǐ jīng lín dào，pǔ shì yǒng bù yí。\n③万众同欢迎，荣耀的人君，\nwàn zhòng tóng huān yíng，róng yào de rén jūn，\n和散那，和散那，归大卫子孙；\nhé sǎn nà，hé sǎn nà，guī dà wèi zǐ sūn；\n天上威严宝座永远得荣尊，\ntiān shàng wēi yán bǎo zuò yǒng yuǎn dé róng zūn，\n地上平安恩典归主爱的人。\ndì shàng píng ān ēn diǎn guī zhǔ ài de rén。`
-    },
-    {
-        id: 19,
-        title: "尊主为王 (Zūn Zhǔ Wéi Wáng)",
-        lyrics: `①大哉，圣哉，耶稣圣名！天上万军颂扬，\ndà zāi，shèng zāi，yē sū shèng míng！tiān shàng wàn jūn sòng yáng，\n天上万军颂扬，奉献冠冕，极其荣光：歌颂！\ntiān shàng wàn jūn sòng yáng，fèng xiàn guān miǎn，jí qí róng guāng：gē sòng！\n歌颂！歌颂祂，歌颂祂为君王！\ngē sòng！gē sòng tā，gē sòng tā wèi jūn wáng！\n②天上、地下，主名至上，应该敬畏、颂扬，\ntiān shàng dì xià，zhǔ míng zhì shàng，yīng gāi jìng wèi sòng yáng，\n应该敬畏、颂扬；万膝跪拜，万口歌唱：歌颂！\nyīng gāi jìng wèi sòng yáng；wàn xī guì bài，wàn kǒu gē chàng：gē sòng！\n歌颂！歌颂祂，歌颂祂为君王！\ngē sòng！gē sòng tā，gē sòng tā wèi jūn wáng！\n③尊贵、荣耀、智慧、力量，都归被杀羔羊，\nzūn guì、róng yào、zhì huì、lì liàng，dōu guī bèi shā gāo yáng，\n都归被杀羔羊；圣徒、天使，赞美无疆：歌颂！\ndōu guī bèi shā gāo yáng；shèng tú、tiān shǐ，zàn měi wú jiāng：gē sòng！\n歌颂！歌颂祂，歌颂祂永为君王！\ngē sòng！gē sòng tā，gē sòng tā yǒng wèi jūn wáng！`
-    },
-    {
-        id: 20,
-        title: "美哉，主耶稣！ (Měizāi, Zhǔ Yēsū!)",
-        lyrics: `①美哉，主耶稣！主宰真神，道成肉身，\nměi zāi，zhǔ yē sū！zhǔ zǎi zhēn shén，dào chéng ròu shēn，\n谦卑为人子，舍命救万民。我当如何思念主恩？\nqiān bēi wéi rén zǐ，shě mìng jiù wàn mín。wǒ dāng rú hé sī niàn zhǔ ēn？\n②美哉，主耶稣！悦我心灵，时常欢喜，\nměi zāi，zhǔ yē sū！yuè wǒ xīn líng，shí cháng huān xǐ，\n美哉，中秋月，明明亮又清妍！耶稣荣光更皎在天！\nměi zāi，zhōng qiū yuè，míng liàng yòu qīng yán！yē sū róng guāng gèng jiǎo zài tiān！\n③美哉，主耶稣！透我心灵，时常欢畅，\nměi zāi，zhǔ yē sū！tòu wǒ xīn líng，shí cháng huān chàng，\n美哉，冬季雪！遍地白皑皑！主更圣洁感我心怀！\nměi zāi，dōng jì xuě！biàn dì bái ái ái！zhǔ gèng shèng jié gǎn wǒ xīn huái！\n④美哉，主耶稣！主宰真神，道成肉身，\nměi zāi，zhǔ yē sū！zhǔ zǎi zhēn shén，dào chéng ròu shēn，\n主，我所景仰！主，我所尊崇！我荣耀冠冕、欢欣！\nzhǔ，wǒ suǒ jǐng yǎng！zhǔ，wǒ suǒ zūn chóng！wǒ róng yào guān miǎn、huān xīn！`
-    },
-    {
-        id: 21,
-        title: "我有宝贵泉源 (Wǒ Yǒu Bǎoguì Quányuán)",
-        lyrics: `①我有宝贵泉源，其水最清、最甘，\nwǒ yǒu bǎo guì quán yuán，qí shuǐ zuì qīng、zuì gān，\n清晨必喝，日日无间，安坐活泉之旁，\nqīng chén bì hē，rì rì wú jiān，ān zuò huó quán zhī páng，\n心未搀入俗事、贪婪，倾听泉水缓流潺潺。\nxīn wèi chān rù sú shì、tān lán，qīng tīng quán shuǐ huǎn liú chán chán。\n②我有高贵益友，日日相亲携手，\nwǒ yǒu gāo guì yì yǒu，rì rì xiāng qīn xié shǒu，\n清晨约会，同此善偶，得他谆谆善诱，\nqīng chén yuē huì，tóng cǐ shàn ǒu，dé tā zhūn zhūn shàn yòu，\n惟愿从他金玉良言，使我凡事谨慎自守。\nwéi yuàn cóng tā jīn yù liáng yán，shǐ wǒ fán shì jǐn shèn zì shǒu。\n③我有属灵兵库，仁义兵器无数，\nwǒ yǒu shǔ líng bīng kù，rén yì bīng qì wú shù，\n每日在此练习灵战，攻克恶欲俗务，\nměi rì zài cǐ liàn xí líng zhàn，gōng kè è yù sú wù，\n终日佩戴双刃宝剑，打退恶魔，安行天路。\nzhōng rì pèi dài shuāng rèn bǎo jiàn，dǎ tuì è mó，ān xíng tiān lù。\n④我有光华宝镜，映照面目分明，\nwǒ yǒu guāng huá bǎo jìng，yìng zhào miàn mù fēn míng，\n每日用此察看自己，必能显露隐情，\nměi rì yòng cǐ chá kàn zì jǐ，bì néng xiǎn lù yǐn qíng，\n映照之后，终日不忘，除去污点，心灵清新。\nyìng zhào zhī hòu，zhōng rì bù wàng，chú qù wū diǎn，xīn líng qīng xīn。\n⑤如今祈求真神，使我充满圣灵，\nrú jīn qí qiú zhēn shén，shǐ wǒ chōng mǎn shèng líng，\n勤读圣经，晨昏不停，更觉滋味津津，\nqín dú shèng jīng，chén hūn bù tíng，gèng jué zī wèi jīn jīn，\n灵性进步，欣欣向荣，努力跟主，直到天庭。\nlíng xìng jìn bù，xīn xīn xiàng róng，nǔ lì gēn zhǔ，zhí dào tiān tíng。`
-    },
-    {
-        id: 22,
-        title: "圣经宝贵 (Shèngjīng Bǎoguì)",
-        lyrics: `①青年之人，何以持正？所行何以免罪？\nqīng nián zhī rén，hé yǐ chí zhèng？suǒ xíng hé yǐ miǎn zuì？\n惟主圣言，如玉如金，可使内心无愧。\nwéi zhǔ shèng yán，rú yù rú jīn，kě shǐ nèi xīn wú kuì。\n②救主之言，一句千金，有无感力无穷；\njiù zhǔ zhī yán，yī jù qiān jīn，yǒu wú gǎn lì wú qióng；\n我虽不才，也可学通，靠着圣灵启蒙。\nwǒ suī bù cái，yě kě xué tōng，kào zhe shèng líng qǐ méng。\n③圣经如日，高悬穹苍，发出莫大亮光；\nshèng jīng rú rì，gāo xuán qióng cāng，fā chū mò dà liàng guāng；\n如灯在夜，照我辉煌，免遇危险、凶亡。\nrú dēng zài yè，zhào wǒ huī huáng，miǎn yù wēi xiǎn、xiōng wáng。\n④主训使我真有聪明，恨恶犯罪罪行；\nzhǔ xùn shǐ wǒ zhēn yǒu cōng míng，hèn è fàn zuì zuì xíng；\n攻克自己私欲邪情，助我去恶归正。\ngōng kè zì jǐ sī yù xié qíng，zhù wǒ qù è guī zhèng。\n⑤圣经宝贵，永久留存，篇篇爱要记尊；\nshèng jīng bǎo guì，yǒng jiǔ liú cún，piān piān ài yào jì zūn；\n男女老少，终身遵守，必能保全灵魂。\nnán nǚ lǎo shào，zhōng shēn zūn shǒu，bì néng bǎo quán líng hún。`
-    },
-    {
-        id: 23,
-        title: "生命之道 (Shēngmìng Zhī Dào)",
-        lyrics: `①圣经乃是神言宝库，证明耶稣基督，\nshèng jīng nǎi shì shén yán bǎo kù，zhèng míng yē sū jī dū，\n道成肉身，钉于十架，流血洗我罪污。\ndào chéng ròu shēn，dìng yú shí jià，liú xuè xǐ wǒ zuì wū。\n副歌 生命之道极奇，我今笃信不疑，\nshēng mìng zhī dào jí qí，wǒ jīn dǔ xìn bù yí，\n美哉，主道！奇哉，真理！永世为我根基，\nměi zāi，zhǔ dào！qí zāi，zhēn lǐ！yǒng shì wéi wǒ gēn jī，\n美哉，主道！奇哉，真理！永世为我根基。\nměi zāi，zhǔ dào！qí zāi，zhēn lǐ！yǒng shì wéi wǒ gēn jī。\n②真神应许尽在圣经，备及今世来生：\nzhēn shén yīng xǔ jìn zài shèng jīng，bèi jí jīn shì lái shēng；\n是我产业，是我诗歌，是我暗处明灯。\nshì wǒ chǎn yè，shì wǒ shī gē，shì wǒ àn chù míng dēng。\n③真神言语满有恩典，应许必都成全：\nzhēn shén yán yǔ mǎn yǒu ēn diǎn，yīng xǔ bì dōu chéng quán；\n比金更宝，比蜜更甜，永远安定在天。\nbǐ jīn gèng bǎo，bǐ mì gèng tián，yǒng yuǎn ān dìng zài tiān。\n④我愿天天查考圣经，昼夜思想遵行：\nwǒ yuàn tiān tiān chá kǎo shèng jīng，zhòu yè sī xiǎng zūn xíng；\n倚靠圣灵开导我心，使我识主更深。\nyǐ kào shèng líng kāi dǎo wǒ xīn，shǐ wǒ shí zhǔ gèng shēn。`
-    },
-    {
-        id: 24,
-        title: "神言纯洁真诚 (Shén Yán Chúnjié Zhēnchéng)",
-        lyrics: `①耶和华的律法全备，能苏醒人的心；\nyē hé huá de lǜ fǎ quán bèi，néng sū xǐng rén de xīn；\n耶和华的法度确定，能使愚人有智慧。\nyē hé huá de fǎ dù què dìng，néng shǐ yú rén yǒu zhì huì。\n都比金子可羡慕，且比精金可羡慕；\ndōu bǐ jīn zǐ kě xiàn mù，qiě bǐ jīng jīn kě xiàn mù；\n比蜜甘甜，且比蜂房下滴的蜜甘甜。\nbǐ mì gān tián，qiě bǐ fēng fáng xià dī de mì gān tián。\n②耶和华的训词正直，能快活人的心；\nyē hé huá de xùn cí zhèng zhí，néng kuài huó rén de xīn；\n耶和华的命令清洁，能明亮人的眼目。\nyē hé huá de mìng lìng qīng jié，néng míng liàng rén de yǎn mù。\n③耶和华的道理洁净，存到永永远远；\nyē hé huá de dào lǐ jié jìng，cún dào yǒng yǒng yuǎn yuǎn；\n耶和华的典章真实，全然公义又真诚。\nyē hé huá de diǎn zhāng zhēn shí，quán rán gōng yì yòu zhēn chéng。`
-    },
-    {
-        id: 25,
-        title: "求主向我发言 (Qiú Zhǔ Xiàng Wǒ Fāyán)",
-        lyrics: `①求主向我发言，我在此期待；\nqiú zhǔ xiàng wǒ fā yán，wǒ zài cǐ qí dài；\n我心肃然恭听，主言我所爱。\nwǒ xīn sù rán gōng tīng，zhǔ yán wǒ suǒ ài。\n②求主赐下训诲，仆人愿受教；\nqiú zhǔ cì xià xùn huì，pú rén yuàn shòu jiào；\n我灵虔敬仰望，活泼生命道。\nwǒ líng qián jìng yǎng wàng，huó pō shēng mìng dào。\n③愿主使我灵命，靠你日滋长；\nyuàn zhǔ shǐ wǒ líng mìng，kào nǐ rì zī zhǎng；\n常蒙主恩浇灌，播散主芬芳。\ncháng méng zhǔ ēn jiāo guàn，bō sàn zhǔ fēn fāng。`
-    },
-       {
-        id: 26,
-        title: "耶稣爱我 (Yēsū Ài Wǒ)",
-        lyrics: `①今我甚喜乐，耶稣已降生，祂是救赎主，最爱普世人：\njīn wǒ shèn xǐ lè，yē sū yǐ jiàng shēng，tā shì jiù shú zhǔ，zuì ài pǔ shì rén；\n希奇的爱中，最希奇的爱，就是主耶稣舍身来救我。\nxī qí de ài zhōng，zuì xī qí de ài，jiù shì zhǔ yē sū shě shēn lái jiù wǒ。\n副歌 我真喜乐，因耶稣爱我，耶稣爱我，耶稣爱我：\nwǒ zhēn xǐ lè，yīn yē sū ài wǒ，yē sū ài wǒ，yē sū ài wǒ；\n我真喜乐，因耶稣爱我，奇哉，耶稣爱我！\nwǒ zhēn xǐ lè，yīn yē sū ài wǒ，qí zāi，yē sū ài wǒ！\n②世上有何人能比主耶稣，撇弃大荣耀，来释放罪奴，\nshì shàng yǒu hé rén néng bǐ zhǔ yē sū，piē qì dà róng yào，lái shì fàng zuì nú，\n受人的凌辱，把生命甘舍？当时刻纪念，我主是爱我。\nshòu rén de líng rǔ，bǎ shēng mìng gān shě？dāng shí kè jì niàn，wǒ zhǔ shì ài wǒ。\n③虽然远离开，迷路如亡羊，主还是寻找，祂爱心最长；\nsuī rán yuǎn lí kāi，mí lù rú wáng yáng，zhǔ hái shì xún zhǎo，tā ài xīn zuì cháng；\n见祂伸慈手接回又抚慰，更抱于怀中，诚然是爱我。\njiàn tā shēn cí shǒu jiē huí yòu fǔ wèi，gèng bào yú huái zhōng，chéng rán shì ài wǒ。\n④时候快临到，得见主荣颜，众圣徒一同被接到云间；\nshí hòu kuài lín dào，dé jiàn zhǔ róng yán，zhòng shèng tú yī tóng bèi jiē dào yún jiān；\n如今当赞美，献颂莫迟延，天上仍歌唱，耶稣是爱我。\nrú jīn dāng zàn měi，xiàn sòng mò chí yán，tiān shàng réng gē chàng，yē sū shì ài wǒ。`
-       }
-];
+            { id: 1, title: "颂赞独一真神 (Sòngzàn Dúyī Zhēnshén)", lyrics: "①圣哉，圣哉，圣哉，全能大主宰！\nshèng zài, shèng zāi, shèng zāi, quán néng dà zhǔ zǎi!\n②圣哉，圣哉，圣哉，群圣皆跪拜！\nshèng zāi, shèng zāi, shèng zāi, qún shèng jiē guì bài!\n③圣哉，圣哉，圣哉，鸿恩遍宇内！\nshèng zāi, shèng zāi, shèng zāi, hóng ēn biàn yǔ nèi!" },
+            { id: 2, title: "赞美圣父 (Zànměi Shèngfù)", lyrics: "①哈利路亚，赞美圣父！阿们，阿们，哈利路亚！\nhā li lù yà, zàn měi shèng fù！a men, a men, hā li lù yà！" },
+            { id: 3, title: "赞美真神 (Zànměi Zhēnshén)", lyrics: "①哈利路亚，赞美真神！哈利路亚，阿们！\nhā li lù yà, zàn méi zhēn shén！hā li lù yà, ā men！" },
+            { id: 4, title: "我心赞美天父 (Wǒ Xīn Zànměi Tiānfù)", lyrics: "①我心赞美天父，尽心尽意，尽性尽力，赞祂极美圣名！\nwǒ xīn zàn měi tiān fù, jìn xīn jìn yì jìn xìng jìn lì, zàn tā jí měi shèng míng！" },
+            { id: 5, title: "万有赞美天父 (Wàn Yǒu Zànměi Tiānfù)", lyrics: "①万有赞美天父，永在、全能之神，\nwàn yǒu zàn měi tiān fù，yǒng zài quán néng zhī shén" }
+            // Add your other hymns here...
+        ];
 
-            
         function renderList(data) {
             const list = document.getElementById('listView');
             list.innerHTML = '';
             data.forEach(h => {
                 const div = document.createElement('div');
-                div.className = "card p-4 bg-white rounded-xl shadow-sm border border-gray-200 cursor-pointer active:bg-indigo-50 transition dark:bg-gray-800 dark:border-gray-700 dark:text-white";
-                div.innerHTML = `<span class="font-bold text-indigo-600 mr-3 text-lg dark:text-indigo-400">${h.id}</span> ${h.title}`;
+                div.className = "card p-4 rounded-xl shadow-sm cursor-pointer";
+                div.innerHTML = `<span class="font-bold text-indigo-400 mr-3 text-lg">${h.id}</span> ${h.title}`;
                 div.onclick = () => showHymn(h);
                 list.appendChild(div);
             });
@@ -236,6 +104,7 @@
                 h.title.toLowerCase().includes(query) || h.id.toString() === query
             );
 
+            // Sorting: Exact ID match always goes to index 0 (the top)
             filtered.sort((a, b) => {
                 if (a.id.toString() === query) return -1;
                 if (b.id.toString() === query) return 1;
@@ -254,17 +123,9 @@
 
         function goBack() {
             document.getElementById('detailView').classList.add('hidden');
-            document.getElementById('searchBar').value = '';
-            renderList(hymns);
         }
 
-        function toggleDarkMode() {
-            document.getElementById('body-tag').classList.toggle('dark-mode');
-            // 同时切换Tailwind的暗黑模式
-            document.documentElement.classList.toggle('dark');
-        }
-
-        // Load list on start
+        // Initialize the app
         renderList(hymns);
     </script>
 </body>
