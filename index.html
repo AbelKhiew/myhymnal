@@ -1,190 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hymnal App</title>
-    
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Hymnal">
-    <meta name="theme-color" content="#0f172a">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>赞美诗显示示例</title>
     <style>
-        /* Permanent Dark Theme */
-        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; }
-        #app { background-color: #0f172a; }
-        
-        /* List Cards */
-        .card { 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            color: #ffffff; 
-            transition: all 0.2s;
-        }
-        .card:active { background-color: #334155; transform: scale(0.98); }
-        .hymn-id { color: #818cf8; font-weight: bold; margin-right: 12px; }
-
-        /* Paginated Verse View */
-        .verse-container {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 20px;
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
             padding: 20px;
-            margin: 20px 0;
-            border: 1px solid #334155;
+            background-color: #f9f9f9;
         }
-
-        .lyrics-text { 
-            white-space: pre-line; 
-            font-family: 'Noto Serif SC', 'Georgia', serif; 
-            line-height: 2.2; 
-            font-size: 1.4rem;
-            color: #ffffff !important;
-            font-style: italic;
+        .hymn-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        /* Navigation controls */
-        .nav-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
+        .hymn-title {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
         }
-
-        .page-btn {
-            background-color: #312e81;
-            color: #e0e7ff;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: bold;
-            border: 1px solid #4338ca;
+        .section-box {
+            margin-bottom: 25px;
         }
-        
-        .page-btn:disabled { opacity: 0.2; }
-
-        .back-btn { color: #94a3b8; margin-bottom: 20px; display: block; }
-        
-        * { -webkit-tap-highlight-color: transparent; }
+        .lyric-line {
+            margin-bottom: 15px;
+        }
+        /* 中文样式：黑色 */
+        .cn-text {
+            color: #000000;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+        }
+        /* 拼音样式：浅灰色 */
+        .py-text {
+            color: #aaaaaa; /* 这里控制浅灰色 */
+            font-size: 14px;
+            display: block;
+            margin-top: 2px;
+        }
+        /* 副歌样式：稍微缩进或加一点底色区分 */
+        .chorus {
+            border-left: 3px solid #eee;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
-        
-        <header class="bg-indigo-950 text-white p-5 sticky top-0 z-20 shadow-xl border-b border-indigo-900">
-            <h1 class="text-xl font-bold mb-4 text-indigo-200">True Jesus Church Hymnal</h1>
-            <input type="text" id="searchBar" onkeyup="filterHymns()" placeholder="Search number or name..." 
-                class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500">
-        </header>
-
-        <div id="listView" class="p-4 space-y-3">
-            </div>
-
-        <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
-            <button onclick="goBack()" class="back-btn text-lg">← Back to List</button>
-            
-            <h2 id="hymnTitle" class="text-center text-indigo-400 font-bold text-xl mb-4"></h2>
-            
-            <div class="verse-container">
-                <div id="hymnLyrics" class="lyrics-text"></div>
-            </div>
-
-            <div class="nav-controls">
-                <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">Previous</button>
-                <span id="pageInfo" class="text-slate-500 text-sm">Verse 1 of 1</span>
-                <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">Next</button>
-            </div>
-            
-            <div class="h-20"></div>
-        </div>
-
+<div id="app" class="hymn-container">
     </div>
 
-    <script>
-        let currentHymnVerses = [];
-        let currentVerseIndex = 0;
-
-        // Your full hymn list (I included the first few, you can add all 310)
-        const hymns = [
+<script>
+// 你的数据结构
+const hymnData = [
   {
     id: 225,
     title: "顺从圣灵",
-    lyrics: "①圣灵的恩惠，我当祈求，宝贝的能力，在我里头；\n<small style='color: gray; display: block;'>shèng líng de ēn huì, wǒ dāng qí qiú, bǎo bèi de néng lì, zài wǒ lǐ tóu;</small>\n助我结灵果，促进灵修，生命活水长流。\n<small style='color: gray; display: block;'>zhù wǒ jié líng guǒ, cù jìn líng xiū, shēng mìng huó shuǐ zhǎng liú.</small>\n(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；\n<small style='color: gray; display: block;'>lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;</small>\n心中必清洁，再不犯罪，靠圣灵的恩惠。\n<small style='color: gray; display: block;'>xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì.</small>\n\n②圣灵的声音，我当恭闻，真神的旨意，我要依从；\n<small style='color: gray; display: block;'>shèng líng de shēng yīn, wǒ dāng gōng wén, zhēn shén de zhǐ yì, wǒ yào yī cóng;</small>\n忠勤事奉主，做成圣工，尽责任，不居功。\n<small style='color: gray; display: block;'>zhōng qín shì fèng zhǔ, zuò chéng shèng gōng, jǐn zé rèn, bù jū gōng.</small>\n(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；\n<small style='color: gray; display: block;'>lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;</small>\n心中必清洁，再不犯罪，靠圣灵的恩惠。\n<small style='color: gray; display: block;'>xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì.</small>\n\n③圣灵的感动，我不消灭，当我软弱时，祂必扶持；\n<small style='color: gray; display: block;'>shèng líng de gǎn dòng, wǒ bù xiāo miè, dāng wǒ ruǎn ruò shí, tā bì fú chí;</small>\n凡事遵真道，胜过世界，力量永不衰竭。\n<small style='color: gray; display: block;'>fán shì zūn zhēn dào, shèng guò shì jiè, lì liàng yǒng bù shuāi jié.</small>\n(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；\n<small style='color: gray; display: block;'>lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;</small>\n心中必清洁，再不犯罪，靠圣灵的恩惠。\n<small style='color: gray; display: block;'>xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì.</small>\n\n④圣灵的引导，我要顺从，肉体的情欲，我必除净；\n<small style='color: gray; display: block;'>shèng líng de yǐn dǎo, wǒ yào shùn cóng, ròu tǐ de qíng yù, wǒ bì chú jìng;</small>\n常攻克己身，叫身服我，做主圣洁器皿。\n<small style='color: gray; display: block;'>cháng gōng kè jǐ shēn, jiào shēn fú wǒ, zuò zhǔ shèng jié qì mǐn.</small>\n(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；\n<small style='color: gray; display: block;'>lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;</small>\n心中必清洁，再不犯罪，靠圣灵的恩惠。\n<small style='color: gray; display: block;'>xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì.</small>"
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①圣灵的恩惠，我当祈求，宝贝的能力，在我里头；", py: "shèng líng de ēn huì, wǒ dāng qí qiú, bǎo bèi de néng lì, zài wǒ lǐ tóu;" },
+          { cn: "助我结灵果，促进灵修，生命活水长流。", py: "zhù wǒ jié líng guǒ, cù jìn líng xiū, shēng mìng huó shuǐ zhǎng liú." },
+          { type: "chorus", cn: "(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；", py: "lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;" },
+          { type: "chorus", cn: "心中必清洁，再不犯罪，靠圣灵的恩惠。", py: "xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②圣灵的声音，我当恭闻，真神的旨意，我要依从；", py: "shèng líng de shēng yīn, wǒ dāng gōng wén, zhēn shén de zhǐ yì, wǒ yào yī cóng;" },
+          { cn: "忠勤事奉主，做成圣工，尽责任，不居功。", py: "zhōng qín shì fèng zhǔ, zuò chéng shèng gōng, jǐn zé rèn, bù jū gōng." },
+          { type: "chorus", cn: "(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；", py: "lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;" },
+          { type: "chorus", cn: "心中必清洁，再不犯罪，靠圣灵的恩惠。", py: "xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③圣灵的感动，我不消灭，当我软弱时，祂必扶持；", py: "shèng líng de gǎn dòng, wǒ bù xiāo miè, dāng wǒ ruǎn ruò shí, tā bì fú chí;" },
+          { cn: "凡事遵真道，胜过世界，力量永不衰竭。", py: "fán shì zūn zhēn dào, shèng guò shì jiè, lì liàng yǒng bù shuāi jié." },
+          { type: "chorus", cn: "(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；", py: "lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;" },
+          { type: "chorus", cn: "心中必清洁，再不犯罪，靠圣灵的恩惠。", py: "xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì." }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④圣灵的引导，我要顺从，肉体的情欲，我必除净；", py: "shèng líng de yǐn dǎo, wǒ yào shùn cóng, ròu tǐ de qíng yù, wǒ bì chú jìng;" },
+          { cn: "常攻克己身，叫身服我，做主圣洁器皿。", py: "cháng gōng kè jǐ shēn, jiào shēn fú wǒ, zuò zhǔ shèng jié qì mǐn." },
+          { type: "chorus", cn: "(副歌)乐哉，乐哉，必在天聚会！圣父家中 福祉最宝贵；", py: "lè zāi, lè zāi, bì zài tiān jù huì! shèng fù jiā zhōng fú zhǐ zuì bǎo guì;" },
+          { type: "chorus", cn: "心中必清洁，再不犯罪，靠圣灵的恩惠。", py: "xīn zhōng bì qīng jié, zài bù fàn zuì, kào shèng líng de ēn huì." }
+        ]
+      }
+    ]
   },
   {
     id: 279,
     title: "敞开恩门",
-    lyrics: "①得救恩门到处开起，发出光辉照世界；\n<small style='color: gray; display: block;'>dé jiù ēn mén dào chù kāi qǐ, fā chū guāng huī zhào shì jiè;</small>\n十架舍命,无限荣耀,表明救主大仁爱。\n<small style='color: gray; display: block;'>shí jià shě mìng wú xiàn róng yào,biǎo míng jiù zhǔ dà rén ài.</small>\n(副歌)灵恩丰盛,至善、至美,此门希奇,到处开起；\n<small style='color: gray; display: block;'>líng ēn fēng shèng zhì shàn zhì měi,cǐ mén xī qí dào chù kāi qǐ;</small>\n开起，开起，此门到处开起。\n<small style='color: gray; display: block;'>kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ.</small>\n\n②凡人进入就得永生,此门今开,快进来；\n<small style='color: gray; display: block;'>fán rén jìn rù jiù dé yǒng shēng,cǐ mén jīn kāi kuài jìn lái;</small>\n富贵、贫贱、老弱、少壮,万国、万民无偏待。\n<small style='color: gray; display: block;'>fù guì pín jiàn lǎo ruò shào zhuàng, wàn guó wàn mín wú piān dài.</small>\n(副歌)灵恩丰盛,至善、至美,此门希奇,到处开起；\n<small style='color: gray; display: block;'>líng ēn fēng shèng zhì shàn zhì měi,cǐ mén xī qí dào chù kāi qǐ;</small>\n开起，开起，此门到处开起。\n<small style='color: gray; display: block;'>kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ.</small>\n\n③努力向前,不怕阻挡,快进此门,莫迟疑；\n<small style='color: gray; display: block;'>nǔ lì xiàng qián bù pà zǔ dǎng,kuài jìn cǐ mén mò chí yí;</small>\n因信称义,靠恩得救,救主大爱永不移。\n<small style='color: gray; display: block;'>yīn xìn chēng yì kào ēn dé jiù, jiù zhǔ dà ài yǒng bù yí.</small>\n(副歌)灵恩丰盛,至善、至美,此门希奇,到处开起；\n<small style='color: gray; display: block;'>líng ēn fēng shèng zhì shàn zhì měi,cǐ mén xī qí dào chù kāi qǐ;</small>\n开起，开起，此门到处开起。\n<small style='color: gray; display: block;'>kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ.</small>\n\n④世人离主,如羊走迷,前途危险应自知；\n<small style='color: gray; display: block;'>shì rén lí zhǔ rú yáng zǒu mí, qián tú wēi xiǎn yīng zì zhī;</small>\n归主耶稣,进入恩门,永远得救正此时。\n<small style='color: gray; display: block;'>guī zhǔ yē sū jìn rù ēn mén,yǒng yuǎn dé jiù zhèng cǐ shí.</small>\n(副歌)灵恩丰盛,至善、至美,此门希奇,到处开起；\n<small style='color: gray; display: block;'>líng ēn fēng shèng zhì shàn zhì měi,cǐ mén xī qí dào chù kāi qǐ;</small>\n开起，开起，此门到处开起。\n<small style='color: gray; display: block;'>kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ.</small>"
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①得救恩门到处开起，发出光辉照世界；", py: "dé jiù ēn mén dào chù kāi qǐ, fā chū guāng huī zhào shì jiè;" },
+          { cn: "十架舍命，无限荣耀，表明救主大仁爱。", py: "shí jià shě mìng, wú xiàn róng yào, biǎo míng jiù zhǔ dà rén ài." },
+          { type: "chorus", cn: "(副歌)灵恩丰盛，至善、至美，此门希奇，到处开起；", py: "líng ēn fēng shèng, zhì shàn, zhì měi, cǐ mén xī qí, dào chù kāi qǐ;" },
+          { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②凡人进入就得永生，此门今开，快进来；", py: "fán rén jìn rù jiù dé yǒng shēng, cǐ mén jīn kāi kuài jìn lái;" },
+          { cn: "富贵、贫贱、老弱、少壮，万国、万民无偏待。", py: "fù guì, pín jiàn, lǎo ruò, shǎo zhuàng, wàn guó, wàn mín wú piān dài." },
+          { type: "chorus", cn: "(副歌)灵恩丰盛，至善、至美，此门希奇，到处开起；", py: "líng ēn fēng shèng, zhì shàn, zhì měi, cǐ mén xī qí, dào chù kāi qǐ;" },
+          { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③努力向前，不怕阻挡，快进此门，莫迟疑；", py: "nǔ lì xiàng qián, bù pà zǔ dǎng, kuài jìn cǐ mén, mò chí yí;" },
+          { cn: "因信称义，靠恩得救，救主大爱永不移。", py: "yīn xìn chēng yì, kào ēn dé jiù, jiù zhǔ dà ài yǒng bù yí." },
+          { type: "chorus", cn: "(副歌)灵恩丰盛，至善、至美，此门希奇，到处开起；", py: "líng ēn fēng shèng, zhì shàn, zhì měi, cǐ mén xī qí, dào chù kāi qǐ;" },
+          { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ." }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④世人离主，如羊走迷，前途危险应自知；", py: "shì rén lí zhǔ, rú yáng zǒu mí, qián tú wēi xiǎn yīng zì zhī;" },
+          { cn: "归主耶稣，进入恩门，永远得救正此时。", py: "guī zhǔ yē sū, jìn rù ēn mén, yǒng yuǎn dé jiù zhèng cǐ shí." },
+          { type: "chorus", cn: "(副歌)灵恩丰盛，至善、至美，此门希奇，到处开起；", py: "líng ēn fēng shèng, zhì shàn, zhì měi, cǐ mén xī qí, dào chù kāi qǐ;" },
+          { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ." }
+        ]
+      }
+    ]
   }
-             ];
+];
 
-        function renderList(data) {
-            const list = document.getElementById('listView');
-            list.innerHTML = '';
-            data.forEach(h => {
-                const div = document.createElement('div');
-                div.className = "card p-5 rounded-2xl flex items-center";
-                div.innerHTML = `<span class="hymn-id">${h.id}</span> <span class="flex-1">${h.title}</span>`;
-                div.onclick = () => showHymn(h);
-                list.appendChild(div);
-            });
-        }
+// 渲染函数
+function renderHymn(data) {
+    const app = document.getElementById('app');
+    let htmlContent = `<h1 class="hymn-title">${data.title}</h1>`;
 
-        function filterHymns() {
-            const query = document.getElementById('searchBar').value.toLowerCase().trim();
-            if (query === "") { renderList(hymns); return; }
-
-            let filtered = hymns.filter(h => 
-                h.title.toLowerCase().includes(query) || h.id.toString() === query
-            );
-
-            // Jump to Top logic
-            filtered.sort((a, b) => {
-                if (a.id.toString() === query) return -1;
-                if (b.id.toString() === query) return 1;
-                return 0;
-            });
-
-            renderList(filtered);
-        }
-
-        function showHymn(h) {
-            document.getElementById('hymnTitle').innerText = h.title;
+    data.sections.forEach(section => {
+        htmlContent += `<div class="section-box">`;
+        
+        section.content.forEach(line => {
+            // 判断是否是副歌，增加不同的类名
+            const isChorus = line.type === "chorus" ? "chorus" : "";
             
-            // Split by symbols ① ② ③ etc.
-            currentHymnVerses = h.lyrics.split(/(?=①|②|③|④|⑤|⑥|⑦|⑧|⑨)/g).filter(v => v.trim() !== "");
-            
-            currentVerseIndex = 0;
-            updateVerseDisplay();
-            
-            document.getElementById('detailView').classList.remove('hidden');
-        }
+            htmlContent += `
+                <div class="lyric-line ${isChorus}">
+                    <span class="cn-text">${line.cn}</span>
+                    <span class="py-text">${line.py}</span>
+                </div>
+            `;
+        });
 
-        function updateVerseDisplay() {
-            document.getElementById('hymnLyrics').innerText = currentHymnVerses[currentVerseIndex];
-            document.getElementById('pageInfo').innerText = `Verse ${currentVerseIndex + 1} of ${currentHymnVerses.length}`;
-            
-            document.getElementById('prevBtn').disabled = (currentVerseIndex === 0);
-            document.getElementById('nextBtn').disabled = (currentVerseIndex === currentHymnVerses.length - 1);
-        }
+        htmlContent += `</div>`;
+    });
 
-        function changeVerse(dir) {
-            currentVerseIndex += dir;
-            updateVerseDisplay();
-            document.getElementById('detailView').scrollTo(0, 0);
-        }
+    app.innerHTML = htmlContent;
+}
 
-        function goBack() {
-            document.getElementById('detailView').classList.add('hidden');
-        }
+// 执行渲染第一首
+renderHymn(hymnData[0]);
 
-        renderList(hymns);
-    </script>
+</script>
 </body>
 </html>
