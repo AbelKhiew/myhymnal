@@ -1,1 +1,1 @@
-# myhymnal
+# hymnal
