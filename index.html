@@ -126,6 +126,326 @@
 
         // 整合后的数据
         const hymns = [
+              {
+    id: 1,
+    title: "颂赞独一真神",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①圣哉, 圣哉, 圣哉, 全能大主宰！", py: "shèng zāi, shèng zāi, shèng zāi, quán néng dà zhǔ zǎi!" },
+          { cn: "天上、地下、海中万物, 颂主高名；", py: "tiān shàng, dì xià, hǎi zhōng wàn wù, sòng zhǔ gāo míng;" },
+          { cn: "圣善、恩慈、诚实, 自古永无更改，", py: "shèng shàn, ēn cí, chéng shí, zì gǔ yǒng wú gèng gǎi." },
+          { cn: "独一的真神, 应当受赞美。", py: "dú yī de zhēn shén, yīng dāng shòu zàn měi." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②圣哉, 圣哉, 圣哉, 群圣皆跪拜！", py: "shèng zāi, shèng zāi, shèng zāi, qún shèng jiē guì bài!" },
+          { cn: "各以华丽冠冕, 捧在宝座面前；", py: "gè yǐ huá lì guān miǎn, pěng zài bǎo zuò miàn qián;" },
+          { cn: "权柄、尊贵、荣耀, 审判, 都归羔羊。", py: "quán bǐng, zūn guì, róng yào, shěn pàn, dōu guī gāo yáng." },
+          { cn: "昔在而今在, 永在万万年。", py: "xī zài ér jīn zài, yǒng zài wàn wàn nián." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③圣哉, 圣哉, 圣哉, 鸿恩遍宇内！", py: "shèng zāi, shèng zāi, shèng zāi, hóng ēn biàn yǔ nèi!" },
+          { cn: "蒙赎信徒, 得瞻真主威赫荣光；", py: "méng shú xìn tú, dé zhān zhēn zhǔ wēi hè róng guāng;" },
+          { cn: "公义、真理、审判, 谁与圣灵堪比？", py: "gōng yì, zhēn lǐ, shěn pàn, shuí yǔ shèng líng kān bǐ?" },
+          { cn: "智、仁、勇全备, 大哉, 保惠师！", py: "zhì, rén, yǒng quán bèi, dà zāi, bǎo huì shī!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "赞美圣父",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①哈利路亚, 赞美圣父！阿们, 阿们, 哈利路亚！", py: "hā lì lù yà, zàn měi shèng fù! ā men, ā men, hā lì lù yà!" },
+          { cn: "高声赞美, 慈悲圣父, 歌曰: “哈利路亚！”", py: "gāo shēng zàn měi, cí bēi shèng fù, gē yuē: hā lì lù yà!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②哈利路亚, 赞美耶稣！阿们, 阿们, 哈利路亚！", py: "hā lì lù yà, zàn měi yē sū! ā men, ā men, hā lì lù yà!" },
+          { cn: "高声赞美, 救主耶稣, 歌曰: “哈利路亚！”", py: "gāo shēng zàn měi, jiù zhǔ yē sū, gē yuē: hā lì lù yà!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③哈利路亚, 赞美圣灵！阿们, 阿们, 哈利路亚！", py: "hā lì lù yà, zàn měi shèng líng! ā men, ā men, hā lì lù yà!" },
+          { cn: "高声赞美, 全能圣灵, 歌曰: “哈利路亚！”", py: "gāo shēng zàn měi, quán néng shèng líng, gē yuē: hā lì lù yà!" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④荣耀, 荣耀, 哈利路亚！荣耀, 荣耀, 哈利路亚！", py: "róng yào, róng yào, hā lì lù yà! róng yào, róng yào, hā lì lù yà!" },
+          { cn: "高声赞美, 欣欣歌曰: “赞美赞美！” 胜不美。", py: "gāo shēng zàn měi, xīn xīn gē yuē: zàn měi zàn měi! shèng bù měi." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "赞美真神",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①哈利路亚, 赞美真神！哈利路亚, 阿们！", py: "hā lì lù yà, zàn měi zhēn shén! hā lì lù yà, ā men!" },
+          { cn: "哈利路亚, 赞美真神！加添我爱心！", py: "hā lì lù yà, zàn měi zhēn shén! jiā tiān wǒ ài xīn!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②哈利路亚, 赞美耶稣！哈利路亚, 阿们！", py: "hā lì lù yà, zàn měi yē sū! hā lì lù yà, ā men!" },
+          { cn: "哈利路亚, 赞美耶稣！加添我信心！", py: "hā lì lù yà, zàn měi yē sū! jiā tiān wǒ xìn xīn!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③哈利路亚, 赞美圣灵！哈利路亚, 阿们！", py: "hā lì lù yà, zàn měi shèng líng! hā lì lù yà, ā men!" },
+          { cn: "哈利路亚, 赞美圣灵！加添我能力！", py: "hā lì lù yà, zàn měi shèng líng! jiā tiān wǒ néng lì!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "赞美天父",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我心赞美天父, 救赎之恩显明；", py: "wǒ xīn zàn měi tiān fù, jiù shú zhī ēn xiǎn míng;" },
+          { cn: "尽心、尽意、尽性、尽力、赞祂极美圣名！", py: "jìn xīn, jìn yì, jìn xìng, jìn lì, zàn tā jí měi shèng míng!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我心赞美天父, 万福之根；", py: "wǒ xīn zàn měi tiān fù, wàn fú zhī gēn;" },
+          { cn: "不可忘记主大慈爱, 不可忘主恩。", py: "bù kě wàng jì zhǔ dà cí ài, bù kě wàng zhǔ ēn." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③天父已发慈怜, 宽容拢总罪；", py: "tiān fù yǐ fā cí lián, kuān róng lǒng zǒng zuì;" },
+          { cn: "为我医治一切疾病, 使我得福百倍。", py: "wéi wǒ yī zhì yī qiè jí bìng, shǐ wǒ dé fú bǎi bèi." }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④患难、困苦临身, 世间有谁照顾？", py: "huàn nán, kùn kǔ lín shēn, shì jiān yǒu shuí zhào gù?" },
+          { cn: "主怜悯我, 伸出右手, 能救我脱苦楚。", py: "zhǔ lián mǐn wǒ, shēn chū yòu shǒu, néng jiù wǒ tuō kǔ chǔ." }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { cn: "⑤像父母爱儿女, 常常保护；", py: "xiàng fù mǔ ài ér nǚ, cháng cháng bǎo hù;" },
+          { cn: "天父如此慈悲、怜悯, 常赐恩悯眷顾。", py: "tiān fù rú cǐ cí bēi, lián mǐn, cháng cì ēn mǐn juàn gù." }
+        ]
+      },
+      {
+        verse: 6,
+        content: [
+          { cn: "⑥天上圣使千万, 地上人民无数；", py: "tiān shàng shèng shǐ qiān wàn, dì shàng rén mín wú shù;" },
+          { cn: "一同敬拜, 一同称赞, 荣耀归于天父。", py: "yī tóng jìng bài, yī tóng chēng zàn, róng yào guī yú tiān fù." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "万有赞美天父",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①万有赞美天父, 永在、全能之神。", py: "wàn yǒu zàn měi tiān fù, yǒng zài, quán néng zhī shén." },
+          { cn: "天地万物互相应声, 赞美祂大尊名：", py: "tiān dì wàn wù hù xiàng yìng shēng, zàn měi tā dà zūn míng:" },
+          { cn: "花、草、树木、水泉、穹苍、海洋、山岭,", py: "huā, cǎo, shù mù, shuǐ quán, qióng cāng, hǎi yáng, shān lǐng," },
+          { cn: "述说祂大权能荣耀, 显明信实、慈仁。", py: "shù shuō tā dà quán néng róng yào, xiǎn míng xìn shí cí rén." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②万有赞美天父, 永在、全智之神。", py: "wàn yǒu zàn měi tiān fù, yǒng zài, quán zhì zhī shén." },
+          { cn: "天地万物齐声唱诗, 赞美祂大圣名；", py: "tiān dì wàn wù qí shēng chàng shī, zàn měi tā dà shèng míng;" },
+          { cn: "走兽、飞鸟、昆虫、牲畜、家禽, 族类,", py: "zǒu shòu, fēi niǎo, kūn chóng, shēng chù, jiā qín, zú lèi," },
+          { cn: "都是天父创造、养活, 各从其类滋生。", py: "dōu shì tiān fù chuàng zào, yǎng huó, gè cóng qí lèi zī shēng." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我心赞美天父, 人类本为一家。", py: "wǒ xīn zàn měi tiān fù, rén lèi běn wéi yī jiā." },
+          { cn: "虽然始祖犯罪堕落, 神格外增恩加：", py: "suī rán shǐ zǔ fàn zuì duò luò, shén ēn gé wài zēng ēn jiā:" },
+          { cn: "差遣救主降世, 宝血洗净无瑕,", py: "chāi qiǎn jiù zhǔ jiàng shì, bǎo xuè xǐ jìng wú xiá," },
+          { cn: "成圣、称义, 出死入生, 得享天国荣华。", py: "chéng shèng, chēng yì, chū sǐ rù shēng, dé xiǎng tiān guó róng huá." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "颂主造化大功",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①大哉, 穹苍, 冥冥无疆！极目天象, 铺张八方：", py: "dà zāi, qióng cāng, míng míng wú jiāng! jí mù tiān xiàng, pù zhāng bā fāng:" },
+          { cn: "万星罗列, 灿烂争光：红日升落, 昼来夜往。", py: "wàn xīng luó liè, càn làn zhēng guāng: hóng rì shēng luò, zhòu lái yè wǎng." },
+          { cn: "真神造化之功显扬, 托住万有, 权能昭彰；", py: "zhēn shén zào huà zhī gōng xiǎn yáng, tuō zhù wàn yǒu, quán néng zhāo zhāng;" },
+          { cn: "深哉, 神智、神能无量！我们应当赞美、颂扬。", py: "shēn zāi, shén zhì, shén néng wú liàng! wǒ men yīng dāng zàn měi, sòng yáng." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②太阳西坠, 明月东升, 二光照耀, 轮转不停；", py: "tài yáng xī zhuì, míng yuè dōng shēng, èr guāng zhào yào, lún zhuǎn bù tíng;" },
+          { cn: "众星无数, 闪烁运行：各依轨道, 秩序不更。", py: "zhòng xīng wú shù, shǎn shuò yùn háng: gè yī guǐ dào, zhì xù bù gèng." },
+          { cn: "都由主宰管理周详, 偌大宇宙, 保持安宁；", py: "dōu yóu zhù zài guǎn lǐ zhōu xiáng, ruò dà yǔ zhòu, bǎo chí ān níng;" },
+          { cn: "诸天万象述主荣耀, 我们更当赞美主名。", py: "zhū tiān wàn xiàng shù zhǔ róng yào, wǒ men gèng dāng zàn měi zhǔ míng." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③一切生物, 布满寰瀛, 各从其类, 皆主造成；", py: "yī qiè shēng wù, bù mǎn huán yíng, gè cóng qí lèi, jiē zhǔ zào chéng;" },
+          { cn: "赐福繁殖, 养育群生, 自古以来, 主恩昌盛。", py: "cì fú fán zhí, yǎng yù qún shēng, zì gǔ yǐ lái, zhǔ ēn chāng shèng." },
+          { cn: "上主在天, 虽不能见, 藉着万物可以证明；", py: "shàng zhǔ zài tiān, suī bù néng jiàn, jiè zhe wàn wù kě yǐ zhèng míng:" },
+          { cn: "万有所本, 万有所靠, 万有所归, 独一真神。", py: "wàn yǒu suǒ běn, wàn yǒu suǒ kào, wàn yǒu suǒ guī, dú yī zhēn shén." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "万有齐颂主",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①欢乐, 欢乐, 赞美至尊独一神；灵命更新, 齐向朝阳吐清馨。", py: "huān lè, huān lè, zàn měi zhì zūn dú yī shén; líng mìng gèng xīn, qí xiàng cháo yáng tǔ qīng xīn." },
+          { cn: "罪瘴、恶氛, 求主扫尽, 愁雾、疑云俱廓清！", py: "zuì zhàng, è fēn, qiú zhǔ sào jìn, chóu wù, yí yún jù kuò qīng!" },
+          { cn: "我们当以颂赞为祭, 结出美果在嘴唇。", py: "wǒ men dāng yǐ sòng zàn wéi jì, jié chū měi guǒ zài zuǐ chún." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②宇宙, 万有, 一同显映主荣光；千万天使, 灿烂群星, 排列环绕齐颂扬。", py: "yǔ zhòu, wàn yǒu, yī tóng xiǎn yìng zhǔ róng guāng; qiān wàn tiān shǐ, càn làn qún xīng, pái liè huán rào qí sòng yáng." },
+          { cn: "高山、茂林、清风、明月, 好鸟吟叫, 百花香；", py: "gāo shān, mào lín, qīng fēng, míng yuè, hǎo niǎo yín jiào, bǎi huā xiāng;" },
+          { cn: "鸣泉漱石, 海浪拍岸, 都在颂主而欢唱。", py: "míng quán shù shí, hǎi làng pāi àn, dōu zài sòng zhǔ ér huān chàng." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③永存怜悯, 广行赦免, 万恩万福出天宫；平安泉源, 欢乐江河, 一切福气永充丰。", py: "yǒng cún lián mǐn, guǎng xíng shè miǎn, wàn ēn wàn fú chū tiān gōng; píng ān quán yuán, huān lè jiāng hé, yī qiè fú qì yǒng chōng fēng." },
+          { cn: "慈爱天父！养育群生, 活命存留祢爱中；", py: "cí ài tiān fù! yǎng yù qún shēng, huó mìng cún liú nǐ ài zhōng;" },
+          { cn: "我等圣民蒙主救赎, 属灵福气更无穷！", py: "wǒ děng shèng mín méng zhǔ jiù shú, shǔ líng fú qì gèng wú qióng!" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④天父大爱, 自天显明, 阳光、雨、露、常照临；诸天欢乐, 万有称颂, 荣耀归与主圣名！", py: "tiān fù dà ài zì tiān xiǎn míng, yáng guāng yù lù cháng zhào lín; zhū tiān huān lè, wàn yǒu chēng sòng, róng yào guī yǔ zhǔ shèng míng!" },
+          { cn: "受造之物服在虚空, 一同叹息到如今；", py: "shòu zào zhī wù fú zài xū kōng, yī tóng tàn xī dào rú jīn;" },
+          { cn: "切望神子显现出来, 脱离辖制庆复兴！", py: "qiè wàng shén zǐ xiǎn xiàn chū lái, tuō lí xiá zhì qìng fù xīng!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "当向神歌颂",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我们当向万王之王, 齐声歌唱、颂扬；", py: "wǒ men dāng xiàng wàn wáng zhī wáng, qí shēng gē chàng, sòng yáng;" },
+          { cn: "同心赞美宇宙主宰, 恩惠广被万方！", py: "tóng xīn zàn měi yǔ zhòu zhǔ zǎi, ēn huì guǎng bèi wàn fāng!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我们来到真神面前, 心灵诚实、敬虔；", py: "wǒ men lái dào zhēn shén miàn qián, xīn líng chéng shí, jìng qián;" },
+          { cn: "当用颂词、灵歌、诗章, 赞祂恩爱无边！", py: "dāng yòng sòng cí, líng gē, shī zhāng, zàn tā ēn ài wú biān!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "向主欢呼",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①普世万族向主欢呼, 怀恩、感德, 庆幸鼓舞！", py: "pǔ shì wàn zú xiàng zhǔ huān hū, huái ēn, gǎn dé, qìng xìng gǔ wǔ!" },
+          { cn: "齐来主前放声歌颂, 以灵以诚, 敬拜天父。", py: "qí lái zhǔ qián fàng shēng gē sòng, yǐ líng yǐ chéng, jìng bài tiān fù." }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②应当称谢进主恩门, 在主圣堂, 赞主荣尊；", py: "yīng dāng chēng xiè jìn zhǔ ēn mén, zài zhǔ shèng táng, zàn zhǔ róng zūn;" },
+          { cn: "聚精会神恭听圣言, 心悦诚服, 谢主鸿恩。", py: "jù jīng huì shén gōng tīng shèng yán, xīn yuè chéng fú, xiè zhǔ hóng ēn." }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③天父真神至善完全, 慈爱、怜悯, 古今皆然；", py: "tiān fù zhēn shén zhì shàn wán quán, cí ài, lián mǐn, gǔ jīn jiē rán;" },
+          { cn: "应许信实坚定不变, 全能、公义, 永远绵延。", py: "yīng xǔ xìn shí jiān dìng bù biàn, quán néng, gōng yì, yǒng yuǎn mián yán." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 10,
+    title: "荣耀归耶稣",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①荣耀归耶稣, 大权能的主, 荣耀归耶稣, 我的主；", py: "róng yào guī yē sū dà quán néng de zhǔ, róng yào guī yē sū wǒ de zhǔ;" },
+          { cn: "哈利路亚, 哈利路亚！荣耀归耶稣, 我的主！", py: "hā lì lù yà, hā lì lù yà! róng yào guī yē sū wǒ de zhǔ!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②荣耀归耶稣, 永不改的主, 荣耀归耶稣, 我的主；", py: "róng yào guī yē sū yǒng bù gǎi de zhǔ, róng yào guī yē sū wǒ de zhǔ;" },
+          { cn: "哈利路亚, 哈利路亚！荣耀归耶稣, 我的主！", py: "hā lì lù yà, hā lì lù yà! róng yào guī yē sū wǒ de zhǔ!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③荣耀归耶稣, 快要来的主, 荣耀归耶稣, 我的主；", py: "róng yào guī yē sū kuài yào lái de zhǔ, róng yào guī yē sū wǒ de zhǔ!", },
+          { cn: "哈利路亚, 哈利路亚！荣耀归耶稣, 我的主！", py: "hā lì lù yà, hā lì lù yà! róng yào guī yē sū wǒ de zhǔ!" }
+        ]
+      }
+    ]
+  },
             {
     id: 155,
     title: "主常看顾我",
