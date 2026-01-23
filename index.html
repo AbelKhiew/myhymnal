@@ -96,7 +96,7 @@
     <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
         
         <header class="bg-indigo-950 text-white p-5 sticky top-0 z-20 shadow-xl border-b border-indigo-900">
-            <h1 class="text-xl font-bold mb-4 text-indigo-200">True Jesus Church Hymnal</h1>
+            <h1 class="text-xl font-bold mb-4 text-indigo-200">Hymnal</h1>
             <input type="text" id="searchBar" onkeyup="filterHymns()" placeholder="Search number or name..." 
                 class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500">
         </header>
@@ -126,6 +126,47 @@
 
         // 整合后的数据
         const hymns = [
+  {
+    id: 289,
+    title: "派任圣职",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①求主自天降下圣灵,浇灌我主所派仆人;", py: "qiú zhǔ zì tiān jiàng xià shèng líng, jiāo guàn wǒ zhǔ suǒ pài pú rén;" },
+          { cn: "赏赐他们各种恩惠,为主圣工义勇忠诚。", py: "shǎng cì tā men gè zhǒng ēn huì, wèi zhǔ shèng gōng yì yǒng zhōng chéng。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②领导聚会,训诲真理,根据圣经,顺从圣灵;", py: "lǐng dǎo jù huì, xùn huì zhēn lǐ, gēn jù shèng jīng, shùn cóng shèng líng;" },
+          { cn: "使主教会所有信徒,为道奋勇,迈进不停。", py: "shǐ zhǔ jiào huì suǒ yǒu xìn tú, wèi dào fèn yǒng, mài jìn bù tíng。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③求赐智慧、信德、热诚,既能坚忍,又能和平;", py: "qiú cì zhì huì, xìn dé, rè chéng, jì néng jiān rěn, yòu néng hé píng;" },
+          { cn: "心中顾念我主圣民,多爱我主所爱灵魂。", py: "xīn zhōng gù niàn wǒ zhǔ shèng mín, duō ài wǒ zhǔ suǒ ài líng hún。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④儆醒祈祷,永不灰心,朝朝暮暮职守殷勤;", py: "jǐng xǐng qí dǎo, yǒng bù huī xīn, zhāo zhāo mù mù zhí shǒu yīn qín;" },
+          { cn: "鼓励圣徒,警告罪人,喂养羊羔,爱护全群。", py: "gǔ lì shèng tú, jǐng gào zuì rén, wèi yǎng yáng gāo, ài hù quán qún。" }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { cn: "⑤做完主工,尽此一生,满怀喜乐,卸下艰辛;", py: "zuò wán zhǔ gōng, jìn cǐ yī shēng, mǎn huái xǐ lè, xiè xià jiān xīn;" },
+          { cn: "等到恩主自天显现,赏赐冠冕,灿烂光明。", py: "děng dào ēn zhǔ zì tiān xiǎn xiàn, shǎng cì guàn miǎn, càn làn guāng míng。" }
+        ]
+      }
+    ]
+  },
   {
     id: 259,
     title: "恒切祷告",
