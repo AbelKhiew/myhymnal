@@ -124,8 +124,233 @@
         let currentHymnSections = [];
         let currentVerseIndex = 0;
 
-        // 整合后的数据
         const hymns = [
+  {
+    id: 136,
+    title: "我知所信的是谁",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①不知何以上主恩惠,待我如此美好?", py: "bù zhī hé yǐ shàng zhǔ ēn huì, dài wǒ rú cǐ měi hǎo?" },
+          { cn: "不堪如我亦蒙选召,主恩我何以报?", py: "bù kān rú wǒ yì méng xuǎn zhào, zhǔ ēn wǒ hé yǐ bào?" },
+          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,也深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
+          { type: "chorus", cn: "我应当持守所有的,都全备直到那日。", py: "wǒ yīng dāng chí shǒu suǒ yǒu de, dōu quán bèi zhí dào nà rì。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②不知何以因信得救,此恩为我存留?", py: "bù zhī hé yǐ yīn xìn dé jiù, cǐ ēn wèi wǒ cún liú?" },
+          { cn: "圣灵引导,遵行主命,满心平安、无忧。", py: "shèng líng yǐn dǎo, zūn xíng zhǔ mìng, mǎn xīn píng ān, wú yōu。" },
+          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,也深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
+          { type: "chorus", cn: "我应当持守所有的,都全备直到那日。", py: "wǒ yīng dāng chí shǒu suǒ yǒu de, dōu quán bèi zhí dào nà rì。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③不知明日将遇何事,前途或顺或险?", py: "bù zhī míng rì jiāng yù hé shì, qián tú huò shùn huò xiǎn?" },
+          { cn: "主必扶持、抚养、恤怜,祂爱永不改变。", py: "zhǔ bì fú chí, fǔ yǎng, xù lián, tā ài yǒng bù gǎi biàn。" },
+          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,超市深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
+          { type: "chorus", cn: "我应当持守所有的,都全备直到那日。", py: "wǒ yīng dāng chí shǒu suǒ yǒu de, dōu quán bèi zhí dào nà rì。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④不知我主何日来迎?如何与主相逢?", py: "bù zhī wǒ zhǔ hé rì lái yíng? rú hé yǔ zhǔ xiāng féng?" },
+          { cn: "那时或将从死复活,或远被提空中。", py: "nà shí huò jiāng cóng sǐ fù huó, huò yuǎn bèi tí kōng zhōng。" },
+          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,也深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
+          { type: "chorus", cn: "我应当持守所有的,都全备直到那日。", py: "wǒ yīng dāng chí shǒu suǒ yǒu de, dōu quán bèi zhí dào nà rì。" }
+        ]
+      }
+    ]
+  };
+  {
+    id: 129,
+    title: "纪念圣日",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①六日工作已完毕，今天欣逢安息日；", py: "liù rì gōng zuò yǐ wán bì, jīn tiān xīn féng ān xī rì;" },
+          { cn: "私情、俗虑扫清净，纪念圣日遵主命，", py: "sī qíng, sú lǜ sǎo qīng jìng, jì niàn shèng rì zūn zhǔ mìng," },
+          { cn: "纪念圣日遵主命。", py: "jì niàn shèng rì zūn zhǔ mìng。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我身软弱主怜惜，劳苦重担得休息；", py: "wǒ shēn ruǎn ruò zhǔ lián xī, láo kǔ zhòng dān dé xiū xī;" },
+          { cn: "赐我吗哪养灵魂，领受天粮命永存，", py: "cì wǒ mǎ nǎ yǎng líng hún, lǐng shòu tiān liáng mìng yǒng cún," },
+          { cn: "领受天粮命永存。", py: "lǐng shòu tiān liáng mìng yǒng cún。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③感谢祈祷热心起，如香上升我心喜；", py: "gǎn xiè qí dǎo rè xīn qǐ, rú xiāng shàng shēng wǒ xīn xǐ;" },
+          { cn: "主赐平安大且真，今日充满我的心，", py: "zhǔ cì píng ān dà qiě zhēn, jīn rì chōng mǎn wǒ de xīn," },
+          { cn: "今日充满我的心。", py: "jīn rì chōng mǎn wǒ de xīn。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④今日大家做圣工，属灵喜乐满心中；", py: "jīn rì dà jiā zuò shèng gōng, shǔ líng xǐ lè mǎn xīn zhōng;" },
+          { cn: "纪念圣日如此乐，在天安息更快乐，", py: "jì niàn shèng rì rú cǐ lè, zài tiān ān xī gèng kuài lè," },
+          { cn: "在天安息更快乐。", py: "zài tiān ān xī gèng kuài lè。" }
+        ]
+      }
+    ]
+  };
+  {
+    id: 246,
+    title: "恳求圣灵",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①恳求圣灵降下，住在各人心内；", py: "kěn qiú shèng líng jiàng xià, zhù zài gè rén xīn nèi;" },
+          { cn: "极有光明，极有能力，赐我深恩厚惠。", py: "jí yǒu guāng míng, jí yǒu néng lì, cì wǒ shēn ēn hòu huì。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②恳求圣灵指教，使我能明真道；", py: "kěn qiú shèng líng zhǐ jiào, shǐ wǒ néng míng zhēn dào;" },
+          { cn: "儆醒祈祷，日日进步，一心惟主是靠。", py: "jǐng xǐng qí dǎo, rì rì jìn bù, yī xīn wéi zhǔ shì kào。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③恳求圣灵督责，扶助我心软弱；", py: "kěn qiú shèng líng dū zé, fú zhù wǒ xīn ruǎn ruò;" },
+          { cn: "常常悦服我主美意，痛恨一切罪恶。", py: "cháng cháng yuè fú wǒ zhǔ měi yì, tòng hèn yī qiè zuì è。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④恳求圣灵眷顾，使我信心坚固；", py: "kěn qiú shèng líng juàn gù, shǐ wǒ xìn xīn jiān gù;" },
+          { cn: "所出之言，所行之事，能依我主法度。", py: "suǒ chū zhī yán, suǒ xíng zhī shì, néng yī wǒ zhǔ fǎ dù。" }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { cn: "⑤恳求圣灵安慰，时刻加添恩惠；", py: "kěn qiú shèng líng ān wèi, shí kè jiā tiān ēn huì;" },
+          { cn: "使我忍耐，经过试炼，升天福乐全备。", py: "shǐ wǒ rěn nài, jīng guò shì liàn, shēng tiān fú lè quán bèi。" }
+        ]
+      }
+    ]
+  };
+        {
+    id: 103,
+    title: "我宁愿有耶稣",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我宁愿有耶稣,不要金钱;我宁愿属主,不愿财富无边;", py: "wǒ nìng yuàn yǒu yē sū, bù yào jīn qián; wǒ nìng yuàn shǔ zhǔ, bù yuàn cái fù wú biān;" },
+          { cn: "我宁愿有耶稣,不要房产;我宁愿让祂钉伤手扶挽。", py: "wǒ nìng yuàn yǒu yē sū, bù yào fáng chǎn; wǒ nìng yuàn ràng tā dìng shāng shǒu fú wǎn。" },
+          { type: "chorus", cn: "[副歌] 不愿做君王统治四海,却被罪权所苦害;", py: "bù yuàn zuò jūn wáng tǒng zhì sì hǎi, què bèi zuì quán suǒ kǔ hài;" },
+          { type: "chorus", cn: "我宁愿有耶稣,不要尘世任何繁华、光荣。", py: "wǒ nìng yuàn yǒu yē sū, bù yào chén shì rèn hé fán huá, guāng róng。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我宁愿有耶稣,不要虚荣;我宁愿尽忠,终生做主圣工;", py: "wǒ nìng yuàn yǒu yē sū, bù yào xū róng; wǒ nìng yuàn jìn zhōng, zhōng shēng zuò zhǔ shèng gōng;" },
+          { cn: "我宁愿有耶稣,不要美名;我宁愿忠诚宣扬主圣名。", py: "wǒ nìng yuàn yǒu yē sū, bù yào měi míng; wǒ nìng yuàn zhōng chéng xuān yáng zhǔ shèng míng。" },
+          { type: "chorus", cn: "[副歌] 不愿做君王统治四海,却被罪权所苦害;", py: "bù yuàn zuò jūn wáng tǒng zhì sì hǎi, què bèi zuì quán suǒ kǔ hài;" },
+          { type: "chorus", cn: "我宁愿有耶稣,不要尘世任何繁华、光荣。", py: "wǒ nìng yuàn yǒu yē sū, bù yào chén shì rèn hé fán huá, guāng róng。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③主远比百合花美丽、鲜艳;祂更比新鲜下滴的蜜甘甜;", py: "zhǔ yuǎn bǐ bǎi hé huā měi lì, xiān yàn; tā gèng bǐ xīn xiān xià dī de mì gān tián;" },
+          { cn: "我饥渴的心灵,急需要祂;我愿有耶稣,终生跟随祂。", py: "wǒ jī kě de xīn líng, jí xū yào tā; wǒ yuàn yǒu yē sū, zhōng shēng gēn suí tā。" },
+          { type: "chorus", cn: "[副歌] 不愿做君王统治四海,却被罪权所苦害;", py: "bù yuàn zuò jūn wáng tǒng zhì sì hǎi, què bèi zuì quán suǒ kǔ hài;" },
+          { type: "chorus", cn: "我宁愿有耶稣,不要尘世任何繁华、光荣。", py: "wǒ nìng yuàn yǒu yē sū, bù yào chén shì rèn hé fán huá, guāng róng。" }
+        ]
+      }
+    ]
+  };
+  {
+    id: 127,
+    title: "切实相爱",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①爱主之人彼此相爱，和睦、谦诚相待；", py: "ài zhǔ zhī rén bǐ cǐ xiāng ài, hé mù, qiān chéng xiāng dài;" },
+          { cn: "这是救主宝贵命令，应当体主心怀。", py: "zhè shì jiù zhǔ bǎo guì mìng lìng, yīng dāng tǐ zhǔ xīn huái。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②弟兄若有愁苦、患难，总要彼此担当；", py: "dì xiōng ruò yǒu chóu kǔ, huàn nàn, zǒng yào bǐ cǐ dān dāng;" },
+          { cn: "同做肢体，心心相感，苦乐息息相关。", py: "tóng zuò zhī tǐ, xīn xīn xiāng gǎn, kǔ lè xī xī xiāng guān。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③不贪权位，不争虚名，铲除嫉妒、纷争；", py: "bù tān quán wèi, bù zhēng xū míng, chǎn chú jí dù, fēn zhēng;" },
+          { cn: "若有过失，凭爱相劝，表明同灵之情。", py: "ruò yǒu guò shī, píng ài xiāng quàn, biǎo míng tóng líng zhī qíng。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④各人心中激发主爱，涌出如同活泉；", py: "gè rén xīn zhōng jī fā zhǔ ài, yǒng chū rú tóng huó quán;" },
+          { cn: "无间、无阻，相亲、相敬，在地仿佛在天。", py: "wú jiàn, wú zǔ, xiāng qīn, xiāng jìng, zài dì fǎng fú zài tiān。" }
+        ]
+      }
+    ]
+  };
+  {
+    id: 126,
+    title: "兄弟相爱",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①同蒙恩召,属灵兄弟,主内彼此团契;", py: "tóng méng ēn zhào, shǔ líng xiōng dì, zhǔ nèi bǐ cǐ tuán qì;" },
+          { cn: "以灵相通,以爱相系,大家联为一体。", py: "yǐ líng xiāng tōng, yǐ ài xiāng xì, dà jiā lián wèi yī tǐ。" },
+          { type: "chorus", cn: "[副歌] 灵风吹薰,灵雨滋润;灵园百果最香新,共享主恩无尽。", py: "líng fēng chuī xūn, líng yǔ zī rùn; líng yuán bǎi guǒ zuì xiāng xīn, gòng xiǎng zhǔ ēn wú jìn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②一主、一信、一洗、一神,同为神国子民;", py: "yī zhǔ, yī xìn, yī xǐ, yī shén, tóng wèi shén guó zǐ mín;" },
+          { cn: "同灵联合,属主归真,胜于骨肉之亲。", py: "tóng líng lián hé, shǔ zhǔ guī zhēn, shèng yú gǔ ròu zhī qīn。" },
+          { type: "chorus", cn: "[副歌] 灵风吹薰,灵雨滋润;灵园百果最香新,共享主恩无尽。", py: "líng fēng chuī xūn, líng yǔ zī rùn; líng yuán bǎi guǒ zuì xiāng xīn, gòng xiǎng zhǔ ēn wú jìn。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③情谊深厚,友爱相亲,表现一家精神;", py: "qíng yì shēn hòu, yǒu ài xiāng qīn, biǎo xiàn yī jiā jīng shén;" },
+          { cn: "彼此相助,凡事相信,永远和睦同心。", py: "bǐ cǐ xiāng zhù, fán shì xiāng xìn, yǒng yuǎn hé mù tóng xīn。" },
+          { type: "chorus", cn: "[副歌] 灵风吹薰,灵雨滋润;灵园百果最香新,共享主恩无尽。", py: "líng fēng chuī xūn, líng yǔ zī rùn; líng yuán bǎi guǒ zuì xiāng xīn, gòng xiǎng zhǔ ēn wú jìn。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④灵内相聚,永不分散,不分时间、空间;", py: "líng nèi xiāng jù, yǒng bù fēn sàn, bù fēn shí jiān, kōng jiān;" },
+          { cn: "福乐美满,在地如天,欣感主恩无边。", py: "fú lè měi mǎn, zài dì rú tiān, xīn gǎn zhǔ ēn wú biān。" },
+          { type: "chorus", cn: "[副歌] 灵风吹薰,灵雨滋润;灵园百果最香新,共享主恩无尽。", py: "líng fēng chuī xūn, líng yǔ zī rùn; líng yuán bǎi guǒ zuì xiāng xīn, gòng xiǎng zhǔ ēn wú jìn。" }
+        ]
+      }
+    ]
+  };
   {
     id: 289,
     title: "派任圣职",
