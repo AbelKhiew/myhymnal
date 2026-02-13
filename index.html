@@ -2207,11 +2207,24 @@
         }
 
         function filterHymns() {
-            const query = document.getElementById('searchBar').value.toLowerCase().trim();
-            if (query === "") { renderList(hymns); return; }
-            let filtered = hymns.filter(h => h.title.includes(query) || h.id.toString() === query);
-            renderList(filtered);
-        }
+    const query = document.getElementById('searchBar').value.toLowerCase().trim();
+    if (query === "") { 
+        renderList(hymns); 
+        return; 
+    }
+    let filtered = hymns.filter(h => {
+        const titleMatch = h.title.toLowerCase().includes(query);
+        const idMatch = h.id.toString().includes(query); 
+        return titleMatch || idMatch;
+    });
+    filtered.sort((a, b) => {
+        if (a.id.toString() === query) return -1;
+        if (b.id.toString() === query) return 1;
+        return a.id - b.id;
+    });
+    renderList(filtered);
+}
+
 
         function showHymn(h) {
             document.getElementById('hymnTitle').innerText = h.title;
