@@ -91,7 +91,7 @@
     <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
         
         <header class="bg-indigo-950 text-white p-5 sticky top-0 z-20 shadow-xl border-b border-indigo-900">
-            <h1 class="text-xl font-bold mb-4 text-indigo-200">Hymnal</h1>
+            <h1 class="text-xl font-bold mb-4 text-indigo-200">赞美诗</h1>
             <input type="text" id="searchBar" onkeyup="filterHymns()" placeholder="Search number or name..." 
                 class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500">
         </header>
@@ -120,6 +120,550 @@
         let currentVerseIndex = 0;
 
         const hymns = [
+  {
+    id: 333,
+    title: "同心前往锡安",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①快起来，众圣徒，大家欢喜快乐；", py: "kuài qǐ lái, zhòng shèng tú, dà jiā huān xǐ kuài lè;" },
+          { cn: "齐声歌颂，圣徒唱和，齐声歌颂，圣徒唱和，", py: "qí shēng gē sòng, shèng tú chàng hè, qí shēng gē sòng, shèng tú chàng hè," },
+          { cn: "围绕主宝座，同围绕主宝座。", py: "huán rào zhǔ bǎo zuò, tóng huán rào zhǔ bǎo zuò。" },
+          { type: "chorus", cn: "同心前往锡安，美丽的，美丽的圣山；", py: "tóng xīn qián wǎng xī ān, měi lì de, měi lì de shèng shān;" },
+          { type: "chorus", cn: "众圣徒同心前往锡安，前往光辉荣耀圣山。", py: "zhòng shèng tú tóng xīn qián wǎng xī ān, qián wǎng guāng huī róng yào shèng shān。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②众罪人不认主，不愿向神歌唱；", py: "zhòng zuì rén bù rèn zhǔ, bù yuàn xiàng shén gē chàng;" },
+          { cn: "唯主耶稣所爱群羊，唯主耶稣所爱群羊，", py: "wéi zhǔ yē sū suǒ ài qún yáng, wéi zhǔ yē sū suǒ ài qún yáng," },
+          { cn: "将喜信齐传扬，将喜信齐传扬。", py: "jiāng xǐ xìn qí chuán yáng, jiāng xǐ xìn qí chuán yáng。" },
+          { type: "chorus", cn: "同心前往锡安，美丽的，美丽的圣山；", py: "tóng xīn qián wǎng xī ān, měi lì de, měi lì de shèng shān;" },
+          { type: "chorus", cn: "众圣徒同心前往锡安，前往光辉荣耀圣山。", py: "zhòng shèng tú tóng xīn qián wǎng xī ān, qián wǎng guāng huī róng yào shèng shān。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③齐前往锡安山，盛产百果甜香；", py: "qí qián wǎng xī ān shān, shèng chǎn bǎi guǒ tián xiāng;" },
+          { cn: "当我们到更美家乡，当我们到更美家乡，", py: "dāng wǒ mén dào gèng měi jiā xiāng, dāng wǒ mén dào gèng měi jiā xiāng," },
+          { cn: "同欢聚在天堂，同欢聚在天堂。", py: "tóng huān jù zài tiān táng, tóng huān jù zài tiān táng。" },
+          { type: "chorus", cn: "同心前往锡安，美丽的，美丽的圣山；", py: "tóng xīn qián wǎng xī ān, měi lì de, měi lì de shèng shān;" },
+          { type: "chorus", cn: "众圣徒同心前往锡安，前往光辉荣耀圣山。", py: "zhòng shèng tú tóng xīn qián wǎng xī ān, qián wǎng guāng huī róng yào shèng shān。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④让我们齐欢唱，不再流泪哀哭；", py: "ràng wǒ mén qí huān chàng, bù zài liú lèi āi kū;" },
+          { cn: "同走以马内利旅途，同走以马内利旅途，", py: "tóng zǒu yǐ mǎ nèi lì lǚ tú, tóng zǒu yǐ mǎ nèi lì lǚ tú," },
+          { cn: "到天庭见天父，到天庭见天父。", py: "dào tiān tíng jiàn tiān fù, dào tiān tíng jiàn tiān fù。" },
+          { type: "chorus", cn: "同心前往锡安，美丽的，美丽的圣山；", py: "tóng xīn qián wǎng xī ān, měi lì de, měi lì de shèng shān;" },
+          { type: "chorus", cn: "众圣徒同心前往锡安，前往光辉荣耀圣山。", py: "zhòng shèng tú tóng xīn qián wǎng xī ān, qián wǎng guāng huī róng yào shèng shān。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 332,
+    title: "主耶和华是我牧者",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①主耶和华是我牧者，我必不至缺乏。", py: "zhǔ yē hé huá shì wǒ mù zhě, wǒ bì bù zhì quē fá。" },
+          { cn: "使我躺卧青草地上，领我安歇水边。", py: "shǐ wǒ tǎng wò qīng cǎo dì shàng, lǐng wǒ ān xiē shuǐ biān。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②祂使我灵魂得苏醒，时刻眷顾保护，", py: "tā shǐ wǒ líng hún dé sū xǐng, shí kè juàn gù bǎo hù," },
+          { cn: "因祂荣耀圣善尊名，领我行走义路。", py: "yīn tā róng yào shèng shàn zūn míng, lǐng wǒ xíng zǒu yì lù。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我虽行过死荫幽谷，也必不怕遭害，", py: "wǒ suī xíng guò sǐ yīn yōu gǔ, yě bì bù pà zāo hài," },
+          { cn: "祢杖、祢竿都安慰我，因祢与我同在。", py: "nǐ zhàng、 nǐ gān dōu ān wèi wǒ, yīn nǐ yǔ wǒ tóng zài。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④主在我众仇敌面前，为我摆设筵席，", py: "zhǔ zài wǒ zhòng chóu dí miàn qián, wèi wǒ bǎi shè yán xí," },
+          { cn: "祢用膏油膏我的头，使我福杯满溢。", py: "nǐ yòng gāo yóu gāo wǒ de tóu, shǐ wǒ fú bēi mǎn yì。" }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { cn: "⑤恩惠慈爱必随着我，一生一世不断，", py: "ēn huì cí ài bì suí zhe wǒ, yī shēng yī shì bù duàn," },
+          { cn: "且要住在恩主殿中，从今直到永远。", py: "qiě yào zhù zài ēn zhǔ diàn zhōng, cóng jīn zhí dào yǒng yuǎn。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 331,
+    title: "祢真伟大",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①主啊，我神！我每逢举目观看，祢手所造一切奇妙大工；", py: "zhǔ ā, wǒ shén! wǒ měi féng jǔ mù guān kàn, nǐ shǒu suǒ zào yī qiè qí miào dà gōng;" },
+          { cn: "看见星宿，又听到隆隆雷声，祢的大工遍满了宇宙中。", py: "kàn jiàn xīng xiù, yòu tīng dào lóng lóng léi shēng, nǐ de dà gōng biàn mǎn le yǔ zhòu zhōng。" },
+          { type: "chorus", cn: "[副歌] 我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" },
+          { type: "chorus", cn: "我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②漫步森林，树荫下花开如锦，树上飞鸟歌声清脆动人；", py: "màn bù sēn lín, shù yīn xià huā kāi rú jǐn, shù shàng fēi niǎo gē shēng qīng cuì dòng rén;" },
+          { cn: "伫立山头，俯视那群山的雄伟，溪水潺潺微风轻拂欢欣。", py: "zhù lì shān tóu, fǔ shì nà qún shān de xióng wěi, xī shuǐ chán chán wēi fēng qīng fú huān xīn。" },
+          { type: "chorus", cn: "[副歌] 我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" },
+          { type: "chorus", cn: "我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③当我想到神竟愿差祂爱子，降世舍命，我竟无法体会；", py: "dāng wǒ xiǎng dào shén jìng yuàn chāi tā ài zǐ, jiàng shì shě mìng, wǒ jìng wú fǎ tǐ huì;" },
+          { cn: "主在十架，愿背负我的重担，流血舍身为赦免我的罪。", py: "zhǔ zài shí jià, yuàn bēi fù wǒ de zhòng dān, liú xuè shě shēn wèi shè miǎn wǒ de zuì。" },
+          { type: "chorus", cn: "[副歌] 我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" },
+          { type: "chorus", cn: "我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④当主再来，欢呼声响彻天空，何等喜乐，接我回到天家；", py: "dāng zhǔ zài lái, huān hū shēng xiǎng chè tiān kōng, hé děng xǐ lè, jiē wǒ huí dào tiān jiā;" },
+          { cn: "我要敬拜，在主前谦卑跪下，并要颂扬：“神啊，祢真伟大！”", py: "wǒ yào jìng bài, zài zhǔ qián qiān bēi guì xià, bìng yào sòng yáng: ‘shén ā, nǐ zhēn wěi dà!’" },
+          { type: "chorus", cn: "[副歌] 我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" },
+          { type: "chorus", cn: "我灵歌唱，赞美救主我神；祢真伟大，何等伟大！", py: "wǒ líng gē chàng, zàn měi jiù zhǔ wǒ shén; nǐ zhēn wěi dà, hé děng wěi dà!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 330,
+    title: "我立下决心",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我立下决心永不再留恋这世界的虚名，", py: "wǒ lì xià jué xīn yǒng bù zài liú liàn zhè shì jiè de xū míng," },
+          { cn: "属天的美景，宝贵的信息，已吸引我心灵。", py: "shǔ tiān de měi jǐng, bǎo guì de xìn xī, yǐ xī yǐn wǒ xīn líng。" },
+          { type: "chorus", cn: "耶稣！我来就祢，我灵自由欢喜。", py: "yē sū! wǒ lái jiù nǐ, wǒ líng zì yóu huān xǐ。" },
+          { type: "chorus", cn: "耶稣！至高真神，我要来就祢。", py: "yē sū! zhì gāo zhēn shén, wǒ yào lái jiù nǐ。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我立下决心归向主耶稣，离开罪恶枷锁，", py: "wǒ lì xià jué xīn guī xiàng zhǔ yē sū, lí kāi zuì è jiā suǒ," },
+          { cn: "祂信实不变，祂公义永存，祂应许必成就。", py: "tā xìn shí bù biàn, tā gōng yì yǒng cún, tā yīng xǔ bì chéng jiù。" },
+          { type: "chorus", cn: "耶稣！我来就祢，我灵自由欢喜。", py: "yē sū! wǒ lái jiù nǐ, wǒ líng zì yóu huān xǐ。" },
+          { type: "chorus", cn: "耶稣！至高真神，我要来就祢。", py: "yē sū! zhì gāo zhēn shén, wǒ yào lái jiù nǐ。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我立下决心跟随主耶稣，忠诚仰望救主，", py: "wǒ lì xià jué xīn gēn suí zhǔ yē sū, zhōng chéng yǎng wàng jiù zhǔ," },
+          { cn: "听从祂命令，遵行祂旨意，祂是生命、道路。", py: "tīng cóng tā mìng lìng, zūn xíng tā zhǐ yì, tā shì shēng mìng、 dào lù。" },
+          { type: "chorus", cn: "耶稣！我来就祢，我灵自由欢喜。", py: "yē sū! wǒ lái jiù nǐ, wǒ líng zì yóu huān xǐ。" },
+          { type: "chorus", cn: "耶稣！至高真神，我要来就祢。", py: "yē sū! zhì gāo zhēn shén, wǒ yào lái jiù nǐ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④我立下决心进主的国度，远离罪恶道路，", py: "wǒ lì xià jué xīn jìn zhǔ de guó dù, yuǎn lí zuì è dào lù," },
+          { cn: "朋友虽远离，仇敌虽攻击，我必坦然见主。", py: "péng yǒu suī yuǎn lí, chóu dí suī gōng jí, wǒ bì tǎn rán jiàn zhǔ。" },
+          { type: "chorus", cn: "耶稣！我来就祢，我灵自由欢喜。", py: "yē sū! wǒ lái jiù nǐ, wǒ líng zì yóu huān xǐ。" },
+          { type: "chorus", cn: "耶稣！至高真神，我要来就祢。", py: "yē sū! zhì gāo zhēn shén, wǒ yào lái jiù nǐ。" }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { cn: "⑤我立下决心，谁愿意同行？朋友！请快决定，", py: "wǒ lì xià jué xīn, shéi yuàn yì tóng xíng? péng yǒu! qǐng kuài jué dìng," },
+          { cn: "圣经有明训，圣灵必引领，请来同享永生。", py: "shèng jīng yǒu míng xùn, shèng líng bì yǐn lǐng, qǐng lái tóng xiǎng yǒng shēng。" },
+          { type: "chorus", cn: "耶稣！我来就祢，我灵自由欢喜。", py: "yē sū! wǒ lái jiù nǐ, wǒ líng zì yóu huān xǐ。" },
+          { type: "chorus", cn: "耶稣！至高真神，我要来就祢。", py: "yē sū! zhì gāo zhēn shén, wǒ yào lái jiù nǐ。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 329,
+    title: "耶稣与我同行",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①耶稣与我同行，同经过山谷；耶稣与我同行，经过平原。", py: "yē sū yǔ wǒ tóng xíng, tóng jīng guò shān gǔ; yē sū yǔ wǒ tóng xíng, jīng guò píng yuán。" },
+          { cn: "我前途不论是幽暗或光明，耶稣与我同行，无限欢欣。", py: "wǒ qián tú bù lùn shì yōu àn huò guāng míng, yē sū yǔ wǒ tóng xíng, wú xiàn huān xīn。" },
+          { type: "chorus", cn: "耶稣与我同行，祂与我交谈，祂与我同行。", py: "yē sū yǔ wǒ tóng xíng, tā yǔ wǒ jiāo tán, tā yǔ wǒ tóng xíng。" },
+          { type: "chorus", cn: "或喜乐或忧伤，或今日或明日，我知主与我同行。", py: "huò xǐ lè huò yōu shāng, huò jīn rì huò míng rì, wǒ zhī zhǔ yǔ wǒ tóng xíng。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②耶稣与我同行，当试探来临，赐给我力量，使我全得胜。", py: "yē sū yǔ wǒ tóng xíng, dāng shì tàn lái lín, cì gěi wǒ lì liàng, shǐ wǒ quán dé shèng。" },
+          { cn: "忧伤来临时主亲身来安慰，主大能手将我扶持安稳。", py: "yōu shāng lái lín shí zhǔ qīn shēn lái ān wèi, zhǔ dà néng shǒu jiāng wǒ fú chí ān wěn。" },
+          { type: "chorus", cn: "耶稣与我同行，祂与我交谈，祂与我同行。", py: "yē sū yǔ wǒ tóng xíng, tā yǔ wǒ jiāo tán, tā yǔ wǒ tóng xíng。" },
+          { type: "chorus", cn: "或喜乐或忧伤，或今日或明日，我知主与我同行。", py: "huò xǐ lè huò yōu shāng, huò jīn rì huò míng rì, wǒ zhī zhǔ yǔ wǒ tóng xíng。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③耶稣与我同行，当风暴来袭，祂必保护引领到平安地。", py: "yē sū yǔ wǒ tóng xíng, dāng fēng bào lái xí, tā bì bǎo hù yǐn lǐng dào píng ān dì。" },
+          { cn: "祂是我的安慰者，是我的策士，领我一生直到天家安息。", py: "tā shì wǒ de ān wèi zhě, shì wǒ de cè shì, lǐng wǒ yī shēng zhí dào tiān jiā ān xī。" },
+          { type: "chorus", cn: "耶稣与我同行，祂与我交谈，祂与我同行。", py: "yē sū yǔ wǒ tóng xíng, tā yǔ wǒ jiāo tán, tā yǔ wǒ tóng xíng。" },
+          { type: "chorus", cn: "或喜乐或忧伤，或今日或明日，我知主与我同行。", py: "huò xǐ lè huò yōu shāng, huò jīn rì huò míng rì, wǒ zhī zhǔ yǔ wǒ tóng xíng。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④耶稣与我同行，在晨曦之时，在黄昏与黑夜与我同行。", py: "yē sū yǔ wǒ tóng xíng, zài chén xī zhī shí, zài huáng hūn yǔ hēi yè yǔ wǒ tóng xíng。" },
+          { cn: "不论我生或死，祂总不撇弃，耶稣与我同行，直到天庭。", py: "bù lùn wǒ shēng huò sǐ, tā zǒng bù piē qì, yē sū yǔ wǒ tóng xíng, zhí dào tiān tíng。" },
+          { type: "chorus", cn: "耶稣与我同行，祂与我交谈，祂与我同行。", py: "yē sū yǔ wǒ tóng xíng, tā yǔ wǒ jiāo tán, tā yǔ wǒ tóng xíng。" },
+          { type: "chorus", cn: "或喜乐或忧伤，或今日或明日，我知主与我同行。", py: "huò xǐ lè huò yōu shāng, huò jīn rì huò míng rì, wǒ zhī zhǔ yǔ wǒ tóng xíng。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 328,
+    title: "主呼召你",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①凡心灵哀恸的朋友，主呼召你前来。", py: "fán xīn líng āi tòng de péng yǒu, zhǔ hū zhào nǐ qián lái。" },
+          { cn: "只要你恳求主耶稣，恩门必为你开，", py: "zhǐ yào nǐ kěn qiú zhǔ yē sū, ēn mén bì wèi nǐ kāi," },
+          { cn: "主医治你受伤心灵，赐你平静心怀，", py: "zhǔ yī zhì nǐ shòu shāng xīn líng, cì nǐ píng jìng xīn huái," },
+          { cn: "你为何还在恩典外？快就近主慈怀。", py: "nǐ wèi hé hái zài ēn diǎn wài? kuài jiù jìn zhǔ cí huái。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②当倚靠赐福的救主，祂必给你慈爱。", py: "dāng yǐ kào cì fú de jiù zhǔ, tā bì gěi nǐ cí ài。" },
+          { cn: "只要你信靠活水泉，宝血赎你罪债，", py: "zhǐ yào nǐ xìn kào huó shuǐ quán, bǎo xuè shú nǐ zuì zhài," },
+          { cn: "祂慈声呼召你前来，别让祂空等待，", py: "tā cí shēng hū zhào nǐ qián lái, bié ràng tā kōng děng dài," },
+          { cn: "要卸下一切罪重担，耶稣为你担待。", py: "yào xiè xià yī qiè zuì zhòng dàn, yē sū wèi nǐ dān dài。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③祂摆设丰盛的筵席，热诚欢喜款待。", py: "tā bǎi shè fēng shèng de yán xí, rè chéng huān xǐ kuǎn dài。" },
+          { cn: "与恩主永居快乐地，同享天父慈爱，", py: "yǔ ēn zhǔ yǒng jū kuài lè dì, tóng xiǎng tiān fù cí ài," },
+          { cn: "要深信救主大慈爱，有恩典常同在，", py: "yào shēn xìn jiù zhǔ dà cí ài, yǒu ēn diǎn cháng tóng zài," },
+          { cn: "祂热切盼望等候你，拥你在祂慈怀。", py: "tā rè qiè pàn wàng děng hòu nǐ, yōng nǐ zài tā cí huái。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 327,
+    title: "在各各他",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①从前我贪慕虚荣奢华，不愿思想救主钉十架，", py: "cóng qián wǒ tān mù xū róng shē huá, bù yuàn sī xiǎng jiù zhǔ dìng shí jià," },
+          { cn: "未曾知道我主为我死在各各他。", py: "wèi céng zhī dào wǒ zhǔ wèi wǒ sǐ zài gè gè tā。" },
+          { type: "chorus", cn: "耶稣慈爱奇妙恩典大，沉重罪担在此得卸下，", py: "yē sū cí ài qí miào ēn diǎn dà, chén zhòng zuì dàn zài cǐ dé xiè xià," },
+          { type: "chorus", cn: "赦免众罪愆，我得自由在各各他。", py: "shè miǎn zhòng zuì qiān, wǒ dé zì yóu zài gè gè tā。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②主的真理照亮我内心，使我知罪、悔改不走差，", py: "zhǔ de zhēn lǐ zhào liàng wǒ nèi xīn, shǐ wǒ zhī zuì、 huǐ gǎi bù zǒu chā," },
+          { cn: "我今前来感念主大恩在各各他。", py: "wǒ jīn qián lái gǎn niàn zhǔ dà ēn zài gè gè tā。" },
+          { type: "chorus", cn: "耶稣慈爱奇妙恩典大，沉重罪担在此得卸下，", py: "yē sū cí ài qí miào ēn diǎn dà, chén zhòng zuì dàn zài cǐ dé xiè xià," },
+          { type: "chorus", cn: "赦免众罪愆，我得自由在各各他。", py: "shè miǎn zhòng zuì qiān, wǒ dé zì yóu zài gè gè tā。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我将一切所有献给祂，不归自己，全归神的家，", py: "wǒ jiāng yī qiè suǒ yǒu xiàn gěi tā, bù guī zì jǐ, quán guī shén de jiā," },
+          { cn: "我灵欢喜快乐高声唱在各各他。", py: "wǒ líng huān xǐ kuài lè gāo shēng chàng zài gè gè tā。" },
+          { type: "chorus", cn: "耶稣慈爱奇妙恩典大，沉重罪担在此得卸下，", py: "yē sū cí ài qí miào ēn diǎn dà, chén zhòng zuì dàn zài cǐ dé xiè xià," },
+          { type: "chorus", cn: "赦免众罪愆，我得自由在各各体。", py: "shè miǎn zhòng zuì qiān, wǒ dé zì yóu zài gè gè tā。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④神的慈爱救赎真浩大，耶稣舍命成全祂计划，", py: "shén de cí ài jiù shú zhēn hào dà, yē sū shě mìng chéng quán tā jì huà," },
+          { cn: "灭了冤仇，我与神和好在各各他。", py: "miè le yuān chóu, wǒ yǔ shén hé hǎo zài gè gè tā。" },
+          { type: "chorus", cn: "耶稣慈爱奇妙恩典大，沉重罪担在此得卸下，", py: "yē sū cí ài qí miào ēn diǎn dà, chén zhòng zuì dàn zài cǐ dé xiè xià," },
+          { type: "chorus", cn: "赦免众罪愆，我得自由在各各他。", py: "shè miǎn zhòng zuì qiān, wǒ dé zì yóu zài gè gè tā。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 326,
+    title: "这世界的光是耶稣",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①全世界都迷失在黑暗罪中,这世界的光是耶稣;", py: "quán shì jiè dōu mí shī zài hēi àn zuì zhōng, zhè shì jiè de guāng shì yē sū;" },
+          { cn: "主荣光常照耀,如太阳当空,这世界的光是耶稣。", py: "zhǔ róng guāng cháng zhào yào, rú tài yáng dāng kōng, zhè shì jiè de guāng shì yē sū。" },
+          { type: "chorus", cn: "耶稣真光,正照耀辉煌!主的慈光,照亮我身上。", py: "yē sū zhēn guāng, zhèng zhào yào huī huáng! zhǔ de cí guāng, zhào liàng wǒ shēn shàng。" },
+          { type: "chorus", cn: "前我瞎眼,今重见亮光。这世界的光是耶稣。", py: "qián wǒ xiā yǎn, jīn chóng jiàn liàng guāng。 zhè shì jiè de guāng shì yē sū。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②在耶稣里全然无黑暗影踪,这世界的光是耶稣;", py: "zài yē sū lǐ quán rán wú hēi àn yǐng zōng, zhè shì jiè de guāng shì yē sū;" },
+          { cn: "随主引导前行,在祂光明中,这世界的光是耶稣。", py: "suí zhǔ yǐn dǎo qián xíng, zài tā guāng míng zhōng, zhè shì jiè de guāng shì yē sū。" },
+          { type: "chorus", cn: "耶稣真光,正照耀辉煌!主的慈光,照亮我身上。", py: "yē sū zhēn guāng, zhèng zhào yào huī huáng! zhǔ de cí guāng, zhào liàng wǒ shēn shàng。" },
+          { type: "chorus", cn: "前我瞎眼,今重见亮光。这世界的光是耶稣。", py: "qián wǒ xiā yǎn, jīn chóng jiàn liàng guāng。 zhè shì jiè de guāng shì yē sū。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③被罪蒙蔽心眼而失明的人,这世界的光是耶稣;", py: "bèi zuì méng bì xīn yǎn ér shī míng de rén, zhè shì jiè de guāng shì yē sū;" },
+          { cn: "遵主命令洗净,必重见光明,这世界的光是耶稣。", py: "zūn zhǔ mìng lìng xǐ jìng, bì chóng jiàn guāng míng, zhè shì jiè de guāng shì yē sū。" },
+          { type: "chorus", cn: "耶稣真光,正照耀辉煌!主的慈光,照亮我身上。", py: "yē sū zhēn guāng, zhèng zhào yào huī huáng! zhǔ de cí guāng, zhào liàng wǒ shēn shàng。" },
+          { type: "chorus", cn: "前我瞎眼,今重见亮光。这世界的光是耶稣。", py: "qián wǒ xiā yǎn, jīn chóng jiàn liàng guāng。 zhè shì jiè de guāng shì yē sū。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④在天堂里极光明不需阳光,这世界的光是耶稣;", py: "zài tiān táng lǐ jí guāng míng bù xū yáng guāng, zhè shì jiè de guāng shì yē sū;" },
+          { cn: "在圣城里羔羊是万民之光,这世界的光是耶稣。", py: "zài shèng chéng lǐ gāo yáng shì wàn mín zhī guāng, zhè shì jiè de guāng shì yē sū。" },
+          { type: "chorus", cn: "耶稣真光,正照耀辉煌!主的慈光,照亮我身上。", py: "yē sū zhēn guāng, zhèng zhào yào huī huáng! zhǔ de cí guāng, zhào liàng wǒ shēn shàng。" },
+          { type: "chorus", cn: "前我瞎眼,今重见亮光。这世界的光是耶稣。", py: "qián wǒ xiā yǎn, jīn chóng jiàn liàng guāng。 zhè shì jiè de guāng shì yē sū。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 325,
+    title: "我们聚集生命河边",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①恩主座前生命河边，光明天使齐朝见，", py: "ēn zhǔ zuò qián shēng mìng hé biān, guāng míng tiān shǐ qí cháo jiàn," },
+          { cn: "生命活水明亮如晶，从羔羊宝座发源。", py: "shēng mìng huó shuǐ míng liàng rú jīng, cóng gāo yáng bǎo zuò fā yuán。" },
+          { type: "chorus", cn: "我们聚集生命河边，极其美丽、极其美丽河边，", py: "wǒ men jù jí shēng mìng hé biān, jí qí měi lì、 jí qí měi lì hé biān," },
+          { type: "chorus", cn: "得救圣徒欢聚在一起，欢聚在恩主座前。", py: "dé jiù shèng tú huān jù zài yī qǐ, huān jù zài ēn zhǔ zuò qián。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②远处望见生命河边，银色水波荡河间，", py: "yuǎn chù wàng jiàn shēng mìng hé biān, yín sè shuǐ bō dàng hé jiān," },
+          { cn: "在那快乐光辉日子，颂扬敬拜宝座前。", py: "zài nà kuài lè guāng huī rì zi, sòng yáng jìng bài bǎo zuò qián。" },
+          { type: "chorus", cn: "我们聚集生命河边，极其美丽、极其美丽河边，", py: "wǒ men jù jí shēng mìng hé biān, jí qí měi lì、 jí qí měi lì hé biān," },
+          { type: "chorus", cn: "得救圣徒欢聚在一起，欢聚在恩主座前。", py: "dé jiù shèng tú huān jù zài yī qǐ, huān jù zài ēn zhǔ zuò qián。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③未到福乐生命河边，应先卸下罪重担，", py: "wèi dào fú lè shēng mìng hé biān, yīng xiān xiè xià zuì zhòng dàn," },
+          { cn: "灵魂得救安歇主怀，蒙赐义袍和冠冕。", py: "líng hún dé jiù ān xiē zhǔ huái, méng cì yì páo hé guān miǎn。" },
+          { type: "chorus", cn: "我们聚集生命河边，极其美丽、极其美丽河边，", py: "wǒ men jù jí shēng mìng hé biān, jí qí měi lì、 jí qí měi lì hé biān," },
+          { type: "chorus", cn: "得救圣徒欢聚在一起，欢聚在恩主座前。", py: "dé jiù shèng tú huān jù zài yī qǐ, huān jù zài ēn zhǔ zuò qián。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④转瞬到那生命河边，居住福地人皆欢，", py: "zhuǎn shùn dào nà shēng mìng hé biān, jū zhù fú dì rén jiē huān," },
+          { cn: "平安乐音颂歌嘹亮，救主恩典难述完。", py: "píng ān lè yīn sòng gē liáo liàng, jiù zhǔ ēn diǎn nán shù wán。" },
+          { type: "chorus", cn: "我们聚集生命河边，极其美丽、极其美丽河边，", py: "wǒ men jù jí shēng mìng hé biān, jí qí měi lì、 jí qí měi lì hé biān," },
+          { type: "chorus", cn: "得救圣徒欢聚在一起，欢聚在恩主座前。", py: "dé jiù shèng tú huān jù zài yī qǐ, huān jù zài ēn zhǔ zuò qián。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 324,
+    title: "我深愿更像耶稣",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我深愿更像耶稣，求主耶稣来同住；", py: "wǒ shēn yuàn gèng xiàng yē sū, qiú zhǔ yē sū lái tóng zhù;" },
+          { cn: "平安仁爱满我心，驯良如鸽效法主。", py: "píng ān rén ài mǎn wǒ xīn, xùn liáng rú gē xiào fǎ zhǔ。" },
+          { cn: "我在尘世行天路，一心仰望我救主；", py: "wǒ zài chén shì xíng tiān lù, yī xīn yǎng wàng wǒ jiù zhǔ;" },
+          { cn: "我愿谦卑更柔和，求主耶稣来同住。", py: "wǒ yuàn qiān bēi gèng róu hé, qiú zhǔ yē sū lái tóng zhù。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②天父聆听乌鸦啼，天父双眼常关注；", py: "tiān fù líng tīng wū yā tí, tiān fù shuāng yǎn cháng guān zhù;" },
+          { cn: "天上麻雀祂眷顾，祂必垂听我求呼。", py: "tiān shàng má què tā juàn gù, tā bì chuí tīng wǒ qiú hū。" },
+          { cn: "祂教我敬虔度日，我的过犯得去除；", py: "tā jiào wǒ jìng qián dù rì, wǒ de guò fàn dé qù chú;" },
+          { cn: "我愿清心更圣洁，求主耶稣来同住。", py: "wǒ yuàn qīng xīn gèng shèng jié, qiú zhǔ yē sū lái tóng zhù。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我祈求更像耶稣，日益彰显荣美主；", py: "wǒ qí qiú gèng xiàng yē sū, rì yì zhāng xiǎn róng měi zhǔ;" },
+          { cn: "我愿亲近我恩主，宁静溪旁安歇住。", py: "wǒ yuàn qīn jìn wǒ ēn zhǔ, níng jìng xī páng ān xiē zhù。" },
+          { cn: "靠祂恩典得重生，主爱使我心顺服；", py: "kào tā ēn diǎn dé chóng shēng, zhǔ ài shě wǒ xīn shùn fú;" },
+          { cn: "我愿信心更长进，求主耶稣来同住。", py: "wǒ yuàn xìn xīn gèng zhǎng jìn, qiú zhǔ yē sū lái tóng zhù。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 323,
+    title: "约旦河畔",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①伫立滚滚约旦河畔，遥望我心所盼，", py: "zhù lì gǔn gǔn yuē dàn hé pàn, yáo wàng wǒ xīn suǒ pàn," },
+          { cn: "那是迦南荣美福地，我心所系产业。", py: "nà shì jiā nán róng měi fú dì, wǒ xīn suǒ xì chǎn yè。" },
+          { type: "chorus", cn: "我必进那应许美地，我必进那应许美地；", py: "wǒ bì jìn nà yīng xǔ měi dì, wǒ bì jìn nà yīng xǔ měi dì;" },
+          { type: "chorus", cn: "谁愿与我同奔天路？一同进那应许美地！", py: "shéi yuàn yǔ wǒ tóng bēn tiān lù? yī tóng jìn nà yīng xǔ měi dì!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②在那宽广辽阔平原，阳光辉煌、灿烂，", py: "zài nà kuān guǎng liáo kuò píng yuán, yáng guāng huī huáng、 càn làn," },
+          { cn: "荣耀之主永远掌权，驱散黑夜幽暗。", py: "róng yào zhī zhǔ yǒng yuǎn zhǎng quán, qū sàn hēi yè yōu àn。" },
+          { type: "chorus", cn: "我必进那应许美地，我必进那应许美地；", py: "wǒ bì jìn nà yīng xǔ měi dì, wǒ bì jìn nà yīng xǔ měi dì;" },
+          { type: "chorus", cn: "谁愿与我同奔天路？一同进那应许美地！", py: "shéi yuàn yǔ wǒ tóng bēn tiān lù? yī tóng jìn nà yīng xǔ měi dì!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③在那欢乐安稳彼岸，再无刺骨风寒，", py: "zài nà huān lè ān wěn bǐ àn, zài wú cì gǔ fēng hán," },
+          { cn: "病痛、困苦、死亡、忧伤，永不扰我心田。", py: "bìng tòng、 kùn kǔ、 sǐ wáng、 yōu shāng, yǒng bù rǎo wǒ xīn tián。" },
+          { type: "chorus", cn: "我必进那应许美地，我必进那应许美地；", py: "wǒ bì jìn nà yīng xǔ měi dì, wǒ bì jìn nà yīng xǔ měi dì;" },
+          { type: "chorus", cn: "谁愿与我同奔天路？一同进那应许美地！", py: "shéi yuàn yǔ wǒ tóng bēn tiān lù? yī tóng jìn nà yīng xǔ měi dì!" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④何时得进欢乐天堂，享受永远平安？", py: "hé shí dé jìn huān lè tiān táng, xiǎng shòu yǒng yuǎn píng ān?" },
+          { cn: "何时亲眼看见天父，享受永远平安？", py: "hé shí qīn yǎn kàn jiàn tiān fù, xiǎng shòu yǒng yuǎn píng ān?" },
+          { type: "chorus", cn: "我必进那应许美地，我必进那应许美地；", py: "wǒ bì jìn nà yīng xǔ měi dì, wǒ bì jìn nà yīng xǔ měi dì;" },
+          { type: "chorus", cn: "谁愿与我同奔天路？一同进那应许美地！", py: "shéi yuàn yǔ wǒ tóng bēn tiān lù? yī tóng jìn nà yīng xǔ měi dì!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 322,
+    title: "我何等爱耶稣",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①耶稣圣名我最敬爱，配得称颂、敬拜；", py: "yē sū shèng míng wǒ zuì jìng ài, pèi dé chēng sòng、 jìng bài;" },
+          { cn: "此名似乐，美妙动听，普世无所不在。", py: "cǐ míng sì lè, měi miào dòng tīng, pǔ shì wú suǒ bù zài。" },
+          { type: "chorus", cn: "[副歌] 我何等爱耶稣，我何等爱耶稣，", py: "wǒ hé děng ài yē sū, wǒ hé děng ài yē sū," },
+          { type: "chorus", cn: "我何等爱耶稣，因耶稣先爱我。", py: "wǒ hé děng ài yē sū, yīn yē sū xiān ài wǒ。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②此名使我能知主爱，舍命偿我罪债；", py: "cǐ míng shǐ wǒ néng zhī zhǔ ài, shě mìng cháng wǒ zuì zhài;" },
+          { cn: "救主流血为我受害，罪人惟此倚赖。", py: "jiù zhǔ liú xuè wèi wǒ shòu hài, zuì rén wéi cǐ yǐ lài。" },
+          { type: "chorus", cn: "[副歌] 我何等爱耶稣，我何等爱耶稣，", py: "wǒ hé děng ài yē sū, wǒ hé děng ài yē sū," },
+          { type: "chorus", cn: "我何等爱耶稣，因耶稣先爱我。", py: "wǒ hé děng ài yē sū, yīn yē sū xiān ài wǒ。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③此名使我认识父神，每日赐福丰盈；", py: "cǐ míng shǐ wǒ rèn shí fù shén, měi rì cì fú fēng yíng;" },
+          { cn: "我虽行过死荫幽谷，有主恩光引领。", py: "wǒ suī xíng guò sǐ yīn yōu gǔ, yǒu zhǔ ēn guāng yǐn lǐng。" },
+          { type: "chorus", cn: "[副歌] 我何等爱耶稣，我何等爱耶稣，", py: "wǒ hé děng ài yē sū, wǒ hé děng ài yē sū," },
+          { type: "chorus", cn: "我何等爱耶稣，因耶稣先爱我。", py: "wǒ hé děng ài yē sū, yīn yē sū xiān ài wǒ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④此名示我主爱深长，祂知我心痛苦；", py: "cǐ míng shì wǒ zhǔ ài shēn cháng, tā zhī wǒ xīn tòng kǔ;" },
+          { cn: "担我忧愁，分我悲伤，世间无人像主！", py: "dān wǒ yōu chóu, fèn wǒ bēi shāng, shì jiān wú rén xiàng zhǔ!" },
+          { type: "chorus", cn: "[副歌] 我何等爱耶稣，我何等爱耶稣，", py: "wǒ hé děng ài yē sū, wǒ hé děng ài yē sū," },
+          { type: "chorus", cn: "我何等爱耶稣，因耶稣先爱我。", py: "wǒ hé děng ài yē sū, yīn yē sū xiān ài wǒ。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 321,
+    title: "信靠顺服",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①在主福音光中，我与救主同行，", py: "zài zhǔ fú yīn guāng zhōng, wǒ yǔ jiù zhǔ tóng xíng," },
+          { cn: "何等光辉，祂照亮前程！只要听主命令，", py: "hé děng guāng huī, tā zhào liàng qián chéng! zhǐ yào tīng zhǔ mìng lìng," },
+          { cn: "主必与我同行，信靠顺服者，主必同行。", py: "zhǔ bì yǔ wǒ tóng xíng, xìn kào shùn fú zhě, zhǔ bì tóng xíng。" },
+          { type: "chorus", cn: "[副歌] 信靠顺服，此外别无他路，", py: "xìn kào shùn fú, cǐ wài bié wú tā lù," },
+          { type: "chorus", cn: "要在主里得喜乐，惟有信靠顺服。", py: "yào zài zhǔ lǐ dé xǐ lè, wéi yǒu xìn kào shùn fú。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②为主背负重担，为主遭受患难，", py: "wéi zhǔ bēi fù zhòng dàn, wéi zhǔ zāo shòu huàn nàn," },
+          { cn: "一切辛劳主纪念偿还；倘遇损失、悲苦，", py: "yī qiè xīn láo zhǔ jì niàn cháng huán; tǎng yù sǔn shī、 bēi kǔ," },
+          { cn: "或经十架苦难，信靠顺服者，主赐平安。", py: "huò jīng shí jià kǔ nàn, xìn kào shùn fú zhě, zhǔ cì píng ān。" },
+          { type: "chorus", cn: "[副歌] 信靠顺服，此外别无他路，", py: "xìn kào shùn fú, cǐ wài bié wú tā lù," },
+          { type: "chorus", cn: "要在主里得喜乐，惟有信靠顺服。", py: "yào zài zhǔ lǐ dé xǐ lè, wéi yǒu xìn kào shùn fú。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③除非我将一切奉献救主无伪，", py: "chú fēi wǒ jiāng yī qiè fèng xiàn jiù zhǔ wú wěi," },
+          { cn: "否则难知主慈爱丰沛；因主赐下恩惠，", py: "fǒu zé nán zhī zhǔ cí ài fēng pèi; yīn zhǔ cì xià ēn huì," },
+          { cn: "赐下喜乐、荣美，信靠顺服者，才获全备。", py: "cì xià xǐ lè、 róng měi, xìn kào shùn fú zhě, cái huò quán bèi。" },
+          { type: "chorus", cn: "[副歌] 信靠顺服，此外别无他路，", py: "xìn kào shùn fú, cǐ wài bié wú tā lù," },
+          { type: "chorus", cn: "要在主里得喜乐，惟有信靠顺服。", py: "yào zài zhǔ lǐ gè xǐ lè, wéi yǒu xìn kào shùn fú。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④我愿在主脚前，享主恩典甘甜，", py: "wǒ yuàn zài zhǔ jiǎo qián, xiǎng zhǔ ēn diǎn gān tián," },
+          { cn: "行走天路跟随主身边；听从祂的圣言，", py: "xíng zǒu tiān lù gēn suí zhǔ shēn biān; tīng cóng tā de shèng yán," },
+          { cn: "顺服祂的差遣，信靠顺服者，总无惊险。", py: "shùn fú tā de chāi qiǎn, xìn kào shùn fú zhě, zǒng wú jīng xiǎn。" },
+          { type: "chorus", cn: "[副歌] 信靠顺服，此外别无他路，", py: "xìn kào shùn fú, cǐ wài bié wú tā lù," },
+          { type: "chorus", cn: "要在主里得喜乐，惟有信靠顺服。", py: "yào zài zhǔ lǐ dé xǐ lè, wéi yǒu xìn kào shùn fú。" }
+        ]
+      }
+    ]
+  },
   {
     id: 313,
     title: "荣耀归于天父",
