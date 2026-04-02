@@ -1,4 +1,4 @@
-[
+const hymns_cn = [
   {
     id: 233,
     title: "联属耶稣",
