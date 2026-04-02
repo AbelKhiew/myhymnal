@@ -7,63 +7,99 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; }
-        .card { background-color: #1e293b; border: 1px solid #334155; transition: all 0.2s; cursor: pointer; }
-        .card:active { background-color: #334155; transform: scale(0.98); }
-        .hymn-id { color: #818cf8; font-weight: bold; margin-right: 12px; }
+        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        /* Glassmorphism List Cards */
+        .card { 
+            background-color: #1e293b; 
+            border: 1px solid #334155; 
+            transition: transform 0.1s, background-color 0.2s;
+            cursor: pointer;
+        }
+        .card:active { background-color: #334155; transform: scale(0.97); }
+        .hymn-id { color: #818cf8; font-weight: 800; margin-right: 12px; min-width: 35px; }
 
-        /* Verse View */
+        /* Modern Verse Container */
         .verse-container {
-            min-height: 50vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 20px;
-            padding: 24px;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
+            border-radius: 28px;
+            padding: 40px 20px;
             margin: 20px 0;
             border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .cn-text { display: block; font-size: 1.5rem; color: #ffffff; font-weight: 500; line-height: 1.4; }
-        .py-text { display: block; font-size: 1rem; color: #94a3b8; margin-top: 4px; font-style: italic; }
+        
+        .cn-text { display: block; font-size: 1.75rem; color: #ffffff; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+        .py-text { display: block; font-size: 1.1rem; color: #94a3b8; font-style: italic; margin-bottom: 25px; }
 
-        .nav-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
-        .page-btn { background-color: #312e81; color: #e0e7ff; padding: 12px 24px; border-radius: 12px; font-weight: bold; }
+        .page-btn { 
+            flex: 1; 
+            background-color: #312e81; 
+            color: #e0e7ff; 
+            padding: 18px; 
+            border-radius: 16px; 
+            font-weight: bold; 
+            border: 1px solid #4338ca; 
+        }
         .page-btn:disabled { opacity: 0.2; }
         
-        /* Language Toggle Styling */
-        .lang-btn { padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
-        .lang-active { background-color: #818cf8; color: white; }
-        .lang-inactive { background-color: #334155; color: #94a3b8; }
+        /* Language Toggle */
+        .lang-btn { padding: 8px 20px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; transition: 0.3s; }
+        .lang-active { background-color: #4f46e5; color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); }
+        .lang-inactive { color: #64748b; }
+
+        .sticky-header { backdrop-filter: blur(10px); background-color: rgba(15, 23, 42, 0.9); }
     </style>
 </head>
 <body>
 
-    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
+    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col relative">
         
-        <header class="bg-indigo-950 text-white p-5 sticky top-0 z-20 shadow-xl border-b border-indigo-900">
-            <div class="flex justify-between items-center mb-4">
-                <h1 id="appTitle" class="text-xl font-bold text-indigo-200">赞美诗</h1>
-                <div class="flex gap-2">
-                    <button id="btnCN" onclick="switchLanguage('CN')" class="lang-btn lang-active">中文</button>
-                    <button id="btnEN" onclick="switchLanguage('EN')" class="lang-btn lang-inactive">EN</button>
+        <header class="sticky-header p-5 sticky top-0 z-20 border-b border-slate-800">
+            <div class="flex justify-between items-center mb-5">
+                <h1 id="appTitle" class="text-2xl font-black tracking-tight text-indigo-300">赞美诗</h1>
+                <div class="flex bg-slate-900 p-1 rounded-full border border-slate-700">
+                    <button id="btnCN" onclick="switchLanguage('CN')" class="lang-btn">中文</button>
+                    <button id="btnEN" onclick="switchLanguage('EN')" class="lang-btn">EN</button>
                 </div>
             </div>
-            <input type="text" id="searchBar" oninput="filterHymns()" placeholder="Search..." 
-                class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500">
+            <div class="relative">
+                <input type="text" id="searchBar" oninput="filterHymns()" placeholder="Search..." 
+                    class="w-full p-4 pl-12 rounded-2xl bg-slate-800 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                <svg class="absolute left-4 top-4 text-slate-500" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
         </header>
 
-        <div id="listView" class="p-4 space-y-3"></div>
+        <div id="listView" class="p-4 space-y-3 mb-10">
+            <div class="text-center py-20 text-slate-500 animate-pulse">Initializing...</div>
+        </div>
 
         <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
-            <button onclick="goBack()" class="text-slate-400 mb-5 flex items-center gap-2">← Back</button>
-            <h2 id="hymnTitle" class="text-center text-indigo-400 font-bold text-xl mb-4"></h2>
-            <div class="verse-container"><div id="hymnLyrics" class="lyrics-box"></div></div>
-            <div class="nav-controls">
-                <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">Previous</button>
-                <span id="pageInfo" class="text-slate-500 text-sm"></span>
-                <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">Next</button>
+            <div class="max-w-md mx-auto">
+                <button onclick="goBack()" class="text-indigo-400 mb-6 flex items-center gap-2 font-bold py-2">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
+                    Back to List
+                </button>
+                
+                <h2 id="hymnTitle" class="text-center text-white font-bold text-2xl px-4"></h2>
+                
+                <div class="verse-container">
+                    <div id="hymnLyrics" class="lyrics-box"></div>
+                </div>
+
+                <div class="flex flex-col items-center gap-4">
+                    <div id="pageInfo" class="bg-slate-800 px-4 py-1 rounded-full text-xs font-bold text-indigo-300 uppercase tracking-widest border border-slate-700"></div>
+                    <div class="nav-controls w-full flex gap-3">
+                        <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">PREVIOUS</button>
+                        <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">NEXT</button>
+                    </div>
+                </div>
+                <div class="h-20"></div>
             </div>
         </div>
     </div>
@@ -74,96 +110,104 @@
         let currentVerseIndex = 0;
         let currentLang = 'CN';
 
-        // 1. Initial Load
-        window.onload = () => loadData('Hymnsc.js');
+        // Startup Logic
+        window.onload = () => {
+            const savedLang = localStorage.getItem('pref_lang') || 'CN';
+            applyUI(savedLang);
+            fetchData(savedLang === 'CN' ? 'Hymnsc.js' : 'Hymne.js');
+        };
 
-        // 2. Language Switcher Logic
         async function switchLanguage(lang) {
             if (currentLang === lang) return;
-            currentLang = lang;
+            localStorage.setItem('pref_lang', lang);
+            applyUI(lang);
+            await fetchData(lang === 'CN' ? 'Hymnsc.js' : 'Hymne.js');
+        }
 
-            // UI Feedback
+        function applyUI(lang) {
+            currentLang = lang;
             document.getElementById('btnCN').className = `lang-btn ${lang === 'CN' ? 'lang-active' : 'lang-inactive'}`;
             document.getElementById('btnEN').className = `lang-btn ${lang === 'EN' ? 'lang-active' : 'lang-inactive'}`;
             document.getElementById('appTitle').innerText = lang === 'CN' ? '赞美诗' : 'Hymnal';
-            document.getElementById('searchBar').placeholder = lang === 'CN' ? '搜索编号或题目...' : 'Search ID or Title...';
-
-            const fileName = lang === 'CN' ? 'Hymnsc.js' : 'Hymne.js';
-            await loadData(fileName);
+            document.getElementById('searchBar').placeholder = lang === 'CN' ? '搜索编号或歌名...' : 'Search Number or Title...';
         }
 
-        // 3. Fetch Data from File
-        async function loadData(fileName) {
+        async function fetchData(file) {
+            const listDiv = document.getElementById('listView');
             try {
-                const response = await fetch(fileName);
-                const text = await response.text();
+                const response = await fetch(file);
+                if (!response.ok) throw new Error("File Load Failed");
                 
-                // If your file has "const hymns = ", we strip it. 
-                // If it's just raw data [ ... ], JSON.parse works directly.
-                const cleanData = text.replace(/^(const|let|var)\s+\w+\s*=\s*/, '').replace(/;$/, '');
-                allHymns = JSON.parse(cleanData);
+                let rawText = await response.text();
+                
+                // Cleanup: Strips "const hymns = " if present, handles pure JSON too
+                const cleanJSON = rawText.replace(/^(const|let|var)\s+\w+\s*=\s*/, '').replace(/;$/, '').trim();
+                allHymns = JSON.parse(cleanJSON);
 
-                // Sort numerically
+                // Sequential Sort (Numeric)
                 allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
                 renderList(allHymns);
-            } catch (err) {
-                console.error("Error loading file:", err);
-                document.getElementById('listView').innerHTML = `<p class="text-red-400 p-4">Error loading ${fileName}. Check file format.</p>`;
+            } catch (e) {
+                listDiv.innerHTML = `<div class="text-center text-red-400 p-10">Error loading ${file}.<br><small>Use VS Code "Live Server" to view.</small></div>`;
             }
         }
 
         function renderList(data) {
             const list = document.getElementById('listView');
-            list.innerHTML = '';
-            data.forEach(h => {
-                const div = document.createElement('div');
-                div.className = "card p-5 rounded-2xl flex items-center";
-                div.innerHTML = `<span class="hymn-id">${h.id}</span> <span class="flex-1">${h.title}</span>`;
-                div.onclick = () => showHymn(h);
-                list.appendChild(div);
-            });
+            list.innerHTML = data.map(h => `
+                <div class="card p-5 rounded-2xl flex items-center" onclick="showHymn(${h.id})">
+                    <span class="hymn-id">${h.id}</span>
+                    <span class="flex-1 font-semibold">${h.title}</span>
+                </div>
+            `).join('');
         }
 
         function filterHymns() {
-            const query = document.getElementById('searchBar').value.toLowerCase().trim();
-            const filtered = allHymns.filter(h => 
-                h.title.toLowerCase().includes(query) || h.id.toString().includes(query)
-            );
+            const q = document.getElementById('searchBar').value.toLowerCase().trim();
+            const filtered = allHymns.filter(h => h.title.toLowerCase().includes(q) || h.id.toString().includes(q));
             renderList(filtered);
         }
 
-        function showHymn(h) {
-            document.getElementById('hymnTitle').innerText = h.title;
-            currentHymnSections = h.sections;
+        function showHymn(id) {
+            const hymn = allHymns.find(h => h.id == id);
+            if(!hymn) return;
+            
+            document.getElementById('hymnTitle').innerText = hymn.title;
+            currentHymnSections = hymn.sections;
             currentVerseIndex = 0;
-            updateVerseDisplay();
+            updateDisplay();
+            
             document.getElementById('detailView').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
-        function updateVerseDisplay() {
-            const lyricsBox = document.getElementById('hymnLyrics');
-            const section = currentHymnSections[currentVerseIndex];
+        function updateDisplay() {
+            const box = document.getElementById('hymnLyrics');
+            const sec = currentHymnSections[currentVerseIndex];
             
-            lyricsBox.innerHTML = section.content.map(line => `
+            box.innerHTML = sec.content.map(l => `
                 <div class="lyric-line">
-                    <span class="cn-text">${line.cn}</span>
-                    ${line.py ? `<span class="py-text">${line.py}</span>` : ''}
+                    <span class="cn-text">${l.cn}</span>
+                    ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
                 </div>
             `).join('');
 
-            document.getElementById('pageInfo').innerText = `Verse ${currentVerseIndex + 1} / ${currentHymnSections.length}`;
+            const label = (sec.type && sec.type.toLowerCase() === 'chorus') ? 'Chorus' : `Verse ${currentVerseIndex + 1}`;
+            document.getElementById('pageInfo').innerText = `${label} of ${currentHymnSections.length}`;
+            
             document.getElementById('prevBtn').disabled = (currentVerseIndex === 0);
             document.getElementById('nextBtn').disabled = (currentVerseIndex === currentHymnSections.length - 1);
         }
 
-        function changeVerse(dir) {
-            currentVerseIndex += dir;
-            updateVerseDisplay();
-            document.getElementById('detailView').scrollTo(0, 0);
+        function changeVerse(n) {
+            currentVerseIndex += n;
+            updateDisplay();
+            document.getElementById('detailView').scrollTo(0,0);
         }
 
         function goBack() {
             document.getElementById('detailView').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
