@@ -82,7 +82,7 @@ const hymns_cn = [
     ]
   },
   {
-    id: "124A",
+    id: "124",
     title: "实行爱心",
     sections: [
       {
