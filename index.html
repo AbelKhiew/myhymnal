@@ -5,87 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hymnal App</title>
     
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Hymnal">
-    <meta name="theme-color" content="#0f172a">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Permanent Dark Theme */
-        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; overflow-x: hidden; }
-        #app { background-color: #0f172a; }
-        
-        /* List Cards */
-        .card { 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            color: #ffffff; 
-            transition: all 0.2s;
-            cursor: pointer;
-        }
+        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; }
+        .card { background-color: #1e293b; border: 1px solid #334155; transition: all 0.2s; cursor: pointer; }
         .card:active { background-color: #334155; transform: scale(0.98); }
-        .hymn-id { color: #818cf8; font-weight: bold; margin-right: 12px; min-width: 35px; display: inline-block; }
+        .hymn-id { color: #818cf8; font-weight: bold; margin-right: 12px; }
 
-        /* Paginated Verse View */
+        /* Verse View */
         .verse-container {
-            min-height: 55vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: rgba(30, 41, 59, 0.5);
-            border-radius: 24px;
-            padding: 30px 20px;
+            border-radius: 20px;
+            padding: 24px;
             margin: 20px 0;
             border: 1px solid #334155;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
         }
-        .lyrics-box { width: 100%; }
-        .lyric-line { margin-bottom: 24px; }
-        
-        .cn-text { 
-            display: block;
-            font-size: 1.6rem;
-            color: #ffffff;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        .py-text { 
-            display: block;
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-top: 6px;
-            font-style: italic;
-        }
+        .cn-text { display: block; font-size: 1.5rem; color: #ffffff; font-weight: 500; line-height: 1.4; }
+        .py-text { display: block; font-size: 1rem; color: #94a3b8; margin-top: 4px; font-style: italic; }
 
-        .nav-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            gap: 15px;
-        }
-
-        .page-btn {
-            flex: 1;
-            background-color: #312e81;
-            color: #e0e7ff;
-            padding: 16px;
-            border-radius: 14px;
-            font-weight: bold;
-            border: 1px solid #4338ca;
-            transition: opacity 0.2s;
-        }
+        .nav-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .page-btn { background-color: #312e81; color: #e0e7ff; padding: 12px 24px; border-radius: 12px; font-weight: bold; }
+        .page-btn:disabled { opacity: 0.2; }
         
-        .page-btn:disabled { opacity: 0.15; cursor: not-allowed; }
-        .back-btn { color: #94a3b8; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; }
-        
-        /* Clean scrollbars */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-
-        * { -webkit-tap-highlight-color: transparent; }
+        /* Language Toggle Styling */
+        .lang-btn { padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
+        .lang-active { background-color: #818cf8; color: white; }
+        .lang-inactive { background-color: #334155; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -93,73 +43,82 @@
     <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col shadow-2xl">
         
         <header class="bg-indigo-950 text-white p-5 sticky top-0 z-20 shadow-xl border-b border-indigo-900">
-            <h1 class="text-xl font-bold mb-4 text-indigo-200">赞美诗 Hymnal</h1>
-            <input type="text" id="searchBar" oninput="filterHymns()" placeholder="Search ID or Title..." 
-                class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-500">
+            <div class="flex justify-between items-center mb-4">
+                <h1 id="appTitle" class="text-xl font-bold text-indigo-200">赞美诗</h1>
+                <div class="flex gap-2">
+                    <button id="btnCN" onclick="switchLanguage('CN')" class="lang-btn lang-active">中文</button>
+                    <button id="btnEN" onclick="switchLanguage('EN')" class="lang-btn lang-inactive">EN</button>
+                </div>
+            </div>
+            <input type="text" id="searchBar" oninput="filterHymns()" placeholder="Search..." 
+                class="w-full p-4 rounded-xl bg-slate-900 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500">
         </header>
 
-        <div id="listView" class="p-4 space-y-3">
-            <div class="text-center py-10 text-slate-500">Loading hymns...</div>
-        </div>
+        <div id="listView" class="p-4 space-y-3"></div>
 
         <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
-            <button onclick="goBack()" class="back-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                Back to List
-            </button>
-            
-            <h2 id="hymnTitle" class="text-center text-indigo-400 font-bold text-2xl mb-2"></h2>
-            <div id="hymnIdDisplay" class="text-center text-slate-500 text-sm mb-4"></div>
-            
-            <div class="verse-container">
-                <div id="hymnLyrics" class="lyrics-box"></div>
-            </div>
-
+            <button onclick="goBack()" class="text-slate-400 mb-5 flex items-center gap-2">← Back</button>
+            <h2 id="hymnTitle" class="text-center text-indigo-400 font-bold text-xl mb-4"></h2>
+            <div class="verse-container"><div id="hymnLyrics" class="lyrics-box"></div></div>
             <div class="nav-controls">
                 <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">Previous</button>
-                <span id="pageInfo" class="text-slate-400 font-medium whitespace-nowrap">Verse 1 / 1</span>
+                <span id="pageInfo" class="text-slate-500 text-sm"></span>
                 <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">Next</button>
             </div>
-            
-            <div class="h-20"></div>
         </div>
     </div>
 
-    <script src="Hymnsc.js"></script>
-
     <script>
+        let allHymns = [];
         let currentHymnSections = [];
         let currentVerseIndex = 0;
+        let currentLang = 'CN';
 
-        // Initialize App
-        window.onload = () => {
-            if (typeof hymns !== 'undefined' && Array.isArray(hymns)) {
-                // FORCE NUMERIC SORT: Handles IDs as numbers even if they are strings
-                hymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
-                renderList(hymns);
-            } else {
-                document.getElementById('listView').innerHTML = 
-                    `<div class="text-red-400 p-10 text-center">Data file "Hymnsc.js" not found or empty.</div>`;
+        // 1. Initial Load
+        window.onload = () => loadData('Hymnsc.js');
+
+        // 2. Language Switcher Logic
+        async function switchLanguage(lang) {
+            if (currentLang === lang) return;
+            currentLang = lang;
+
+            // UI Feedback
+            document.getElementById('btnCN').className = `lang-btn ${lang === 'CN' ? 'lang-active' : 'lang-inactive'}`;
+            document.getElementById('btnEN').className = `lang-btn ${lang === 'EN' ? 'lang-active' : 'lang-inactive'}`;
+            document.getElementById('appTitle').innerText = lang === 'CN' ? '赞美诗' : 'Hymnal';
+            document.getElementById('searchBar').placeholder = lang === 'CN' ? '搜索编号或题目...' : 'Search ID or Title...';
+
+            const fileName = lang === 'CN' ? 'Hymnsc.js' : 'Hymne.js';
+            await loadData(fileName);
+        }
+
+        // 3. Fetch Data from File
+        async function loadData(fileName) {
+            try {
+                const response = await fetch(fileName);
+                const text = await response.text();
+                
+                // If your file has "const hymns = ", we strip it. 
+                // If it's just raw data [ ... ], JSON.parse works directly.
+                const cleanData = text.replace(/^(const|let|var)\s+\w+\s*=\s*/, '').replace(/;$/, '');
+                allHymns = JSON.parse(cleanData);
+
+                // Sort numerically
+                allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+                renderList(allHymns);
+            } catch (err) {
+                console.error("Error loading file:", err);
+                document.getElementById('listView').innerHTML = `<p class="text-red-400 p-4">Error loading ${fileName}. Check file format.</p>`;
             }
-        };
+        }
 
         function renderList(data) {
             const list = document.getElementById('listView');
             list.innerHTML = '';
-            
-            if (data.length === 0) {
-                list.innerHTML = `<div class="text-center text-slate-500 py-10">No matches found.</div>`;
-                return;
-            }
-
             data.forEach(h => {
                 const div = document.createElement('div');
                 div.className = "card p-5 rounded-2xl flex items-center";
-                div.innerHTML = `
-                    <span class="hymn-id">${h.id}</span> 
-                    <span class="flex-1 font-medium">${h.title}</span>
-                    <svg class="text-slate-600" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>
-                `;
+                div.innerHTML = `<span class="hymn-id">${h.id}</span> <span class="flex-1">${h.title}</span>`;
                 div.onclick = () => showHymn(h);
                 list.appendChild(div);
             });
@@ -167,54 +126,32 @@
 
         function filterHymns() {
             const query = document.getElementById('searchBar').value.toLowerCase().trim();
-            
-            if (query === "") { 
-                renderList(hymns); 
-                return; 
-            }
-
-            let filtered = hymns.filter(h => {
-                const titleMatch = h.title.toLowerCase().includes(query);
-                const idMatch = h.id.toString() === query || h.id.toString().startsWith(query);
-                return titleMatch || idMatch;
-            });
-
-            // Keep filtered results sequential
-            filtered.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+            const filtered = allHymns.filter(h => 
+                h.title.toLowerCase().includes(query) || h.id.toString().includes(query)
+            );
             renderList(filtered);
         }
 
         function showHymn(h) {
             document.getElementById('hymnTitle').innerText = h.title;
-            document.getElementById('hymnIdDisplay').innerText = `Hymn No. ${h.id}`;
             currentHymnSections = h.sections;
             currentVerseIndex = 0;
             updateVerseDisplay();
             document.getElementById('detailView').classList.remove('hidden');
-            document.getElementById('app').classList.add('overflow-hidden');
-            window.scrollTo(0, 0);
         }
 
         function updateVerseDisplay() {
             const lyricsBox = document.getElementById('hymnLyrics');
             const section = currentHymnSections[currentVerseIndex];
             
-            let html = "";
-            section.content.forEach(line => {
-                html += `
-                    <div class="lyric-line">
-                        <span class="cn-text">${line.cn}</span>
-                        <span class="py-text">${line.py}</span>
-                    </div>
-                `;
-            });
+            lyricsBox.innerHTML = section.content.map(line => `
+                <div class="lyric-line">
+                    <span class="cn-text">${line.cn}</span>
+                    ${line.py ? `<span class="py-text">${line.py}</span>` : ''}
+                </div>
+            `).join('');
 
-            lyricsBox.innerHTML = html;
-            
-            // Handle Verse/Chorus labeling
-            const typeLabel = (section.type && section.type.toLowerCase() === "chorus") ? "Chorus" : `Verse ${currentVerseIndex + 1}`;
-            document.getElementById('pageInfo').innerText = `${typeLabel} / ${currentHymnSections.length}`;
-            
+            document.getElementById('pageInfo').innerText = `Verse ${currentVerseIndex + 1} / ${currentHymnSections.length}`;
             document.getElementById('prevBtn').disabled = (currentVerseIndex === 0);
             document.getElementById('nextBtn').disabled = (currentVerseIndex === currentHymnSections.length - 1);
         }
@@ -227,7 +164,6 @@
 
         function goBack() {
             document.getElementById('detailView').classList.add('hidden');
-            document.getElementById('app').classList.remove('overflow-hidden');
         }
     </script>
 </body>
