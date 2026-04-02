@@ -7,10 +7,12 @@
     
     <script src="Hymne.js"></script>
     <script src="Hymnsc.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        /* Glassmorphism List Cards */
+        /* List Cards */
         .card { 
             background-color: #1e293b; 
             border: 1px solid #334155; 
@@ -22,7 +24,7 @@
 
         /* Modern Verse Container */
         .verse-container {
-            min-height: 60vh;
+            min-height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -55,11 +57,15 @@
         .lang-inactive { color: #64748b; }
 
         .sticky-header { backdrop-filter: blur(10px); background-color: rgba(15, 23, 42, 0.9); }
+        
+        /* Smooth Detail Transition */
+        #detailView { transition: transform 0.3s ease-in-out; }
+        .hidden-view { transform: translateX(100%); display: none; }
     </style>
 </head>
 <body>
 
-    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col relative">
+    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col relative overflow-x-hidden">
         
         <header class="sticky-header p-5 sticky top-0 z-20 border-b border-slate-800">
             <div class="flex justify-between items-center mb-5">
@@ -77,8 +83,7 @@
         </header>
 
         <div id="listView" class="p-4 space-y-3 mb-10">
-            <div class="text-center py-20 text-slate-500 animate-pulse">Initializing...</div>
-        </div>
+            </div>
 
         <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
             <div class="max-w-md mx-auto">
@@ -111,18 +116,20 @@
         let currentVerseIndex = 0;
         let currentLang = 'CN';
 
-        // Startup Logic
+        // 1. App Startup
         window.onload = () => {
             const savedLang = localStorage.getItem('pref_lang') || 'CN';
             applyUI(savedLang);
-            fetchData(savedLang === 'CN' ? 'Hymnsc.js' : 'Hymne.js');
+            loadData(savedLang);
         };
 
-        async function switchLanguage(lang) {
+        // 2. Language Management
+        function switchLanguage(lang) {
             if (currentLang === lang) return;
             localStorage.setItem('pref_lang', lang);
             applyUI(lang);
-            await fetchData(lang === 'CN' ? 'Hymnsc.js' : 'Hymne.js');
+            loadData(lang);
+            document.getElementById('searchBar').value = ''; // Clear search on switch
         }
 
         function applyUI(lang) {
@@ -133,42 +140,51 @@
             document.getElementById('searchBar').placeholder = lang === 'CN' ? '搜索编号或歌名...' : 'Search Number or Title...';
         }
 
-        async function fetchData(file) {
+        function loadData(lang) {
             const listDiv = document.getElementById('listView');
+            
+            // Access variables loaded from script tags
             try {
-                const response = await fetch(file);
-                if (!response.ok) throw new Error("File Load Failed");
-                
-                let rawText = await response.text();
-                
-                // Cleanup: Strips "const hymns = " if present, handles pure JSON too
-                const cleanJSON = rawText.replace(/^(const|let|var)\s+\w+\s*=\s*/, '').replace(/;$/, '').trim();
-                allHymns = JSON.parse(cleanJSON);
+                if (lang === 'CN') {
+                    allHymns = (typeof hymns_cn !== 'undefined') ? hymns_cn : [];
+                } else {
+                    allHymns = (typeof hymns_en !== 'undefined') ? hymns_en : [];
+                }
 
-                // Sequential Sort (Numeric)
+                if (allHymns.length === 0) {
+                    listDiv.innerHTML = `<div class="text-center text-red-400 p-10 font-bold">Error: Data variable not found.<br><span class="text-xs font-normal">Ensure Hymnsc.js has "const hymns_cn" and Hymne.js has "const hymns_en".</span></div>`;
+                    return;
+                }
+
+                // Numeric Sort
                 allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
                 renderList(allHymns);
             } catch (e) {
-                listDiv.innerHTML = `<div class="text-center text-red-400 p-10">Error loading ${file}.<br><small>Use VS Code "Live Server" to view.</small></div>`;
+                console.error(e);
             }
         }
 
         function renderList(data) {
             const list = document.getElementById('listView');
             list.innerHTML = data.map(h => `
-                <div class="card p-5 rounded-2xl flex items-center" onclick="showHymn(${h.id})">
+                <div class="card p-5 rounded-2xl flex items-center mb-3 shadow-lg" onclick="showHymn(${h.id})">
                     <span class="hymn-id">${h.id}</span>
                     <span class="flex-1 font-semibold">${h.title}</span>
+                    <svg class="text-slate-600" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>
                 </div>
             `).join('');
         }
 
         function filterHymns() {
             const q = document.getElementById('searchBar').value.toLowerCase().trim();
-            const filtered = allHymns.filter(h => h.title.toLowerCase().includes(q) || h.id.toString().includes(q));
+            const filtered = allHymns.filter(h => 
+                h.title.toLowerCase().includes(q) || 
+                h.id.toString().includes(q)
+            );
             renderList(filtered);
         }
 
+        // 3. Detail View Navigation
         function showHymn(id) {
             const hymn = allHymns.find(h => h.id == id);
             if(!hymn) return;
@@ -179,7 +195,7 @@
             updateDisplay();
             
             document.getElementById('detailView').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
         }
 
         function updateDisplay() {
