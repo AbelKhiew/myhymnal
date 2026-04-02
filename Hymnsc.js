@@ -83,7 +83,7 @@ const hymns_cn = [
   },
   {
     id: "124",
-    title: "实行爱心",
+    title: "实行爱心（甲）",
     sections: [
       {
         verse: 1,
