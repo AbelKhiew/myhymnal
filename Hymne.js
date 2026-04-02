@@ -1,4 +1,4 @@
-[
+const hymns_en =[
   {
     "id": 1,
     "title": "Holy, Holy, Holy! Lord God Almighty",
