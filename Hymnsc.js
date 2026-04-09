@@ -1,5 +1,133 @@
 const hymns_cn = [
   {
+    id: 168,
+    title: "精兵前进",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①基督精兵前进，与魔鬼交战，全营仰望耶稣，信心都刚健；", py: "jī dū jīng bīng qián jìn, yǔ mó guǐ jiāo zhàn, quán yíng yǎng wàng yē sū, xìn xīn dōu gāng jiàn;" },
+          { cn: "基督万军之主，领兵追仇敌，看祂旌旗高举，灵剑齐攻击。", py: "jī dū wàn jūn zhī zhǔ, lǐng bīng zhuī chóu dí, kàn tā jīng qí gāo jǔ, líng jiàn qí gōng jī。" },
+          { type: "chorus", cn: "[副歌] 前进，前进，前进！号令常静听！哈利路亚，阿们！胜了，又要胜！", py: "qián jìn, qián jìn, qián jìn! hào lìng cháng jìng tīng! hā lì lù yà, ā mén! shèng liǎo, yòu yào shèng!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②基督精兵前进，撒但军遁匿，倚靠圣灵权能，彰显大神迹；", py: "jī dū jīng bīng qián jìn, sā dàn jūn dùn nì, yǐ kào shèng líng quán néng, zhāng xiǎn dà shén jì;" },
+          { cn: "为着所信福音，齐心又努力，打破魔鬼营垒，真教遍设立。", py: "wèi zhe suǒ xìn fú yīn, qí xīn yòu nǔ lì, dǎ pò mó guǐ yíng lěi, zhēn jiào biàn shè lì。" },
+          { type: "chorus", cn: "[副歌] 前进，前进，前进！号令常静听！哈利路亚，阿们！胜了，又要胜！", py: "qián jìn, qián jìn, qián jìn! hào lìng cháng jìng tīng! hā lì lù yà, ā mén! shèng liǎo, yòu yào shèng!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③基督精兵前进，团结为一体，服从基督号令，步伐要一致；", py: "jī dū jīng bīng qián jìn, tuán jié wèi yī tǐ, fú cóng jī dū hào lìng, bù fá yào yī zhì;" },
+          { cn: "魔鬼虽然抵挡，真道总无敌，最后齐唱凯歌，赞美主不息。", py: "mó guǐ suī rán dǐ dǎng, zhēn dào zǒng wú dí, zuì hòu qí chàng kǎi gē, zàn měi zhǔ bù xī。" },
+          { type: "chorus", cn: "[副歌] 前进，前进，前进！号令常静听！哈利路亚，阿们！胜了，又要胜！", py: "qián jìn, qián jìn, qián jìn! hào lìng cháng jìng tīng! hā lì lù yà, ā mén! shèng liǎo, yòu yào shèng!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 111,
+    title: "跟随救主",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①起来，全世界的罪奴，你们受尽了多少的痛苦！", py: "qǐ lái, quán shì jiè de zuì nú, nǐ mén shòu jìn le duō shǎo de tòng kǔ!" },
+          { cn: "看哪！基督乃是教主，祂将人类的罪恶担负。", py: "kàn nǎ! jī dū nǎi shì jiào zhǔ, tā jiāng rén lèi de zuì è dān fù。" },
+          { type: "chorus", cn: "[副歌] 起来，起来，全世界的罪奴，起来，背着自己的十字架，与恶魔奋斗，跟随我主走。", py: "qǐ lái, qǐ lái, quán shì jiè de zuì nú, qǐ lái, bēi zhe zì jǐ de shí zì jià, yǔ è mó fèn dòu, gēn suí wǒ zhǔ zǒu。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②起来，全世界的罪奴，你们深入了黑暗的迷途，", py: "qǐ lái, quán shì jiè de zuì nú, nǐ mén shēn rù le hēi àn de mí tú," },
+          { cn: "看哪！基督乃是真光，祂已指示那光明天路。", py: "kàn nǎ! jī dū nǎi shì zhēn guāng, tā yǐ zhǐ shì nà guāng míng tiān lù。" },
+          { type: "chorus", cn: "[副歌] 起来，起来，全世界的罪奴，起来，背着自己的十字架，与恶魔奋斗，跟随我主走。", py: "qǐ lái, qǐ lái, quán shì jiè de zuì nú, qǐ lái, bēi zhe zì jǐ de shí zì jià, yǔ è mó fèn dòu, gēn suí wǒ zhǔ zǒu。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③起来，全世界的罪奴，你们跟随了基督的脚步，", py: "qǐ lái, quán shì jiè de zuì nú, nǐ mén gēn suí le jī dū de jiǎo bù," },
+          { cn: "看哪！神国已经来了，我们大家来欢欣鼓舞。", py: "kàn nǎ! shén guó yǐ jīng lái le, wǒ mén dà jiā lái huān xīn gǔ wǔ。" },
+          { type: "chorus", cn: "[副歌] 起来，起来，全世界的罪奴，起来，背着自己的十字架，与恶魔奋斗，跟随我主走。", py: "qǐ lái, qǐ lái, quán shì jiè de zuì nú, qǐ lái, bēi zhe zì jǐ de shí zì jià, yǔ è mó fèn dòu, gēn suí wǒ zhǔ zǒu。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 227,
+    title: "听命有福",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①能尽听主命令，将宝训藏心中，", py: "néng jìn tīng zhǔ mìng lìng, jiāng bǎo xùn cáng xīn zhōng," },
+          { cn: "此等人所得福真无穷。主的话如灯光，", py: "cǐ děng rén suǒ dé fú zhēn wú qióng。 zhǔ de huà rú dēng guāng," },
+          { cn: "常领我行天路，不偏左，不偏右，乐无疆。", py: "cháng lǐng wǒ xíng tiān lù, bù piān zuǒ, bù piān yòu, lè wú jiāng。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②既蒙主赎罪愆，主的话行完全，", py: "jì méng zhǔ shú zuì qiān, zhǔ de huà xíng wán quán," },
+          { cn: "如建屋有根基，甚牢坚；或雨淋，或水冲，", py: "rú jiàn wū yǒu gēn jī, shèn láo jiān; huò yǔ lín, huò shuǐ chōng," },
+          { cn: "或风吹总安然。此等人好信德，福无边。", py: "huò fēng chuī zǒng ān rán。 cǐ děng rén hǎo xìn dé, fú wú biān。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③主诫命都圣洁，又公义，又善良，", py: "zhǔ jiè mìng dōu shèng jié, yòu gōng yì, yòu shàn liáng," },
+          { cn: "凡信徒要遵守，不可忘。主应许所赐福，", py: "fán xìn tú yào zūn shǒu, bù kě wàng。 zhǔ yīng xǔ suǒ cì fú," },
+          { cn: "谁听命必享受；从今生到来世，无限长。", py: "shuí tīng mìng bì xiǎng shòu; cóng jīn shēng dào lái shì, wú xiàn cháng。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④到那时在天国，赞美主不停止，", py: "dào nà shí zài tiān guó, zàn měi zhǔ bù tíng zhǐ," },
+          { cn: "因蒙主所赐福，真希奇。愿选民在今世，", py: "yīn méng zhǔ suǒ cì fú, zhēn xī qí。 yuàn xuǎn mín zài jīn shì," },
+          { cn: "力遵守主命令；蒙主悦赐福乐无穷期。", py: "lì zūn shǒu zhǔ mìng lìng; méng zhǔ yuè cì fú lè wú qióng qī。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 272,
+    title: "保惠师已经到",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我到大陆、海岛，传扬得救真道，罪中男、女、老、少都有极大苦恼；", py: "wǒ dào dà lù、 hǎi dǎo, chuán yáng dé jiù zhēn dào, zuì zhōng nán、 nǚ、 lǎo、 shǎo dōu yǒu jí dà kǔ nǎo;" },
+          { cn: "应当灵巧、驯良，快去寻找迷羊，最好信息去报，最好信息去报，", py: "yīng dāng líng qiǎo、 xùn liáng, kuài qù xún zhǎo mí yáng, zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
+          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②深夜黑暗退藏，天亮显出日光，许多危险风浪，现在转入康庄；", py: "shēn yè hēi àn tuì cáng, tiān liàng xiǎn chū rì guāng, xǔ duō wēi xiǎn fēng làng, xiàn zài zhuǎn rù kāng zhuāng;" },
+          { cn: "速将救恩广传，工成必得奖赏，最好信息去报，最好信息去报，", py: "sù jiāng jiù ēn guǎng chuán, gōng chéng bì dé jiǎng shǎng, zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
+          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我主万王之王，权柄、能力无双，人若患病、附鬼，必得完全释放；", py: "wǒ zhǔ wàn wáng zhī wáng, quán bǐng、 néng lì wú shuāng, rén ruò huàn bìng、 fù guǐ, bì dé wán quán shì fàng;" },
+          { cn: "末日凯歌齐唱，乐哉，进入天堂！最好信息去报，最好信息去报，", py: "mò rì kǎi gē qí chàng, lè zāi, jìn rù tiān táng! zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
+          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
+        ]
+      }
+    ]
+  },
+  {
     id: 233,
     title: "联属耶稣",
     sections: [
