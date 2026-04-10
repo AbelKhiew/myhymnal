@@ -105,24 +105,23 @@ const hymns_cn = [
         verse: 1,
         content: [
           { cn: "①我到大陆、海岛，传扬得救真道，罪中男、女、老、少都有极大苦恼；", py: "wǒ dào dà lù、 hǎi dǎo, chuán yáng dé jiù zhēn dào, zuì zhōng nán、 nǚ、 lǎo、 shǎo dōu yǒu jí dà kǔ nǎo;" },
-          { cn: "应当灵巧、驯良，快去寻找迷羊，最好信息去报，最好信息去报，", py: "yīng dāng líng qiǎo、 xùn liáng, kuài qù xún zhǎo mí yáng, zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
-          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
+          { cn: "应当灵巧、驯良，快去寻找迷羊，保惠师已经到。", py: "yīng dāng líng qiǎo、 xùn liáng, kuài qù xún zhǎo mí yáng,bǎo huì shī yǐ jīng dào。" },
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }
         ]
       },
       {
         verse: 2,
         content: [
           { cn: "②深夜黑暗退藏，天亮显出日光，许多危险风浪，现在转入康庄；", py: "shēn yè hēi àn tuì cáng, tiān liàng xiǎn chū rì guāng, xǔ duō wēi xiǎn fēng làng, xiàn zài zhuǎn rù kāng zhuāng;" },
-          { cn: "速将救恩广传，工成必得奖赏，最好信息去报，最好信息去报，", py: "sù jiāng jiù ēn guǎng chuán, gōng chéng bì dé jiǎng shǎng, zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
-          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
-        ]
+          { cn: "速将救恩广传，工成必得奖赏，保惠师已经到。", py: "sù jiāng jiù ēn guǎng chuán, gōng chéng bì dé jiǎng shǎng, bǎo huì shī yǐ jīng dào。" },
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }        ]
       },
       {
         verse: 3,
         content: [
           { cn: "③我主万王之王，权柄、能力无双，人若患病、附鬼，必得完全释放；", py: "wǒ zhǔ wàn wáng zhī wáng, quán bǐng、 néng lì wú shuāng, rén ruò huàn bìng、 fù guǐ, bì dé wán quán shì fàng;" },
-          { cn: "末日凯歌齐唱，乐哉，进入天堂！最好信息去报，最好信息去报，", py: "mò rì kǎi gē qí chàng, lè zāi, jìn rù tiān táng! zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào," },
-          { type: "chorus", cn: "[副歌] 保惠师已经到。保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。", py: "bǎo huì shī yǐ jīng dào。 bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。" }
+          { cn: "末日凯歌齐唱，乐哉，进入天堂！保惠师已经到。", py: "mò rì kǎi gē qí chàng, lè zāi, jìn rù tiān táng! bǎo huì shī yǐ jīng dào。" },
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }
         ]
       }
     ]
