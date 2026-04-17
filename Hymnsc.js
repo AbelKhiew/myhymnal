@@ -1,5 +1,66 @@
 const hymns_cn = [
   {
+    id: 252,
+    title: "渴慕圣灵充满",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我今渴慕圣灵充满，渴慕圣灵充满。", py: "wǒ jīn kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" },
+          { cn: "渴慕圣灵充满，渴慕圣灵充满。", py: "kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②今求圣灵充满我心，今日充满我心，", py: "jīn qiú shèng líng chōng mǎn wǒ xīn, jīn rì chōng mǎn wǒ xīn," },
+          { cn: "今日充满我心，今日充满我心。", py: "jīn rì chōng mǎn wǒ xīn, jīn rì chōng mǎn wǒ xīn。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③在我腹中成为泉源，成为活水泉源，", py: "zài wǒ fù zhōng chéng wéi quán yuán, chéng wéi huó shuǐ quán yuán," },
+          { cn: "成为活水泉源，成为活水泉源。", py: "chéng wéi huó shuǐ quán yuán, chéng wéi huó shuǐ quán yuán。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④流出生命活水江河，流出活水江河，", py: "liú chū shēng mìng huó shuǐ jiāng hé, liú chū huó shuǐ jiāng hé," },
+          { cn: "流出活水江河，流出活水江河。", py: "liú chū huó shuǐ jiāng hé, liú chū huó shuǐ jiāng hé。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 242,
+    title: "主在门外等候",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①有贵客今在门外，请祂来！在门外忍耐等候，请祂来！", py: "yǒu guì kè jīn zài mén wài, qǐng tā lái! zài mén wài rěn nài děng hòu, qǐng tā lái!" },
+          { cn: "祂是天上神爱子，祂乃圣洁、有恩慈，不要等到祂离开，请祂来！", py: "tā shì tiān shàng shén ài zǐ, tā nǎi shèng jié、 yǒu ēn cí, bú yào děng dào tā lí kāi, qǐng tā lái!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②现在要敞开心怀，请祂来！不要再耽延等待，请祂来！", py: "xiàn zài yào chǎng kāi xīn huái, qǐng tā lái! bú yào zài dān yán děng dài, qǐng tā lái!" },
+          { cn: "请祂来做你良友，将灵魂交祂保守，依靠祂，永远安泰，请祂来！", py: "qǐng tā lái zuò nǐ liáng yǒu, jiāng líng hún jiāo tā bǎo shǒu, yī kào tā, yǒng yuǎn ān tài, qǐng tā lái!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③你是否听祂慈声？请祂来！现在要毅然决定，请祂来！", py: "nǐ shì fǒu tīng tā cí shēng? qǐng tā lái! xiàn zài yào yì rán jué dìng, qǐng tā lái!" },
+          { cn: "祂今仍然在门外，要赐你喜乐、平安；使你心口同颂赞，请祂来！", py: "tā jīn réng rán zài mén wài, yào cì nǐ xǐ lè、 píng ān; shǐ nǐ xīn kǒu tóng sòng zàn, qǐng tā lái!" }
+        ]
+      }
+    ]
+  },
+  {
     id: 168,
     title: "精兵前进",
     sections: [
