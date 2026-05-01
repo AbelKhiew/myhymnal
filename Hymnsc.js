@@ -1,5 +1,110 @@
 const hymns_cn = [
   {
+    id: 120,
+    title: "奉献所有",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我将所有献与耶稣，是甘心、乐意奉献；", py: "wǒ jiāng suǒ yǒu xiàn yǔ yē sū, shì gān xīn、 lè yì fèng xiàn;" },
+          { cn: "我要时常爱主、靠主，与主相亲至永远。", py: "wǒ yào shí cháng ài zhǔ、 kào zhǔ, yǔ zhǔ xiāng qīn zhì yǒng yuǎn。" },
+          { type: "chorus", cn: "[副歌] 将所有奉献，将所有奉献。", py: "jiāng suǒ yǒu fèng xiàn, jiāng suǒ yǒu fèng xiàn。" },
+          { type: "chorus", cn: "献与慈爱、尊贵救主，将所有奉献。", py: "xiàn yǔ cí ài、 zūn guì jiù zhǔ, jiāng suǒ yǒu fèng xiàn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我将所有献与耶稣，谦卑俯伏主前求；", py: "wǒ jiāng suǒ yǒu xiàn yǔ yē sū, qiān bēi fǔ fú zhǔ qián qiú;" },
+          { cn: "世界快乐甘愿撇弃，求主今将我收留。", py: "shì jiè kuài lè gān yuàn piē qì, qiú zhǔ jīn jiāng wǒ shōu liú。" },
+          { type: "chorus", cn: "[副歌] 将所有奉献，将所有奉献。", py: "jiāng suǒ yǒu fèng xiàn, jiāng suǒ yǒu fèng xiàn。" },
+          { type: "chorus", cn: "献与慈爱、尊贵救主，将所有奉献。", py: "xiàn yǔ cí ài、 zūn guì jiù zhǔ, jiāng suǒ yǒu fèng xiàn。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 174,
+    title: "真教会必兴起",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①真教会必然兴起，因为是神的旨意；", py: "zhēn jiào huì bì rán xìng qǐ, yīn wèi shì shén de zhǐ yì;" },
+          { cn: "归荣耀给主耶稣，赞美主，哈利路亚！", py: "guī róng yào gěi zhǔ yē sū, zàn měi zhǔ, hā lì lù yà!" },
+          { cn: "真教会必然兴起，因为是主的应许；", py: "zhēn jiào huì bì rán xìng qǐ, yīn wèi shì zhǔ de yīng xǔ;" },
+          { cn: "归荣耀给主耶稣，赞美主，哈利路亚！", py: "guī róng yào gěi zhǔ yē sū, zàn měi zhǔ, hā lì lù yà!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②真教会必然兴起，因有圣灵的能力；", py: "zhēn jiào huì bì rán xìng qǐ, yīn yǒu shèng líng de néng lì;" },
+          { cn: "归荣耀给主耶稣，赞美主，哈利路亚！", py: "guī róng yào gěi zhǔ yē sū, zàn měi zhǔ, hā lì lù yà!" },
+          { cn: "真教会必然兴起，因有真理的根基；", py: "zhēn jiào huì bì rán xìng qǐ, yīn yǒu zhēn lǐ de gēn jī;" },
+          { cn: "归荣耀给主耶稣，赞美主，哈利路亚！", py: "guī róng yào gěi zhǔ yē sū, zàn měi zhǔ, hā lì lù yà!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 77,
+    title: "高举救恩",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①在各各他山上,主被钉十字架,似是羞辱,却极荣耀;", py: "zài gè gè tā shān shàng zhǔ bèi dīng shí zì jià, sì shì xiū rǔ què jí róng yào;" },
+          { cn: "神爱子主耶稣,为世人舍祂命,这苦架为我最爱最宝。", py: "shén ài zǐ zhǔ yē sū wèi shì rén shè tā mìng, zhè kǔ jià wèi wǒ zuì ài zuì bǎo。" },
+          { type: "chorus", cn: "[副歌] 故我最爱高举主救恩,直到在主台前见主面;", py: "gù wǒ zuì ài gāo jǔ zhǔ jiù ēn, zhí dào zài zhǔ tái qián jiàn zhǔ miàn;" },
+          { type: "chorus", cn: "我一生要背负主苦架,将来可换得公义冠冕。", py: "wǒ yī shēng yào bēi fù zhǔ kǔ jià, jiāng lái kě huàn dé gōng yì guàn miǎn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②主宝贵十字架,乃世人所轻视,于我却是真神仁慈;", py: "zhǔ bǎo guì shí zì jià nǎi shì rén suǒ qīng shì, yú wǒ què shì zhēn shén rén cí;" },
+          { cn: "神爱子主耶稣,离天堂,弃荣华,甘愿为世人钉死十架。", py: "shén ài zǐ zhǔ yē sū lí tiān táng qì róng huá, gān yuàn wèi shì rén dīng sǐ shí jià。" },
+          { type: "chorus", cn: "[副歌] 故我最爱高举主救恩,直到在主台前见主面;", py: "gù wǒ zuì ài gāo jǔ zhǔ jiù ēn, zhí dào zài zhǔ tái qián jiàn zhǔ miàn;" },
+          { type: "chorus", cn: "我一生要背负主苦架,将来可换得公义冠冕。", py: "wǒ yī shēng yào bēi fù zhǔ kǔ jià, jiāng lái kě huàn dé gōng yì guàn miǎn。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 137,
+    title: "主是我良友",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①主耶稣是我良友，比一切更可夸；在我心中超乎万人，主为大。", py: "zhǔ yē sū shì wǒ liáng yǒu, bǐ yī qiè gèng kě kuā; zài wǒ xīn zhōng chāo hū wàn rén, zhǔ wéi dà。" },
+          { cn: "我爱慕救主耶稣，如鹿切慕溪水；祂能洗我完全洁白无瑕疵。", py: "wǒ ài mù jiù zhǔ yē sū, rú lù qiè mù xī shuǐ; tā néng xǐ wǒ wán quán jié bái wú xiá cī。" },
+          { cn: "悲伤时祂来解忧，患难时祂搭救；一切挂虑全放心，在救主肩头。", py: "bēi shāng shí tā lái jiě yōu, huàn nàn shí tā dā jiù; yī qiè guà lǜ quán fàng xīn, zài jiù zhǔ jiān tóu。" },
+          { type: "chorus", cn: "[副歌] 主是晨星，灿烂、光华，是谷中百合花；在我心中超乎万人，主为大。", py: "zhǔ shì chén xīng, càn làn、 guāng huá, shì gǔ zhōng bǎi hé huā; zài wǒ xīn zhōng chāo hū wàn rén, zhǔ wéi dà。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②主背负我的痛苦，苦难又当我的罪；我在危难时，靠主做坚固台。", py: "zhǔ bēi fù wǒ de tòng kǔ, kǔ nàn yòu dāng wǒ de zuì; wǒ zài wēi nàn shí, kào zhǔ zuò jiān gù tái。" },
+          { cn: "我心中赶出假神，接真神在内存；靠祂能力得蒙保守，不遭害。", py: "wǒ xīn zhōng gǎn chū jiǎ shén, jiē zhēn shén zài nèi cún; kào tā néng lì dé méng bǎo shǒu, bù zāo hài。" },
+          { cn: "虽世人都远离我，撒但的诡计多；有主耶稣时刻看顾，永稳妥。", py: "suī shì rén dōu yuǎn lí wǒ, sā dàn de guǐ jì duō; yǒu zhǔ yē sū shí kè kàn gù, yǒng wěn tuǒ。" },
+          { type: "chorus", cn: "[副歌] 主是晨星，灿烂、光华，是谷中百合花；在我心中超乎万人，主为大。", py: "zhǔ shì chén xīng, càn làn、 guāng huá, shì gǔ zhōng bǎi hé huā; zài wǒ xīn zhōng chāo hū wàn rén, zhǔ wéi dà。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③主待我何等恩慈，永不把我舍弃；我要专心信靠、遵行主旨意。", py: "zhǔ dài wǒ hé děng ēn cí, yǒng bù bǎ wǒ shě qì; wǒ yào zhuān xīn xìn kào、 zūn xíng zhǔ zhǐ yì。" },
+          { cn: "救主是我避难所，为我依靠根基；每日恩赐吗哪，我灵不受饥。", py: "jiù zhǔ shì wǒ bì nàn suǒ, wèi wǒ yī kào gēn jī; měi rì ēn cì mǎ nǎ, wǒ líng bù shòu jī。" },
+          { cn: "有一日祂来接我，被提到云里；在天之上与主同在，永不离。", py: "yǒu yī rì tā lái jiē wǒ, bèi tí dào yún lǐ; zài tiān zhī shàng yǔ zhǔ tóng zài, yǒng bù lí。" },
+          { type: "chorus", cn: "[副歌] 主是晨星，灿烂、光华，是谷中百合花；在我心中超乎万人，主为大。", py: "zhǔ shì chén xīng, càn làn、 guāng huá, shì gǔ zhōng bǎi hé huā; zài wǒ xīn zhōng chāo hū wàn rén, zhǔ wéi dà。" }
+        ]
+      }
+    ]
+  },
+  {
     id: 141,
     title: "永乐或永苦",
     sections: [
