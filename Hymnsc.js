@@ -1,5 +1,103 @@
 const hymns_cn = [
   {
+    id: 141,
+    title: "永乐或永苦",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①永远，永远，永永远远，你要怎样过这永远？", py: "yǒng yuǎn, yǒng yuǎn, yǒng yǒng yuǎn yuǎn, nǐ yào zěn yàng guò zhè yǒng yuǎn?" },
+          { cn: "当先解决这个问题，以免将来懊悔太晚；", py: "dāng xiān jiě jué zhè gè wèn tí, yǐ miǎn jiāng lái ào huǐ tài wǎn;" },
+          { cn: "得救、沉沦都是永远，你要怎样过这永远？", py: "dé jiù、 chén lún dōu shì yǒng yuǎn, nǐ yào zěn yàng guò zhè yǒng yuǎn?" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②永远，永远，永永远远，你要怎样过这永远？", py: "yǒng yuǎn, yǒng yuǎn, yǒng yǒng yuǎn yuǎn, nǐ yào zěn yàng guò zhè yǒng yuǎn?" },
+          { cn: "或在天堂朝见耶稣？或在地狱永受痛苦？", py: "huò zài tiān táng cháo jiàn yē sū? huò zài dì yù yǒng shòu tòng kǔ?" },
+          { cn: "极其要紧，极其严重，现在请你慎重思量。", py: "jí qí yào jǐn, jí qí yán zhòng, xiàn zài qǐng nǐ shèn zhòng sī liáng。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③永远，永远，永永远远，你要怎样过这永远？", py: "yǒng yuǎn, yǒng yuǎn, yǒng yǒng yuǎn yuǎn, nǐ yào zěn yàng guò zhè yǒng yuǎn?" },
+          { cn: "当趁今日信靠耶稣，灵魂得救，奔走活路；", py: "dāng chèn jīn rì xìn kào yē sū, líng hún dé jiù, bēn zǒu huó lù;" },
+          { cn: "等到主来，进入天国，永永远远享受福乐。", py: "děng dào zhǔ lái, jìn rù tiān táng, yǒng yǒng yuǎn yuǎn xiǎng shòu fú lè。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 254,
+    title: "方言宝贵",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①方言宝贵，怎能不说？灵洗凭据，符合圣经；", py: "fāng yán bǎo guì, zěn néng bù shuō? líng xǐ píng jù, fú hé shèng jīng;" },
+          { cn: "古今圣会，如出一辙，人若反对，何等愚拙！", py: "gǔ jīn shèng huì, rú chū yī zhé, rén ruò fǎn duì, hé děng yú zhuō!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②方言宝贵，怎能不说？圣经明训，不可弃绝；", py: "fāng yán bǎo guì, zěn néng bù shuō? shèng jīng míng xùn, bù kě qì jué;" },
+          { cn: "若用讲道，须有翻译；若用祷告，能得神悦。", py: "ruò yòng jiǎng dào, xū yǒu fān yì; ruò yòng dǎo gào, néng dé shén yuè。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③方言宝贵，怎能不说？圣灵造就，自恨、自责；", py: "fāng yán bǎo guì, zěn néng bù shuō? shèng líng zào jiù, zì hèn、 zì zé;" },
+          { cn: "人虽不懂，乃对神说，在心灵里，说出奥秘。", py: "rén suī bù dǒng, nǎi duì shén shuō, zài xīn líng lǐ, shuō chū ào mì。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④方言宝贵，怎能不说？圣灵感动，满怀火热；", py: "fāng yán bǎo guì, zěn néng bù shuō? shèng líng gǎn dòng, mǎn huái huǒ rè;" },
+          { cn: "方言泉涌，句句有节，态度、声音，绝不暴烈。", py: "fāng yán quán yǒng, jù jù yǒu jié, tài dù、 shēng yīn, jué bù bào liè。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 250,
+    title: "从新得力",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①仰求圣灵时常充满，使我从新得力；", py: "yǎng qiú shèng líng shí cháng chōng mǎn, shǐ wǒ cóng xīn dé lì;" },
+          { cn: "发起热心如火挑旺，在我冰冷心地。", py: "fā qǐ rè xīn rú huǒ tiāo wàng, zài wǒ bīng lěng xīn dì。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②怜我陷在软弱之中，世俗缠累不已；", py: "lián wǒ xiàn zài ruǎn ruò zhī zhōng, shì sú chán lěi bù yǐ;" },
+          { cn: "灵魂衰竭，欲振无力，不能抵挡仇敌。", py: "líng hún shuāi jié, yù zhèn wú lì, bù néng dǐ dǎng chóu dí。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③时常想要亲主、事主，兴致才起复止；", py: "shí cháng xiǎng yào qīn zhǔ、 shì zhǔ, xìng zhì cái qǐ fù zhǐ;" },
+          { cn: "听道乏味，行道无力，诸多体贴肉体。", py: "tīng dào fá wèi, xíng dào wú lì, zhū duō tǐ tiē ròu tǐ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④主啊！求祢领我回转，使我从新得力；", py: "zhǔ ā! qiú nǐ lǐng wǒ huí zhuǎn, shǐ wǒ cóng xīn dé lì;" },
+          { cn: "奋勇跑尽一生路程直到荣耀天色。", py: "fèn yǒng pǎo jìn yī shēng lù chéng zhí dào róng yào tiān sè。" }
+        ]
+      }
+    ]
+  },
+  {
     id: 252,
     title: "渴慕圣灵充满",
     sections: [
