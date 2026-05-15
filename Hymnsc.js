@@ -1,5 +1,115 @@
 const hymns_cn = [
   {
+    id: 264,
+    title: "求主垂怜",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①恳求救主格外垂怜，请听我祷告；既有别人蒙主垂听，使我亦沾恩。", py: "kěn qiú jiù zhǔ gé wài chuí lián, qǐng tīng wǒ dǎo gào; jì yǒu bié rén méng zhǔ chuí tīng, shǐ wǒ yì zhān ēn。" },
+          { type: "chorus", cn: "[副歌] 亲爱救主！请听我祷告；既有别人蒙主垂听，使我亦沾恩。", py: "qīn ài jiù zhǔ! qǐng tīng wǒ dǎo gào; jì yǒu bié rén méng zhǔ chuí tīng, shǐ wǒ yì zhān ēn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②让我进到恩主台前，永远不相离；一心仰望救主怜悯，笃信而不疑。", py: "ràng wǒ jìn dào ēn zhǔ tái qián, yǒng yuǎn bù xiāng lí; yī xīn yǎng wàng jiù zhǔ lián mǐn, dǔ xìn ér bù yí。" },
+          { type: "chorus", cn: "[副歌] 亲爱救主！请听我祷告；既有别人蒙主垂听，使我亦沾恩。", py: "qīn ài jiù zhǔ! qǐng tīng wǒ dǎo gào; jì yǒu bié rén méng zhǔ chuí tīng, shǐ wǒ yì zhān ēn。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③今只靠托我主慈悲，才敢寻主面；心中悲伤求主医治，赐我大恩典。", py: "jīn zhǐ kào tuō wǒ zhǔ cí bēi, cái gǎn xún zhǔ miàn; xīn zhōng bēi shāng qiú zhǔ yī zhì, cì wǒ dà ēn diǎn。" },
+          { type: "chorus", cn: "[副歌] 亲爱救主！请听我祷告；既有别人蒙主垂听，使我亦沾恩。", py: "qīn ài jiù zhǔ! qǐng tīng wǒ dǎo gào; jì yǒu bié rén méng zhǔ chuí tīng, shǐ wǒ yì zhān ēn。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④救主是我平安根源，比生命更宝；天上、地下除主以外，无救主可靠。", py: "jiù zhǔ shì wǒ píng ān gēn yuán, bǐ shēng mìng gèng bǎo; tiān shàng、 dì xià chú zhǔ yǐ wài, wú jiù zhǔ kě kào。" },
+          { type: "chorus", cn: "[副歌] 亲爱救主！请听我祷告；既有别人蒙主垂听，使我亦沾恩。", py: "qīn ài jiù zhǔ! qǐng tīng wǒ dǎo gào; jì yǒu bié rén méng zhǔ chuí tīng, shǐ wǒ yì zhān ēn。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 90,
+    title: "数算恩典",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①有时遇见苦难如同大波浪，有时忧愁、丧胆，似乎要绝望；", py: "yǒu shí yù jiàn kǔ nán rú tóng dà bō làng, yǒu shí yōu chóu、 sàng dǎn, sì hū yào jué wàng;" },
+          { cn: "若把主的恩典从头数一数，必能叫你立得安慰而欢呼。", py: "ruò bǎ zhǔ de ēn diǎn cóng tóu shǔ yī shǔ, bì néng jiào nǐ lì dé ān wèi ér huān hū。" },
+          { type: "chorus", cn: "[副歌] 主的恩典样样都要数，主的恩典都要记清楚；", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, zhǔ de ēn diǎn dōu yào jì qīng chǔ;" },
+          { type: "chorus", cn: "主的恩典样样都要数，必能叫你立得安慰而欢呼。", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, bì néng jiào nǐ lì dé ān wèi ér huān hū。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②有时挂念世事如同挑重担，有时背着十架，觉着苦难堪；", py: "yǒu shí guà niàn shì shì rú tóng tiāo zhòng dān, yǒu shí bèi zhe shí jià, jué zhe kǔ nán kān;" },
+          { cn: "若数主的恩典，疑惑就飞去，必能叫你立时快乐心平安。", py: "ruò shǔ zhǔ de ēn diǎn, yí huò jiù fēi qù, bì néng jiào nǐ lì shí kuài lè xīn píng ān。" },
+          { type: "chorus", cn: "[副歌] 主的恩典样样都要数，主的恩典都要记清楚；", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, zhǔ de ēn diǎn dōu yào jì qīng chǔ;" },
+          { type: "chorus", cn: "主的恩典样样都要数，必能叫你立得安慰而欢呼。", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, bì néng jiào nǐ lì dé ān wèi ér huān hū。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③有时遇到失败、生活陷贫穷，但要深信主的应许不落空；", py: "yǒu shí yù dào shī bài、 shēng huó xiàn pín qióng, dàn yào shēn xìn zhǔ de yīng xǔ bù luò kōng;" },
+          { cn: "主所赐的恩典足够你需用，先求神国神义，缺乏变裕丰。", py: "zhǔ suǒ cì de ēn diǎn zú gòu nǐ xū yòng, xiān qiú shén guó shén yì, quē fá biàn yù fēng。" },
+          { type: "chorus", cn: "[副歌] 主的恩典样样都要数，主的恩典都要记清楚；", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, zhǔ de ēn diǎn dōu yào jì qīng chǔ;" },
+          { type: "chorus", cn: "主的恩典样样都要数，必能叫你立得安慰而欢呼。", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, bì néng jiào nǐ lì dé ān wèi ér huān hū。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④有时遭遇危险无论是大小，不要惊怕，只靠救主大能手；", py: "yǒu shí zāo yù wēi xiǎn wú lùn shì dà xiǎo, bù yào jīng pà, zhǐ kào jiù zhǔ dà néng shǒu;" },
+          { cn: "在祂恩翅之下，祂必能保护，一路引导我们平安见天父。", py: "zài tā ēn chì zhī xià, tā bì néng bǎo hù, yī lù yǐn dǎo wǒ men píng ān jiàn tiān fù。" },
+          { type: "chorus", cn: "[副歌] 主的恩典样样都要数，主的恩典都要记清楚；", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, zhǔ de ēn diǎn dōu yào jì qīng chǔ;" },
+          { type: "chorus", cn: "主的恩典样样都要数，必能叫你立得安慰而欢呼。", py: "zhǔ de ēn diǎn yàng yàng dōu yào shǔ, bì néng jiào nǐ lì dé ān wèi ér huān hū。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 239,
+    title: "求主同住",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①愿主同住，太阳平西而下，黑影渐深，愿主留居我家；", py: "yuàn zhǔ tóng zhù, tài yáng píng xī ér xià, hēi yǐng jiàn shēn, yuàn zhǔ liú jū wǒ jiā;" },
+          { cn: "无人可求，世友远避不顾，惟主可靠，求主与我同住。", py: "wú rén kě qiú, shì yǒu yuǎn bì bù gù, wéi zhǔ kě kào, qiú zhǔ yǔ wǒ tóng zhù。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②浮生若梦，寄居之日无多，世福如烟，转眼虚华即过；", py: "fú shēng ruò mèng, jì jū zhī rì wú duō, shì fú rú yān, zhuǎn yǎn xū huá jí guò;" },
+          { cn: "变幻无常，万物不久皆无，惟主永存，求主与我同住。", py: "biàn huàn wú cháng, wàn wù bù jiǔ jiē wú, wéi zhǔ yǒng cún, qiú zhǔ yǔ wǒ tóng zhù。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我需要主，时时刻刻同在，靠主大恩，撒但无法侵害；", py: "wǒ xū yào zhǔ, shí shí kè kè tóng zài, kào zhǔ dà ēn, sā dàn wú fǎ qīn hài;" },
+          { cn: "坚固我心，助我不涉迷途，不论阴晴，求主与我同住。", py: "jiān gù wǒ xīn, zhù wǒ bù shè mí tú, bù lùn yīn qíng, qiú zhǔ yǔ wǒ tóng zhù。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④示祢十架，在我离世之间，拨离疑云，指我灵目向天；", py: "shì nǐ shí jià, zài wǒ lí shì zhī jiān, bō lí yí yún, zhǐ wǒ líng mù xiàng tiān;" },
+          { cn: "明宫在望，欣见荣光破曙，或生或死，求主与我同住。", py: "míng gōng zài wàng, xīn jiàn róng guāng pò shǔ, huò shēng huò sǐ, qiú zhǔ yǔ wǒ tóng zhù。" }
+        ]
+      }
+    ]
+  },
+  {
     id: 133,
     title: "耶稣不改变",
     sections: [
