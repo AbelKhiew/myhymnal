@@ -1,5 +1,37 @@
 const hymns_cn = [
   {
+    id: 133,
+    title: "耶稣不改变",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①真神爱怜世上罪人，差遣耶稣来，", py: "zhēn shén ài lián shì shàng zuì rén, chāi qiǎn yē sū lái," },
+          { cn: "受尽惨刑死在十架，救人免罪灾；", py: "shòu jìn cǎn xíng sǐ zài shí jià, jiù rén miǎn zuì zāi;" },
+          { cn: "无论何人诚心悔改，主一定赦免，", py: "wú lùn hé rén chéng xīn huǐ gǎi, zhǔ yī dìng shè miǎn," },
+          { cn: "救主如今差遣使者，劝你受恩典。", py: "jiù zhǔ rú jīn chāi qiǎn shǐ zhě, quàn nǐ shòu ēn diǎn。" },
+          { type: "chorus", cn: "[副歌] 昔在，今在，以后永在，耶稣不改变；", py: "xī zài, jīn zài, yǐ hòu yǒng zài, yē sū bù gǎi biàn;" },
+          { type: "chorus", cn: "父母、兄姐、亲戚、朋友，有时要离开，", py: "fù mǔ、 xiōng jiě、 qīn qī、 péng yǒu, yǒu shí yào lí kāi," },
+          { type: "chorus", cn: "耶稣不离开，耶稣不离开；", py: "yē sū bù lí kāi, yē sū bù lí kāi;" },
+          { type: "chorus", cn: "天地万物都要改变，耶稣不改变。", py: "tiān dì wàn wù dōu yào gǎi biàn, yē sū bù gǎi biàn。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②耶稣屡次医治人病，显出大神权，", py: "yē sū lǚ cì yī zhì rén bìng, xiǎn chū dà shén quán," },
+          { cn: "身体、灵魂各种疾病，主皆医得痊；", py: "shēn tǐ、 líng hún gè yàng jí bìng, zhǔ jiē yī dé quán;" },
+          { cn: "无论何人一心依靠，主一定垂怜，", py: "wú lùn hé rén yī xīn xìn kào, zhǔ yī dìng chuí lián," },
+          { cn: "因主慈爱永不改变，权能广无边。", py: "yīn zhǔ cí ài yǒng bù gǎi biàn, quán néng guǎng wú biān。" },
+          { type: "chorus", cn: "[副歌] 昔在，今在，以后永在，耶稣不改变；", py: "xī zài, jīn zài, yǐ hòu yǒng zài, yē sū bù gǎi biàn;" },
+          { type: "chorus", cn: "父母、兄姐、亲戚、朋友，有时要离开，", py: "fù mǔ、 xiōng jiě、 qīn qī、 péng yǒu, yǒu shí yào lí kāi," },
+          { type: "chorus", cn: "耶稣不离开，耶稣不离开；", py: "yē sū bù lí kāi, yē sū bù lí kāi;" },
+          { type: "chorus", cn: "天地万物都要改变，耶稣不改变。", py: "tiān dì wàn wù dōu yào gǎi biàn, yē sū bù gǎi biàn。" }
+        ]
+      }
+    ]
+  },
+  {
     id: 120,
     title: "奉献所有",
     sections: [
@@ -2038,7 +2070,7 @@ const hymns_cn = [
         content: [
           { cn: "③不知明日将遇何事,前途或顺或险?", py: "bù zhī míng rì jiāng yù hé shì, qián tú huò shùn huò xiǎn?" },
           { cn: "主必扶持、抚养、恤怜,祂爱永不改变。", py: "zhǔ bì fú chí, fǔ yǎng, xù lián, tā ài yǒng bù gǎi biàn。" },
-          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,超市深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
+          { type: "chorus", cn: "[副歌] 惟我深知所信的是谁,也深信祂能拯救我到底;", py: "wéi wǒ shēn zhī suǒ xìn de shì shuí, yě shēn xìn tā néng zhěng jiù wǒ dào dǐ;" },
           { type: "chorus", cn: "我应当持守所有的,都全备直到那日。", py: "wǒ yīng dāng chí shǒu suǒ yǒu de, dōu quán bèi zhí dào nà rì。" }
         ]
       },
