@@ -1,4 +1,4 @@
-const hymns_cn =
+const hymns_cn = [
   {
     id: 248,
     title: "我要求圣灵",
