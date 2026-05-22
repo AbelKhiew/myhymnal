@@ -1,4 +1,256 @@
-const hymns_cn = [
+const hymns_cn =
+  {
+    id: 248,
+    title: "我要求圣灵",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我要求圣灵，改变所存志向，使我穿上新人，效法主榜样。", py: "wǒ yào qiú shèng líng, gǎi biàn suǒ cún zhì xiàng, shǐ wǒ chuān shàng xīn rén, xiào fǎ zhǔ bǎng yàng。" },
+          { type: "chorus", cn: "[副歌] 哈利路亚，全能圣灵！哈利路亚，阿们！哈利路亚，全能圣灵！住在我心里。", py: "hā lì lù yà, quán néng shèng líng! hā lì lù yà, ā men! hā lì lù yà, quán néng shèng líng! zhù zài wǒ xīn lǐ。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②我要求圣灵，如火旺热我心，无论远近各地，见证耶稣名。", py: "wǒ yào qiú shèng líng, rú huǒ wàng rè wǒ xīn, wú lùn yuǎn jìn gè dì, jiàn zhèng yē sū míng。" },
+          { type: "chorus", cn: "[副歌] 哈利路亚，全能圣灵！哈利路亚，阿们！哈利路亚，全能圣灵！住在我心里。", py: "hā lì lù yà, quán néng shèng líng! hā lì lù yà, ā men! hā lì lù yà, quán néng shèng líng! zhù zài wǒ xīn lǐ。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我要求圣灵，帮助我有胆量，为主耶稣尊名，能勇敢赴难。", py: "wǒ yào qiú shèng líng, bāng zhù wǒ yǒu dǎn liàng, wèi zhǔ yē sū zūn míng, néng yǒng gǎn fù nàn。" },
+          { type: "chorus", cn: "[副歌] 哈利路亚，全能圣灵！哈利路亚，阿们！哈利路亚，全能圣灵！住在我心里。", py: "hā lì lù yà, quán néng shèng líng! hā lì lù yà, ā men! hā lì lù yà, quán néng shèng líng! zhù zài wǒ xīn lǐ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④我要求圣灵，时常充满我心，使我一生一世，遵从神命令。", py: "wǒ yào qiú shèng líng, shí cháng chōng mǎn wǒ xīn, shǐ wǒ yī shēng yī shì, zūn cóng shén mìng lìng。" },
+          { type: "chorus", cn: "[副歌] 哈利路亚，全能圣灵！哈利路亚，阿们！哈利路亚，全能圣灵！住在我心里。", py: "hā lì lù yà, quán néng shèng líng! hā lì lù yà, ā men! hā lì lù yà, quán néng shèng líng! zhù zài wǒ xīn lǐ。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 247,
+    title: "圣灵权能",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①五旬节时在一楼上，显出非常权能，门徒聚集同心祷告，直待圣灵降临；", py: "wǔ xún jié shí zài yī lóu shàng, xiǎn chū fēi cháng quán néng, mén tú jù jí tóng xīn dǎo gào, zhí dài shèng líng jiàng lín;" },
+          { cn: "忽然声响如风吹过，舌形火焰降到头上。", py: "hū rán shēng xiǎng rú fēng chuī guò, shé xíng huǒ yàn jiàng dào tóu shàng。" },
+          { type: "chorus", cn: "[副歌] 权能，权能，五旬节大权能！权能如同现在，权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài, quán néng rú tóng xiàn zài。" },
+          { type: "chorus", cn: "权能，权能，五旬节大权能！权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②圣灵降在各人身上，大家都说方言，存心救世传扬福音，敞开天国恩门；", py: "shèng líng jiàng zài gè rén shēn shang, dà jiā dōu shuō fāng yán, cún xīn jiù shì chuán yáng fú yīn, chǎng kāi tiān guó ēn mén;" },
+          { cn: "众人热衷如火焚烧，同心事主报答鸿恩。", py: "zhòng rén rè zhōng rú huǒ fén shāo, tóng xīn shì zhǔ bào dá hóng ēn。" },
+          { type: "chorus", cn: "[副歌] 权能，权能，五旬节大权能！权能如同现在，权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài, quán néng rú tóng xiàn zài。" },
+          { type: "chorus", cn: "权能，权能，五旬节大权能！权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③门徒都被圣灵充满，大得口才、力量，到处见证救主耶稣，神迹奇事显扬；", py: "mén tú dōu bèi shèng líng chōng mǎn, dà dé kǒu cái、 lì liàng, dào chù jiàn zhèng jiù zhǔ yē sū, shén jì qí shì xiǎn yáng;" },
+          { cn: "胆小退缩变为刚强，一同出去拯救亡羊。", py: "dǎn xiǎo tuì suō biàn wéi gāng qiáng, yī tóng chū qù zhěng jiù wáng yáng。" },
+          { type: "chorus", cn: "[副歌] 权能，权能，五旬节大权能！权能如同现在，权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài, quán néng rú tóng xiàn zài。" },
+          { type: "chorus", cn: "权能，权能，五旬节大权能！权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④虔诚求主赐下圣灵，老少均得领受，如五旬节充满各人，能力、智慧俱全；", py: "qián chéng qiú zhǔ cì xià shèng líng, lǎo shào jūn dé lǐng shòu, rú wǔ xún jié chōng mǎn gè rén, néng lì、 zhì huì jù quán;" },
+          { cn: "真理圣灵永不改变，恩赐权能古今皆然。", py: "zhēn lǐ shèng líng yǒng bù gǎi biàn, ēn cì quán néng gǔ jīn jiē rán。" },
+          { type: "chorus", cn: "[副歌] 权能，权能，五旬节大权能！权能如同现在，权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài, quán néng rú tóng xiàn zài。" },
+          { type: "chorus", cn: "权能，权能，五旬节大权能！权能如同现在。", py: "quán néng, quán néng, wǔ xún jié dà quán néng! quán néng rú tóng xiàn zài。" }
+        ]
+      }
+    ]
+  },                                                                                                                                                       
+  {
+    id: 44,
+    title: "惟有主能救我",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①哀哭岂能救我？我虽然不住流泪，心仍未能得安慰，又不能洗我罪累。", py: "āi kū qǐ néng jiù wǒ? wǒ suī rán bú zhù liú lèi, xīn réng wèi néng dé ān wèi, yòu bù néng xǐ wǒ zuì lèi。" },
+          { cn: "哀哭岂能救我？", py: "āi kū qǐ néng jiù wǒ?" },
+          { type: "chorus", cn: "[副歌] 幸耶稣怜我苦况，为我钉死十架上；耶稣今把我释放，惟有主能救我。", py: "xìng yē sū lián wǒ kǔ kuàng, wèi wǒ dīng sǐ shí jià shàng; yē sū jīn bǎ wǒ shì fàng, wéi yǒu zhǔ néng jiù wǒ。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②自恃岂能救我？一切善功与善行，虽能使我得好名，总不能得真生命。", py: "zì shì qǐ néng jiù wǒ? yī qiè shàn gōng yǔ shàn xíng, suī néng shǐ wǒ dé hǎo míng, zǒng bù néng dé zhēn shēng mìng。" },
+          { cn: "自恃岂能救我？", py: "zì shì qǐ néng jiù wǒ?" },
+          { type: "chorus", cn: "[副歌] 幸耶稣怜我苦况，为我钉死十架上；耶稣今把我释放，惟有主能救我。", py: "xìng yē sū lián wǒ kǔ kuàng, wèi wǒ dīng sǐ shí jià shàng; yē sū jīn bǎ wǒ shì fàng, wéi yǒu zhǔ néng jiù wǒ。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③迷信岂能救我？敬拜偶像全虚妄，旁门左道更危险，最后都必至灭亡。", py: "mí xìn qǐ néng jiù wǒ? jìng bài ǒu xiàng quán xū wàng, páng mén zuǒ dào gèng wēi xiǎn, zuì hòu dōu bì zhì miè wáng。" },
+          { cn: "迷信岂能救我？", py: "mí xìn qǐ néng jiù wǒ?" },
+          { type: "chorus", cn: "[副歌] 幸耶稣怜我苦况，为我钉死十架上；耶稣今把我释放，惟有主能救我。", py: "xìng yē sū lián wǒ kǔ kuàng, wèi wǒ dīng sǐ shí jià shàng; yē sū jīn bǎ wǒ shì fàng, wéi yǒu zhǔ néng jiù wǒ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④惟有主能救我，只要我靠主救恩，祂必为我开天门，我因此向祂直奔。", py: "wéi yǒu zhǔ néng jiù wǒ, zhǐ yào wǒ kào zhǔ jiù ēn, tā bì wèi wǒ kāi tiān mén, wǒ yīn cǐ xiàng tā zhí bēn。" },
+          { cn: "惟有主能救我。", py: "wéi yǒu zhǔ néng jiù wǒ。" },
+          { type: "chorus", cn: "[副歌] 幸耶稣怜我苦况，为我钉死十架上；耶稣今把我释放，惟有主能救我。", py: "xìng yē sū lián wǒ kǔ kuàng, wèi wǒ dīng sǐ shí jià shàng; yē sū jīn bǎ wǒ shì fàng, wéi yǒu zhǔ néng jiù wǒ。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 54,
+    title: "离暗就光",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①哈利路亚，赞美神！哈利路亚，赞美神！", py: "hā lì lù yà, zàn měi shén! hā lì lù yà, zàn měi shén!" },
+          { cn: "因主拯救我，使我离暗就光明，", py: "yīn zhǔ zhěng jiù wǒ, shǐ wǒ lí àn jiù guāng míng," },
+          { cn: "得入真耶稣教会，大欣喜，大欣喜；", py: "dé rù zhēn yē sū jiào huì, dà xīn xǐ, dà xīn xǐ;" },
+          { cn: "使我享福进迦南，主这样爱我，我实在不配，", py: "shǐ wǒ xiǎng fú jìn jiā nán, zhǔ zhè yàng ài wǒ, wǒ shí zài bú pèi," },
+          { cn: "更赐真理保惠师，充满我心！", py: "gèng cì zhēn lǐ bǎo huì shī, chōng mǎn wǒ xīn!" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②哈利路亚，赞美神！哈利路亚，赞美神！", py: "hā lì lù yà, zàn měi shén! hā lì lù yà, zàn měi shén!" },
+          { cn: "因主引导我，使我脱离巴比伦，", py: "yīn zhǔ yǐn dǎo wǒ, shǐ wǒ tuō lí bā bǐ lún," },
+          { cn: "又得应许保惠师，大安慰，大安慰；", py: "yòu dé yīng xǔ bǎo huì shī, dà ān wèi, dà ān wèi;" },
+          { cn: "使我得着这宝贝，主施恩召我,我应当舍命，", py: "shǐ wǒ dé zhe zhè bǎo bèi, zhǔ shī ēn zhào wǒ, wǒ yīng dāng shě mìng," },
+          { cn: "广传真道于各方，选召万民！", py: "guǎng chuán zhēn dào yú gè fāng, xuǎn zhào wàn mín!" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③哈利路亚，赞美神！哈利路亚，赞美神！", py: "hā lì lù yà, zàn měi shén! hā lì lù yà, zàn měi shén!" },
+          { cn: "因主指示我，使我预兆看分明，", py: "yīn zhǔ zhǐ shì wǒ, shǐ wǒ yù zhào kàn fēn míng," },
+          { cn: "应当翘首而盼望，快预备，快预备；", py: "yīng dāng qiáo shǒu ér pàn wàng, kuài yù bèi, kuài yù bèi;" },
+          { cn: "添满我器皿的油，我速度预备,儆醒挑明灯，", py: "tiān mǎn wǒ qì mǐn de yóu, wǒ sù sù yù bèi, jǐng xǐng tiǎo míng dēng," },
+          { cn: "迎接新郎主耶稣，在于空中！", py: "yíng jiē xīn láng zhǔ yē sū, zài yú kōng zhōng!" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 52,
+    title: "主恩浩大",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①我听主慈声说：“你力量实微小，应当儆醒祈祷，恩惠必不缺少。”", py: "wǒ tīng zhǔ cí shēng shuō: “nǐ lì liàng shí wēi xiǎo, yīng dāng jǐng xǐng qí dǎo, ēn huì bì bù quē shǎo.”" },
+          { type: "chorus", cn: "[副歌] 我所欠罪债，主已还清洁；罪孽虽显如硃红，主使变白如雪。", py: "wǒ suǒ qiàn zuì zhài, zhǔ yǐ huán qīng jié; zuì niè suī xiǎn rú zhū hóng, zhǔ shǐ biàn bái rú xuě。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②主啊！我今确知：惟主权能浩大，污秽罪行能除，铁石心肠能化。", py: "zhǔ ā! wǒ jīn què zhī: wéi zhǔ quán néng hào dà, wū huì zuì xíng néng chú, tiě shí xīn cháng néng huà。" },
+          { type: "chorus", cn: "[副歌] 我所欠罪债，主已还清洁；罪孽虽显如硃红，主使变白如雪。", py: "wǒ suǒ qiàn zuì zhài, zhǔ yǐ huán qīng jié; zuì niè suī xiǎn rú zhū hóng, zhǔ shǐ biàn bái rú xuě。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③我本没有功德，不敢向主求恩；凡我所得、所望，皆以主爱为根。", py: "wǒ běn méi yǒu gōng dé, bù gǎn xiàng zhǔ qiú ēn; fán wǒ suǒ dé、 suǒ wàng, jiē yǐ zhǔ ài wèi gēn。" },
+          { type: "chorus", cn: "[副歌] 我所欠罪债，主已还清洁；罪孽虽显如硃红，主使变白如雪。", py: "wǒ suǒ qiàn zuì zhài, zhǔ yǐ huán qīng jié; zuì niè suī xiǎn rú zhū hóng, zhǔ shǐ biàn bái rú xuě。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④在我离世之时，必然不致战兢；因我所欠诸债，主早代我还清。", py: "zài wǒ lí shì zhī shí, bì rán bù zhì zhàn jīng; yīn wǒ suǒ qiàn zhū zhài, zhǔ zǎo dài wǒ huán qīng。" },
+          { type: "chorus", cn: "[副歌] 我所欠罪债，主已还清洁；罪孽虽显如硃红，主使变白如雪。", py: "wǒ suǒ qiàn zuì zhài, zhǔ yǐ huán qīng jié; zuì niè suī xiǎn rú zhū hóng, zhǔ shǐ biàn bái rú xuě。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 118,
+    title: "奉献全生",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①虔诚奉献我财物，愿为圣工尽本分；", py: "qián chéng fèng xiàn wǒ cái wù, yuàn wèi shèng gōng jǐn běn fēn;" },
+          { cn: "虔诚奉献我知识，任主使用尽所能。", py: "qián chéng fèng xiàn wǒ zhī shí, rèn zhǔ shǐ yòng jìn suǒ néng。" },
+          { type: "chorus", cn: "[副歌] 全为主，勤为主，欢然、忠诚永为主。", py: "quán wèi zhǔ, qín wèi zhǔ, huān rán、 zhōng chéng yǒng wèi zhǔ。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②虔诚奉献我歌喉，只有歌咏君王恩；", py: "qián chéng fèng xiàn wǒ gē hóu, zhǐ yǒu gē yǒng jūn wáng ēn;" },
+          { cn: "虔诚奉献我舌头，时时传达主声音。", py: "qián chéng fèng xiàn wǒ shé tóu, shí shí chuán dá zhǔ shēng yīn。" },
+          { type: "chorus", cn: "[副歌] 全为主，勤为主，欢然、忠诚永为主。", py: "quán wèi zhǔ, qín wèi zhǔ, huān rán、 zhōng chéng yǒng wèi zhǔ。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③虔诚奉献我双手，主爱激励勤工作；", py: "qián chéng fèng xiàn wǒ shuāng shǒu, zhǔ ài jī lì qín gōng zuò;" },
+          { cn: "虔诚奉献我双足，奉命奔跑美又速。", py: "qián chéng fèng xiàn wǒ shuāng zú, fèng mìng bēn pǎo měi yòu sù。" },
+          { type: "chorus", cn: "[副歌] 全为主，勤为主，欢然、忠诚永为主。", py: "quán wèi zhǔ, qín wèi zhǔ, huān rán、 zhōng chéng yǒng wèi zhǔ。" }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { cn: "④虔诚奉献我光阴，让主差遣传福音；", py: "qián chéng fèng xiàn wǒ guāng yīn, ràng zhǔ chāi qiǎn chuán fú yīn;" },
+          { cn: "虔诚奉献我全生，终身遵主旨意行。", py: "qián chéng fèng xiàn wǒ quán shēng, zhōng shēn zūn zhǔ zhǐ yì xíng。" },
+          { type: "chorus", cn: "[副歌] 全为主，勤为主，欢然、忠诚永为主。", py: "quán wèi zhǔ, qín wèi zhǔ, huān rán、 zhōng chéng yǒng wèi zhǔ。" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 177,
+    title: "切莫顺从诱惑",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { cn: "①切莫顺从诱惑,免得陷罪阱;遇惑奋勇战胜,恶者计难行。", py: "qiè mò shùn cóng yòu huò, miǎn dé xiàn zuì jǐng; yù huò fèn yǒng zhàn shèng, è zhě jì nán xíng。" },
+          { cn: "故当坚定信心,克恶欲、邪情;时刻依靠圣灵,祂能助你打赢。", py: "gù dāng jiān dìng xìn xīn, kè è yù、 xié qíng; shí kè yī kào shèng líng, tā néng zhù nǐ dǎ yíng。" },
+          { type: "chorus", cn: "[副歌] 恳求恩主常帮助、安慰、引导并保护;祂必乐意扶持你,使你脚步稳固。", py: "kěn qiú ēn zhǔ cháng bāng zhù、 ān wèi、 yǐn dǎo bìng bǎo hù; tā bì lè yì fú chí nǐ, shǐ nǐ jiǎo bù wěn gù。" }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { cn: "②远避不良同伴,谨慎勿滥交;时刻亲近救主,顺从祂管教。", py: "yuǎn bì bù liáng tóng bàn, jǐn shèn wù làn jiāo; shí kè qīn jìn jiù zhǔ, shùn cóng tā guǎn jiào。" },
+          { cn: "你若顺服真神,魔鬼便逃跑;依靠圣灵能力,不良嗜好全抛。", py: "nǐ ruò shùn fú zhēn shén, mó guǐ biàn táo pǎo; yī kào shèng líng néng lì, bù liáng shì hào quán pāo。" },
+          { type: "chorus", cn: "[副歌] 恳求恩主常帮助、安慰、引导并保护;祂必乐意扶持你,使你脚步稳固。", py: "kěn qiú ēn zhǔ cháng bāng zhù、 ān wèi、 yǐn dǎo bìng bǎo hù; tā bì lè yì fú chí nǐ, mi rù jiǎo bù wěn gù。" }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { cn: "③只要信心坚定,终必克艰难;创始成终救主,随时赐平安。", py: "zhǐ yào xìn xīn jiān dìng, zhōng bì kè jiān nán; chuàng shǐ chéng zhōng jiù zhǔ, suí shí cì píng ān。" },
+          { cn: "神赐得胜能力,直跑向标竿;时刻依靠圣灵,必得胜戴华冠。", py: "shén cì dé shèng néng lì, zhí pǎo xiàng biāo gān; shí kè yī kào shèng líng, bì dé shèng dài huá guān。" },
+          { type: "chorus", cn: "[副歌] 恳求恩主常帮助、安慰、引导并保护;祂必乐意扶持你,使你脚步稳固。", py: "kěn qiú ēn zhǔ cháng bāng zhù、 ān wèi、 yǐn dǎo bìng bǎo hù; tā bì lè yì fú chí nǐ, mi rù jiǎo bù wěn gù。" }
+        ]
+      }
+    ]
+  },
   {
     id: 264,
     title: "求主垂怜",
