@@ -37,8 +37,33 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        .cn-text { display: block; font-size: 1.75rem; color: #ffffff; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
-        .py-text { display: block; font-size: 1.1rem; color: #94a3b8; font-style: italic; margin-bottom: 25px; }
+        :root { --lyric-size: 1.75rem; }
+
+        /* Block layout (default): CN on top, PY below */
+        .lyric-line { margin-bottom: 20px; }
+        .cn-text { display: block; font-size: var(--lyric-size); color: #ffffff; font-weight: 600; line-height: 1.3; margin-bottom: 6px; }
+        .py-text { display: block; font-size: calc(var(--lyric-size) * 0.6); color: #94a3b8; font-style: italic; }
+
+        /* Inline layout: pinyin above each Chinese character group */
+        .inline-mode .lyric-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 6px; margin-bottom: 20px; }
+        .inline-mode .cn-text, .inline-mode .py-text { display: none; }
+        .inline-mode .char-group { display: inline-flex; flex-direction: column; align-items: center; }
+        .inline-mode .char-py { font-size: calc(var(--lyric-size) * 0.52); color: #94a3b8; font-style: italic; line-height: 1.4; }
+        .inline-mode .char-cn { font-size: var(--lyric-size); color: #ffffff; font-weight: 600; line-height: 1.2; }
+
+        /* Font size & layout toggle buttons */
+        .ctrl-btn {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #e0e7ff;
+            border-radius: 12px;
+            width: 42px; height: 42px;
+            font-size: 1.2rem; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .ctrl-btn:active { background-color: #334155; }
+        .ctrl-btn.active { background-color: #4f46e5; border-color: #6366f1; }
 
         .page-btn { 
             flex: 1; 
@@ -100,6 +125,21 @@
 
                 <div class="flex flex-col items-center gap-4">
                     <div id="pageInfo" class="bg-slate-800 px-4 py-1 rounded-full text-xs font-bold text-indigo-300 uppercase tracking-widest border border-slate-700"></div>
+                    
+                    <!-- Controls row: font size + inline toggle -->
+                    <div class="flex items-center gap-2 w-full justify-center">
+                        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease font">A−</button>
+                        <span id="fontSizeLabel" class="text-xs text-slate-400 w-10 text-center font-mono"></span>
+                        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase font">A+</button>
+                        <div class="w-px h-6 bg-slate-700 mx-1"></div>
+                        <button id="inlineToggle" class="ctrl-btn" onclick="toggleInlineMode()" title="Toggle inline pinyin">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <text x="2" y="13" font-size="9" fill="currentColor" stroke="none" font-family="serif">字</text>
+                                <text x="10" y="13" font-size="6" fill="#94a3b8" stroke="none" font-family="serif">pīn</text>
+                            </svg>
+                        </button>
+                    </div>
+
                     <div class="nav-controls w-full flex gap-3">
                         <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">PREVIOUS</button>
                         <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">NEXT</button>
@@ -116,9 +156,63 @@
         let currentVerseIndex = 0;
         let currentLang = 'CN';
 
+        // Font size state (steps in rem, range 1.0 to 3.0)
+        const FONT_STEPS = [1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0];
+        let fontStepIndex = 3; // default 1.75rem
+        let inlineMode = false;
+
+        function changeFontSize(dir) {
+            fontStepIndex = Math.max(0, Math.min(FONT_STEPS.length - 1, fontStepIndex + dir));
+            const size = FONT_STEPS[fontStepIndex];
+            document.documentElement.style.setProperty('--lyric-size', size + 'rem');
+            document.getElementById('fontSizeLabel').innerText = size + 'r';
+            localStorage.setItem('pref_font_step', fontStepIndex);
+        }
+
+        function toggleInlineMode() {
+            inlineMode = !inlineMode;
+            const box = document.getElementById('hymnLyrics');
+            const btn = document.getElementById('inlineToggle');
+            box.classList.toggle('inline-mode', inlineMode);
+            btn.classList.toggle('active', inlineMode);
+            localStorage.setItem('pref_inline', inlineMode ? '1' : '0');
+            updateDisplay();
+        }
+
+        // Pair up CN characters with PY syllables for inline display
+        function buildInlineHTML(cn, py) {
+            if (!py) return `<div class="char-group"><span class="char-cn">${cn}</span></div>`;
+
+            // Split pinyin by spaces, split CN roughly by character
+            const pyParts = py.trim().split(/\s+/);
+            // Strip leading circle number like ① ② etc
+            const cnClean = cn.replace(/^[①②③④⑤⑥⑦⑧⑨⑩\[【【副歌\]】]+\s*/, '');
+            // Split on Chinese chars; keep punctuation attached to preceding char
+            const cnChars = cnClean.match(/[\u4e00-\u9fff][，。；：？！、""''「」『』（）…—～·]?|[^\u4e00-\u9fff]+/g) || [cnClean];
+
+            let html = '';
+            let pyIdx = 0;
+            for (let i = 0; i < cnChars.length; i++) {
+                const ch = cnChars[i];
+                const isChinese = /[\u4e00-\u9fff]/.test(ch);
+                if (isChinese && pyIdx < pyParts.length) {
+                    html += `<span class="char-group"><span class="char-py">${pyParts[pyIdx++]}</span><span class="char-cn">${ch}</span></span>`;
+                } else {
+                    html += `<span class="char-group"><span class="char-py">&nbsp;</span><span class="char-cn" style="color:#64748b">${ch}</span></span>`;
+                }
+            }
+            return html;
+        }
+
         // 1. App Startup
         window.onload = () => {
             const savedLang = localStorage.getItem('pref_lang') || 'CN';
+            fontStepIndex = parseInt(localStorage.getItem('pref_font_step') ?? 3);
+            inlineMode = localStorage.getItem('pref_inline') === '1';
+            const size = FONT_STEPS[fontStepIndex];
+            document.documentElement.style.setProperty('--lyric-size', size + 'rem');
+            document.getElementById('fontSizeLabel').innerText = size + 'r';
+            document.getElementById('inlineToggle').classList.toggle('active', inlineMode);
             applyUI(savedLang);
             loadData(savedLang);
         };
@@ -202,12 +296,18 @@
             const box = document.getElementById('hymnLyrics');
             const sec = currentHymnSections[currentVerseIndex];
             
-            box.innerHTML = sec.content.map(l => `
-                <div class="lyric-line">
-                    <span class="cn-text">${l.cn}</span>
-                    ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
-                </div>
-            `).join('');
+            box.classList.toggle('inline-mode', inlineMode);
+
+            box.innerHTML = sec.content.map(l => {
+                if (inlineMode) {
+                    return `<div class="lyric-line">${buildInlineHTML(l.cn, l.py)}</div>`;
+                }
+                return `
+                    <div class="lyric-line">
+                        <span class="cn-text">${l.cn}</span>
+                        ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
+                    </div>`;
+            }).join('');
 
             const label = (sec.type && sec.type.toLowerCase() === 'chorus') ? 'Chorus' : `Verse ${currentVerseIndex + 1}`;
             document.getElementById('pageInfo').innerText = `${label} of ${currentHymnSections.length}`;
