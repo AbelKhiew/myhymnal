@@ -144,7 +144,7 @@ const hymns_cn = [
           { cn: "②种子撒于晴日，种子撒于阴日，何惧黑云遮蔽，风雪并交加？", py: "zhǒng zǐ sǎ yú qíng rì, zhǒng zǐ sǎ yú yīn rì, hé jù hēi yún zhē bì, fēng xuě bìng jiāo jiā?" },
           { cn: "等到辛苦完了，等到收敛时期，我们实在欢喜，禾捆收回家。", py: "děng dào xīn kǔ wán liǎo, děng dào shōu liǎn shí qī, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" },
           { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā;" },
-          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
+          { type: "chorus", cn: "禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
         ]
       },
       {
@@ -153,7 +153,7 @@ const hymns_cn = [
           { cn: "③种子撒于各洲，种子撒于众岛，含泪、烦闷前往，景况或不佳；", py: "zhǒng zǐ sǎ yú gè zhōu, zhǒng zǐ sǎ yú zhòng dǎo, hán lèi、 fán mèn qián wǎng, jǐng kuàng huò bù jiā;" },
           { cn: "等到流泪完毕，直到劳苦歇息，我们实在欢喜，禾捆收回家。", py: "děng dào liú lèi wán bì, zhí dào láo kǔ xiē xī, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" },
           { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā;" },
-          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
+          { type: "chorus", cn: "禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
         ]
       },
       {
@@ -162,7 +162,7 @@ const hymns_cn = [
           { cn: "④为道奔走宣讲，靠着圣灵引导，虽然穷乡、僻壤，跋涉莫怨嗟；", py: "wéi dào bēn zǒu xuān jiǎng, kào zhe shèng líng yǐn dǎo, suī rán qióng xiāng、 pì rǎng, bá shè mò yuàn jiē;" },
           { cn: "福音传遍天下，主即来接我们，我们必甚欢喜，永远在神家。", py: "fú yīn chuán biàn tiān xià, zhǔ jí lái jiē wǒ men, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" },
           { type: "chorus", cn: "[副歌] 永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" },
-          { type: "chorus", cn: "[副歌] 永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" }
+          { type: "chorus", cn: "永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" }
         ]
       }
     ]
