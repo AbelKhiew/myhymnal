@@ -7,7 +7,7 @@ const hymns_cn = [
         verse: 1,
         content: [
           { cn: "①愿主保护你,再会有期;以祂慈手引你、领你,如羊在圈爱你、怜你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; yǐ tā cí shǒu yǐn nǐ、 lǐng nǐ, rú yáng zài juān ài nǐ、 lián nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
-          { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护 you,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
+          { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护你,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
         ]
       },
       {
@@ -20,19 +20,19 @@ const hymns_cn = [
       {
         verse: 3,
         content: [
-          { cn: "③愿主保护你,再会有期;虽有艰难困你、扰你,主之圣臂扶你、抱你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; suī yǒu jiān nán kùn nǐ、 rǎo nǐ, zhǔ zhī shèng bì fú nǐ、 bào nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
+          { cn: "③愿主保护你,再会有期;虽有艰难困你、扰你,主之圣臂扶你、抱你。愿主保护 you,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; suī yǒu jiān nán kùn nǐ、 rǎo nǐ, zhǔ zhī shèng bì fú nǐ、 bào nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
           { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护你,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
         ]
       },
       {
         verse: 4,
         content: [
-          { cn: "④愿主保护你,再会有期;全能翼下覆你、庇 you,各样恩惠赐你、随你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; quán néng yì xià fù nǐ、 bì nǐ, gè yàng ēn huì cì nǐ、 suí nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
+          { cn: "④愿主保护你,再会有期;全能翼下覆你、庇你,各样恩惠赐你、随你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; quán néng yì xià fù nǐ、 bì nǐ, gè yàng ēn huì cì nǐ、随 nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
           { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护你,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
         ]
       }
     ]
-   },
+  },
    {
     id: 156,
     title: "与主同行",
