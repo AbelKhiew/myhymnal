@@ -11,29 +11,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
-        /* Change these to use 'em' so they scale with the parent 'hymnLyrics' */
     
         .cn-text { 
-        display: block; 
-        font-size: 1em;
-        color: #ffffff; 
-        font-weight: 600; 
-        line-height: 1.3; 
-        margin-bottom: 8px; 
+            display: block; 
+            font-size: 1em;
+            color: #ffffff; 
+            font-weight: 600; 
+            line-height: 1.3; 
+            margin-bottom: 8px; 
         }
 
         .py-text { 
-        display: block; 
-        font-size: 0.65em;
-        color: #94a3b8; 
-        font-style: italic; 
-        margin-bottom: 25px; 
+            display: block; 
+            font-size: 0.65em;
+            color: #94a3b8; 
+            font-style: italic; 
+            margin-bottom: 25px; 
         }
 
         #hymnLyrics {
-        font-size: 1.75rem; 
-        transition: font-size 0.2s ease;
-}
+            font-size: 1.75rem; 
+            transition: font-size 0.2s ease;
+            width: 100%;
+        }
         
         /* List Cards */
         .card { 
@@ -45,7 +45,6 @@
         .card:active { background-color: #334155; transform: scale(0.97); }
         .hymn-id { color: #818cf8; font-weight: 800; margin-right: 12px; min-width: 35px; }
 
-        
         .verse-container {
             min-height: 55vh;
             display: flex;
@@ -71,7 +70,7 @@
         }
         .page-btn:disabled { opacity: 0.2; }
         
-        /* Language Toggl*/
+        /* Language Toggle */
         .lang-btn { padding: 8px 20px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; transition: 0.3s; }
         .lang-active { background-color: #4f46e5; color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); }
         .lang-inactive { color: #64748b; }
@@ -89,7 +88,7 @@
         
         <header class="sticky-header p-5 sticky top-0 z-20 border-b border-slate-800">
             <div class="flex justify-between items-center mb-5">
-                <h1 id="appTitle" class="text-2xl font-black tracking-tight text-indigo-300">赞美诗1</h1>
+                <h1 id="appTitle" class="text-2xl font-black tracking-tight text-indigo-300">赞美诗</h1>
                 <div class="flex bg-slate-900 p-1 rounded-full border border-slate-700">
                     <button id="btnCN" onclick="switchLanguage('CN')" class="lang-btn">中文</button>
                     <button id="btnEN" onclick="switchLanguage('EN')" class="lang-btn">EN</button>
@@ -102,29 +101,30 @@
             </div>
         </header>
 
-        <div id="listView" class="p-4 space-y-3 mb-10">
-            </div>
+        <div id="listView" class="p-4 space-y-3 mb-10"></div>
 
         <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
             <div class="max-w-md mx-auto">
-                <button onclick="goBack()" class="text-indigo-400 mb-6 flex items-center gap-2 font-bold py-2">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
-                    Back to List
-                </button>
+                <div class="flex justify-between items-center mb-6">
+                    <button onclick="goBack()" class="text-indigo-400 flex items-center gap-2 font-bold py-2">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
+                        Back
+                    </button>
+                    
+                    <div class="flex gap-2">
+                        <button onclick="adjustFontSize(-10)" class="bg-slate-800 p-2 rounded-xl border border-slate-700 active:bg-slate-700 text-white font-bold w-10 h-10 flex items-center justify-center">
+                            A-
+                        </button>
+                        <button onclick="adjustFontSize(10)" class="bg-slate-800 p-2 rounded-xl border border-slate-700 active:bg-slate-700 text-white font-bold w-10 h-10 flex items-center justify-center">
+                            A+
+                        </button>
+                    </div>
+                </div>
                 
-                <h2 id="hymnTitle" class="text-center text-white font-bold text-2xl px-4"></h2>
+                <h2 id="hymnTitle" class="text-center text-white font-bold text-2xl px-4 mb-2"></h2>
                 
                 <div class="verse-container">
                     <div id="hymnLyrics" class="lyrics-box"></div>
-                </div>
-
-                <div class="flex justify-end gap-2 mb-4">
-                    <button onclick="adjustFontSize(-10)" class="bg-slate-800 p-2 rounded-lg border border-slate-700 hover:bg-slate-700">
-                        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
-                    </button>
-                    <button onclick="adjustFontSize(10)" class="bg-slate-800 p-2 rounded-lg border border-slate-700 hover:bg-slate-700">
-                        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                    </button>
                 </div>
                 
                 <div class="flex flex-col items-center gap-4">
@@ -146,51 +146,39 @@
         let currentLang = 'CN';
         let fontSizePercent = 100;
 
-function adjustFontSize(delta) {
-    // Set limits so the text doesn't get too small or ridiculously large
-    const newSize = fontSizePercent + delta;
-    if (newSize >= 70 && newSize <= 250) {
-        fontSizePercent = newSize;
-        applyFontSize();
-    }
-}
-
-function applyFontSize() {
-    const box = document.getElementById('hymnLyrics');
-    if (box) {
-        // We apply the percentage to the container
-        box.style.fontSize = fontSizePercent + "%";
-        
-        // Optional: Also save to localStorage so the user doesn't have to reset it
-        localStorage.setItem('pref_font_size', fontSizePercent);
-    }
-}
-
-// Update your window.onload to recover the saved size
-window.onload = () => {
-    const savedLang = localStorage.getItem('pref_lang') || 'CN';
-    fontSizePercent = parseInt(localStorage.getItem('pref_font_size')) || 100;
-    
-    applyUI(savedLang);
-    loadData(savedLang);
-    // Note: applyFontSize() will be called naturally when showHymn is triggered
-};
-
-
-        // 1. App Startup
+        // 1. Unified App Startup Lifecycle
         window.onload = () => {
             const savedLang = localStorage.getItem('pref_lang') || 'CN';
+            fontSizePercent = parseInt(localStorage.getItem('pref_font_size')) || 100;
+            
             applyUI(savedLang);
             loadData(savedLang);
         };
 
-        // 2. Language Management
+        // 2. Font Scaling Management
+        function adjustFontSize(delta) {
+            const newSize = fontSizePercent + delta;
+            if (newSize >= 70 && newSize <= 250) {
+                fontSizePercent = newSize;
+                applyFontSize();
+            }
+        }
+
+        function applyFontSize() {
+            const box = document.getElementById('hymnLyrics');
+            if (box) {
+                box.style.fontSize = fontSizePercent + "%";
+                localStorage.setItem('pref_font_size', fontSizePercent);
+            }
+        }
+
+        // 3. Language Management
         function switchLanguage(lang) {
             if (currentLang === lang) return;
             localStorage.setItem('pref_lang', lang);
             applyUI(lang);
             loadData(lang);
-            document.getElementById('searchBar').value = ''; // Clear search on switch
+            document.getElementById('searchBar').value = ''; 
         }
 
         function applyUI(lang) {
@@ -203,8 +191,6 @@ window.onload = () => {
 
         function loadData(lang) {
             const listDiv = document.getElementById('listView');
-            
-            // Access variables loaded from script tags
             try {
                 if (lang === 'CN') {
                     allHymns = (typeof hymns_cn !== 'undefined') ? hymns_cn : [];
@@ -217,7 +203,6 @@ window.onload = () => {
                     return;
                 }
 
-                // Numeric Sort
                 allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
                 renderList(allHymns);
             } catch (e) {
@@ -245,7 +230,7 @@ window.onload = () => {
             renderList(filtered);
         }
 
-        // 3. Detail View Navigation
+        // 4. Detail View Navigation
         function showHymn(id) {
             const hymn = allHymns.find(h => h.id == id);
             if(!hymn) return;
@@ -253,10 +238,11 @@ window.onload = () => {
             document.getElementById('hymnTitle').innerText = hymn.title;
             currentHymnSections = hymn.sections;
             currentVerseIndex = 0;
+            
             updateDisplay();
             
             document.getElementById('detailView').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden'; 
         }
 
         function updateDisplay() {
@@ -269,6 +255,9 @@ window.onload = () => {
                     ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
                 </div>
             `).join('');
+
+            // CRITICAL FIX: Ensure saved text size applies immediately on page update
+            applyFontSize();
 
             const label = (sec.type && sec.type.toLowerCase() === 'chorus') ? 'Chorus' : `Verse ${currentVerseIndex + 1}`;
             document.getElementById('pageInfo').innerText = `${label} of ${currentHymnSections.length}`;
