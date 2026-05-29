@@ -1135,10 +1135,10 @@ const hymns_cn = [
         ]
       }
     ]
-  }，
+  },
   {
-    id: 168，
-    title: "精兵前进"，
+    id: 168,
+    title: "精兵前进",
     sections: [
       {
         verse: 1,
