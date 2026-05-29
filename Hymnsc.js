@@ -32,7 +32,7 @@ const hymns_cn = [
         ]
       }
     ]
-  },
+   },
    {
     id: 156,
     title: "与主同行",
@@ -1082,7 +1082,7 @@ const hymns_cn = [
       {
         verse: 1,
         content: [
-          { cn: "①我今渴慕圣灵充满，渴慕圣灵充满。", py: "wǒ jīn kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" },
+          { cn: "①我今渴慕圣灵充满，渴慕圣灵充满。", py: "wǒ jīn kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" }
           { cn: "渴慕圣灵充满，渴慕圣灵充满。", py: "kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" }
         ]
       },
@@ -1129,16 +1129,16 @@ const hymns_cn = [
       },
       {
         verse: 3,
-        content: [
+        content:[
           { cn: "③你是否听祂慈声？请祂来！现在要毅然决定，请祂来！", py: "nǐ shì fǒu tīng tā cí shēng? qǐng tā lái! xiàn zài yào yì rán jué dìng, qǐng tā lái!" },
           { cn: "祂今仍然在门外，要赐你喜乐、平安；使你心口同颂赞，请祂来！", py: "tā jīn réng rán zài mén wài, yào cì nǐ xǐ lè、 píng ān; shǐ nǐ xīn kǒu tóng sòng zàn, qǐng tā lái!" }
         ]
       }
     ]
-  },
+  }，
   {
-    id: 168,
-    title: "精兵前进",
+    id: 168，
+    title: "精兵前进"，
     sections: [
       {
         verse: 1,
