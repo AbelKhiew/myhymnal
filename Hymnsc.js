@@ -20,19 +20,19 @@ const hymns_cn = [
       {
         verse: 3,
         content: [
-          { cn: "③愿主保护你,再会有期;虽有艰难困你、扰你,主之圣臂扶你、抱你。愿主保护 you,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; suī yǒu jiān nán kùn nǐ、 rǎo nǐ, zhǔ zhī shèng bì fú nǐ、 bào nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
+          { cn: "③愿主保护你,再会有期;虽有艰难困你、扰你,主之圣臂扶你、抱你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; suī yǒu jiān nán kùn nǐ、 rǎo nǐ, zhǔ zhī shèng bì fú nǐ、 bào nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
           { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护你,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
         ]
       },
       {
         verse: 4,
         content: [
-          { cn: "④愿主保护你,再会有期;全能翼下覆你、庇你,各样恩惠赐你、随你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; quán néng yì xià fù nǐ、 bì nǐ, gè yàng ēn huì cì nǐ、随 nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
+          { cn: "④愿主保护你,再会有期;全能翼下覆你、庇你,各样恩惠赐你、随你。愿主保护你,再会有期。", py: "yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī; quán néng yì xià fù nǐ、 bì nǐ, gè yàng ēn huì cì nǐ、 suí nǐ。 yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" },
           { type: "chorus", cn: "[副歌] 等再会,等再会,等再会,在耶稣足前;等再会,等再会,愿主保护你,再会有期。", py: "děng zài huì, děng zài huì, děng zài huì, zài yē sū zú qián; děng zài huì, děng zài huì, yuàn zhǔ bǎo hù nǐ, zài huì yǒu qī。" }
         ]
       }
     ]
-  },
+   },
    {
     id: 156,
     title: "与主同行",
@@ -134,7 +134,8 @@ const hymns_cn = [
         content: [
           { cn: "①种子撒于早晚，种子撒于日午，撒出天国好种，甚望得萌芽；", py: "zhǒng zǐ sǎ yú zǎo wǎn, zhǒng zǐ sǎ yú rì wǔ, sǎ chū tiān guó hǎo zhǒng, shèn wàng dé méng yá;" },
           { cn: "等到禾稼成熟，等到收割日子，我们实在欢喜，禾捆收回家。", py: "děng dào hé jià chéng shú, děng dào shōu gē rì zǐ, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" },
-          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā; hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" }
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā;" },
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
         ]
       },
       {
@@ -142,7 +143,8 @@ const hymns_cn = [
         content: [
           { cn: "②种子撒于晴日，种子撒于阴日，何惧黑云遮蔽，风雪并交加？", py: "zhǒng zǐ sǎ yú qíng rì, zhǒng zǐ sǎ yú yīn rì, hé jù hēi yún zhē bì, fēng xuě bìng jiāo jiā?" },
           { cn: "等到辛苦完了，等到收敛时期，我们实在欢喜，禾捆收回家。", py: "děng dào xīn kǔ wán liǎo, děng dào shōu liǎn shí qī, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" },
-          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā; hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" }
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā;" },
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
         ]
       },
       {
@@ -150,7 +152,8 @@ const hymns_cn = [
         content: [
           { cn: "③种子撒于各洲，种子撒于众岛，含泪、烦闷前往，景况或不佳；", py: "zhǒng zǐ sǎ yú gè zhōu, zhǒng zǐ sǎ yú zhòng dǎo, hán lèi、 fán mèn qián wǎng, jǐng kuàng huò bù jiā;" },
           { cn: "等到流泪完毕，直到劳苦歇息，我们实在欢喜，禾捆收回家。", py: "děng dào liú lèi wán bì, zhí dào láo kǔ xiē xī, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" },
-          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā; hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。" }
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家；", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā;" },
+          { type: "chorus", cn: "[副歌] 禾捆收回家，禾捆收回家，我们实在欢喜，禾捆收回家。", py: "hé kǔn shōu huí jiā, hé kǔn shōu huí jiā, wǒ men shí zài huān xǐ, hé kǔn shōu huí jiā。"} 
         ]
       },
       {
@@ -158,7 +161,8 @@ const hymns_cn = [
         content: [
           { cn: "④为道奔走宣讲，靠着圣灵引导，虽然穷乡、僻壤，跋涉莫怨嗟；", py: "wéi dào bēn zǒu xuān jiǎng, kào zhe shèng líng yǐn dǎo, suī rán qióng xiāng、 pì rǎng, bá shè mò yuàn jiē;" },
           { cn: "福音传遍天下，主即来接我们，我们必甚欢喜，永远在神家。", py: "fú yīn chuán biàn tiān xià, zhǔ jí lái jiē wǒ men, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" },
-          { type: "chorus", cn: "[副歌] 永远在神家，永远在神家，我们必甚欢喜，永远在神家。永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" }
+          { type: "chorus", cn: "[副歌] 永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" },
+          { type: "chorus", cn: "[副歌] 永远在神家，永远在神家，我们必甚欢喜，永远在神家。", py: "yǒng yuǎn zài shén jiā, yǒng yuǎn zài shén jiā, wǒ men bì shèn huān xǐ, yǒng yuǎn zài shén jiā。" }
         ]
       }
     ]
@@ -1078,7 +1082,7 @@ const hymns_cn = [
       {
         verse: 1,
         content: [
-          { cn: "①我今渴慕圣灵充满，渴慕圣灵充满。", py: "wǒ jīn kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" }
+          { cn: "①我今渴慕圣灵充满，渴慕圣灵充满。", py: "wǒ jīn kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" },
           { cn: "渴慕圣灵充满，渴慕圣灵充满。", py: "kě mù shèng líng chōng mǎn, kě mù shèng líng chōng mǎn。" }
         ]
       },
@@ -4252,7 +4256,7 @@ const hymns_cn = [
                   { cn: "②凡人进入就得永生，此门今开，快进来；", py: "fán rén jìn rù jiù dé yǒng shēng, cǐ mén jīn kāi kuài jìn lái;" },
                   { cn: "富贵、贫贱、老弱、少壮，万国、万民无偏待。", py: "fù guì, pín jiàn, lǎo ruò, shǎo zhuàng, wàn guó, wàn mín wú piān dài." },
                   { type: "chorus", cn: "(副歌)灵恩丰盛，至善、至美，此门希奇，到处开起；", py: "líng ēn fēng shèng, zhì shàn, zhì měi, cǐ mén xī qí, dào chù kāi qǐ;" },
-                  { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào thù kāi qǐ." }
+                  { type: "chorus", cn: "开起，开起，此门到处开起。", py: "kāi qǐ, kāi qǐ, cǐ mén dào chù kāi qǐ." }
                 ]},
               { verse: 3, content: [
                   { cn: "③努力向前，不怕阻挡，快进此门，莫迟疑；", py: "nǔ lì xiàng qián, bù pà zǔ dǎng, kuài jìn cǐ mén, mò chí yí;" },
