@@ -186,7 +186,7 @@
             // Split pinyin by spaces, split CN roughly by character
             const pyParts = py.trim().split(/\s+/);
             // Strip leading circle number like ① ② etc
-            const cnClean = cn.replace(/^[①②③④⑤⑥⑦⑧⑨⑩\[【【副歌\]】]+\s*/, '');
+            const cnClean = cn.replace(/^[①②③④⑤⑥⑦⑧⑨⑩\[【【副歌\]】]()（）+\s*/, '');
             // Split on Chinese chars; keep punctuation attached to preceding char
             const cnChars = cnClean.match(/[\u4e00-\u9fff][，。；：？！、""''「」『』（）…—～·]?|[^\u4e00-\u9fff]+/g) || [cnClean];
 
