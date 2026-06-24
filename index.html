@@ -2,330 +2,789 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hymnal App</title>
-    
-    <script src="Hymne.js"></script>
-    <script src="Hymnsc.js"></script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #0f172a; color: #f1f5f9; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
-        
-        /* List Cards */
-        .card { 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            transition: transform 0.1s, background-color 0.2s;
-            cursor: pointer;
-        }
-        .card:active { background-color: #334155; transform: scale(0.97); }
-        .hymn-id { color: #818cf8; font-weight: 800; margin-right: 12px; min-width: 35px; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>赞美诗 Hymnal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Modern Verse Container */
-        .verse-container {
-            min-height: 55vh;
+    <!-- DATA FILES — keep your own scripts here -->
+    <!-- <script src="Hymnsc.js"></script> -->
+    <!-- <script src="Hymne.js"></script> -->
+
+    <style>
+        /* ── Tokens ─────────────────────────────────────────── */
+        :root {
+            --bg:        #0b0e1a;
+            --surface:   #141827;
+            --border:    #1f2a42;
+            --border-hi: #2e3f62;
+            --accent:    #6d7cf8;
+            --accent-dim:#2e357a;
+            --accent-glow: rgba(109,124,248,0.15);
+            --text:      #e8eaf6;
+            --muted:     #8893b8;
+            --danger:    #f87171;
+
+            --lyric-size: 1.75rem;
+            --radius-card: 18px;
+            --radius-full: 999px;
+            --header-h: 128px;
+
+            --sans: 'Inter', system-ui, sans-serif;
+            --serif: 'Noto Serif SC', 'Songti SC', serif;
+
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ── Reset ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+        }
+        button { font: inherit; border: none; cursor: pointer; background: none; color: inherit; }
+
+        /* ── Layout ──────────────────────────────────────────── */
+        #app {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100dvh;
+            position: relative;
+        }
+
+        /* ── Header ──────────────────────────────────────────── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            padding: 16px 20px 14px;
+            background: rgba(11,14,26,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .app-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 0.01em;
+        }
+        .app-title span { color: var(--accent); }
+
+        /* Language toggle */
+        .lang-toggle {
+            display: flex;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            padding: 3px;
+            gap: 2px;
+        }
+        .lang-btn {
+            padding: 5px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            transition: background 0.2s, color 0.2s;
+            color: var(--muted);
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 12px rgba(109,124,248,0.5);
+        }
+
+        /* Search */
+        .search-wrap { position: relative; }
+        .search-wrap svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input::placeholder { color: var(--muted); }
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        /* ── Hymn List ────────────────────────────────────────── */
+        #listView {
+            padding: 16px 16px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .hymn-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.15s, transform 0.1s;
+            text-align: left;
+            width: 100%;
+        }
+        .hymn-card:hover   { border-color: var(--border-hi); background: #1a2235; }
+        .hymn-card:active  { transform: scale(0.975); background: #1f2d47; }
+        .hymn-card:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .hymn-num {
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            min-width: 32px;
+            letter-spacing: 0.05em;
+        }
+        .hymn-name {
+            flex: 1;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            font-family: var(--serif);
+        }
+        .hymn-arrow { color: var(--border-hi); flex-shrink: 0; }
+
+        /* Empty / Error state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+        }
+        .empty-state svg { margin: 0 auto 16px; display: block; opacity: 0.4; }
+        .empty-state p { font-size: 0.9rem; line-height: 1.6; }
+
+        /* ── Detail Panel ─────────────────────────────────────── */
+        #detailView {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            background: var(--bg);
+            overflow: hidden;
+            overscroll-behavior: contain;
+            transform: translateX(100%);
+            transition: transform 0.35s var(--ease-out);
+            display: flex;
+            flex-direction: column;
+        }
+        #detailView.open { transform: translateX(0); }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: rgba(11,14,26,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: var(--accent-glow); }
+        .back-btn:focus-visible { outline: 2px solid var(--accent); }
+        .detail-title-header {
+            flex: 1;
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 60px; /* balance back button */
+        }
+
+        .detail-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 16px 20px 0;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Scrollable lyrics area */
+        .verse-scroll {
+            flex: 1;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12px;
+        }
+        .verse-scroll::-webkit-scrollbar { width: 3px; }
+        .verse-scroll::-webkit-scrollbar-track { background: transparent; }
+        .verse-scroll::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 99px; }
+
+        /* Pinned bottom controls */
+        .controls {
+            flex-shrink: 0;
+            padding: 12px 0 env(safe-area-inset-bottom, 12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        /* Verse card */
+        .verse-card {
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
-            border-radius: 28px;
-            padding: 40px 20px;
-            margin: 20px 0;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: linear-gradient(160deg, #141827 0%, #0d1020 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 24px;
+            margin-bottom: 8px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
         }
-        
-        :root { --lyric-size: 1.75rem; }
+        .verse-card::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, rgba(109,124,248,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #hymnLyrics { width: 100%; }
 
-        /* Block layout (default): CN on top, PY below */
+        /* Lyric block mode */
         .lyric-line { margin-bottom: 20px; }
-        .cn-text { display: block; font-size: var(--lyric-size); color: #ffffff; font-weight: 600; line-height: 1.3; margin-bottom: 6px; }
-        .py-text { display: block; font-size: calc(var(--lyric-size) * 0.6); color: #94a3b8; font-style: italic; }
+        .lyric-line:last-child { margin-bottom: 0; }
+        .cn-text {
+            display: block;
+            font-family: var(--serif);
+            font-size: var(--lyric-size);
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 5px;
+        }
+        .py-text {
+            display: block;
+            font-size: calc(var(--lyric-size) * 0.55);
+            color: var(--muted);
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
 
-        /* Inline layout: pinyin above each Chinese character group */
-        .inline-mode .lyric-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 6px; margin-bottom: 20px; }
-        .inline-mode .cn-text, .inline-mode .py-text { display: none; }
-        .inline-mode .char-group { display: inline-flex; flex-direction: column; align-items: center; }
-        .inline-mode .char-py { font-size: calc(var(--lyric-size) * 0.52); color: #94a3b8; font-style: italic; line-height: 1.4; }
-        .inline-mode .char-cn { font-size: var(--lyric-size); color: #ffffff; font-weight: 600; line-height: 1.2; }
+        /* Inline pinyin mode */
+        .inline-mode .lyric-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2px 4px;
+        }
+        .inline-mode .cn-text,
+        .inline-mode .py-text { display: none; }
+        .char-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .char-py {
+            font-size: calc(var(--lyric-size) * 0.48);
+            color: var(--muted);
+            font-style: italic;
+            line-height: 1.4;
+        }
+        .char-cn {
+            font-family: var(--serif);
+            font-size: var(--lyric-size);
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.2;
+        }
 
-        /* Font size & layout toggle buttons */
+        /* ── Controls ────────────────────────────────────────── */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Section badge */
+        .section-badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+        }
+
+        /* Single control row: A− label A+ | pīn | ← PREV  NEXT → */
+        .ctrl-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+        }
         .ctrl-btn {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            color: #e0e7ff;
+            height: 44px;
+            min-width: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
             border-radius: 12px;
-            width: 42px; height: 42px;
-            font-size: 1.2rem; font-weight: bold;
+            font-weight: 700;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: background 0.2s;
+            transition: background 0.15s, border-color 0.15s;
+            font-size: 0.85rem;
+            padding: 0 6px;
         }
-        .ctrl-btn:active { background-color: #334155; }
-        .ctrl-btn.active { background-color: #4f46e5; border-color: #6366f1; }
+        .ctrl-btn:hover { border-color: var(--border-hi); }
+        .ctrl-btn:active { background: var(--border); }
+        .ctrl-btn:focus-visible { outline: 2px solid var(--accent); }
+        .ctrl-btn.on { background: var(--accent-dim); border-color: var(--accent); color: #c7ccff; }
+        .ctrl-divider { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+        .font-label { font-size: 0.7rem; color: var(--muted); width: 30px; text-align: center; font-family: monospace; flex-shrink: 0; }
 
-        .page-btn { 
-            flex: 1; 
-            background-color: #312e81; 
-            color: #e0e7ff; 
-            padding: 18px; 
-            border-radius: 16px; 
-            font-weight: bold; 
-            border: 1px solid #4338ca; 
+        /* Nav buttons grow to fill remaining space */
+        .nav-btn {
+            flex: 1;
+            height: 44px;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: #c7ccff;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            transition: background 0.2s, opacity 0.2s;
         }
-        .page-btn:disabled { opacity: 0.2; }
-        
-        /* Language Toggle */
-        .lang-btn { padding: 8px 20px; border-radius: 99px; font-size: 0.85rem; font-weight: 700; transition: 0.3s; }
-        .lang-active { background-color: #4f46e5; color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); }
-        .lang-inactive { color: #64748b; }
+        .nav-btn:hover:not(:disabled) { background: #3b43a0; }
+        .nav-btn:active:not(:disabled) { background: var(--accent); }
+        .nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .nav-btn:disabled { opacity: 0.2; cursor: not-allowed; }
 
-        .sticky-header { backdrop-filter: blur(10px); background-color: rgba(15, 23, 42, 0.9); }
-        
-        /* Smooth Detail Transition */
-        #detailView { transition: transform 0.3s ease-in-out; }
-        .hidden-view { transform: translateX(100%); display: none; }
+        /* Progress dots */
+        .progress-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 260px;
+        }
+        .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--border-hi);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.4);
+        }
+
+        /* ── Swipe hint ───────────────────────────────────────── */
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        .verse-card { animation: fadeInUp 0.25s var(--ease-out); }
+
+        /* ── Reduced motion ───────────────────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+            #detailView, .verse-card { transition: none; animation: none; }
+            .hymn-card { transition: none; }
+        }
     </style>
 </head>
 <body>
+<div id="app">
 
-    <div id="app" class="max-w-md mx-auto min-h-screen flex flex-col relative overflow-x-hidden">
-        
-        <header class="sticky-header p-5 sticky top-0 z-20 border-b border-slate-800">
-            <div class="flex justify-between items-center mb-5">
-                <h1 id="appTitle" class="text-2xl font-black tracking-tight text-indigo-300">赞美诗1</h1>
-                <div class="flex bg-slate-900 p-1 rounded-full border border-slate-700">
-                    <button id="btnCN" onclick="switchLanguage('CN')" class="lang-btn">中文</button>
-                    <button id="btnEN" onclick="switchLanguage('EN')" class="lang-btn">EN</button>
-                </div>
+    <!-- ── List View ───────────────────────────────────────── -->
+    <header class="header">
+        <div class="header-top">
+            <h1 class="app-title">赞美诗 <span>·</span> Hymnal</h1>
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button id="btnCN" class="lang-btn" onclick="switchLanguage('CN')" aria-pressed="true">中文</button>
+                <button id="btnEN" class="lang-btn" onclick="switchLanguage('EN')" aria-pressed="false">EN</button>
             </div>
-            <div class="relative">
-                <input type="text" id="searchBar" oninput="filterHymns()" placeholder="Search..." 
-                    class="w-full p-4 pl-12 rounded-2xl bg-slate-800 text-white border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                <svg class="absolute left-4 top-4 text-slate-500" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
+        </div>
+        <div class="search-wrap">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="searchBar" class="search-input" type="search" oninput="filterHymns()"
+                placeholder="搜索编号或歌名…" autocomplete="off" aria-label="Search hymns">
+        </div>
+    </header>
+
+    <main id="listView" aria-label="Hymn list"></main>
+
+    <!-- ── Detail View ─────────────────────────────────────── -->
+    <div id="detailView" role="dialog" aria-modal="true" aria-labelledby="detailTitleHeader">
+        <header class="detail-header">
+            <button class="back-btn" onclick="goBack()" aria-label="Back to list">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                Back
+            </button>
+            <p class="detail-title-header" id="detailTitleHeader"></p>
         </header>
 
-        <div id="listView" class="p-4 space-y-3 mb-10">
+        <div class="detail-body">
+            <div class="verse-scroll">
+                <div class="verse-card">
+                    <div id="hymnLyrics"></div>
+                </div>
             </div>
 
-        <div id="detailView" class="hidden fixed inset-0 z-30 p-6 overflow-y-auto bg-slate-950">
-            <div class="max-w-md mx-auto">
-                <button onclick="goBack()" class="text-indigo-400 mb-6 flex items-center gap-2 font-bold py-2">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
-                    Back to List
-                </button>
-                
-                <h2 id="hymnTitle" class="text-center text-white font-bold text-2xl px-4"></h2>
-                
-                <div class="verse-container">
-                    <div id="hymnLyrics" class="lyrics-box"></div>
-                </div>
+            <div class="controls">
+                <div id="sectionBadge" class="section-badge"></div>
+                <div class="progress-dots" id="progressDots" role="tablist" aria-label="Sections"></div>
 
-                <div class="flex flex-col items-center gap-4">
-                    <div id="pageInfo" class="bg-slate-800 px-4 py-1 rounded-full text-xs font-bold text-indigo-300 uppercase tracking-widest border border-slate-700"></div>
-                    
-                    <!-- Controls row: font size + inline toggle -->
-                    <div class="flex items-center gap-2 w-full justify-center">
-                        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease font">A−</button>
-                        <span id="fontSizeLabel" class="text-xs text-slate-400 w-10 text-center font-mono"></span>
-                        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase font">A+</button>
-                        <div class="w-px h-6 bg-slate-700 mx-1"></div>
-                        <button id="inlineToggle" class="ctrl-btn" onclick="toggleInlineMode()" title="Toggle inline pinyin">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <text x="2" y="13" font-size="9" fill="currentColor" stroke="none" font-family="serif">字</text>
-                                <text x="10" y="13" font-size="6" fill="#94a3b8" stroke="none" font-family="serif">pīn</text>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="nav-controls w-full flex gap-3">
-                        <button id="prevBtn" class="page-btn" onclick="changeVerse(-1)">PREVIOUS</button>
-                        <button id="nextBtn" class="page-btn" onclick="changeVerse(1)">NEXT</button>
-                    </div>
+                <!-- Single row: A− size A+ | pīn | ← PREV  NEXT → -->
+                <div class="ctrl-row">
+                    <button class="ctrl-btn" onclick="changeFontSize(-1)" aria-label="Decrease text size">A−</button>
+                    <span id="fontSizeLabel" class="font-label" aria-live="polite"></span>
+                    <button class="ctrl-btn" onclick="changeFontSize(1)" aria-label="Increase text size">A+</button>
+                    <div class="ctrl-divider" role="separator"></div>
+                    <button id="inlineToggle" class="ctrl-btn" onclick="toggleInlineMode()"
+                        aria-pressed="false" aria-label="Toggle inline pinyin">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                            <text x="2" y="15" font-size="10" fill="currentColor" font-family="serif">字</text>
+                            <text x="11" y="15" font-size="7" fill="#8893b8" font-family="sans-serif">pīn</text>
+                        </svg>
+                    </button>
+                    <div class="ctrl-divider" role="separator"></div>
+                    <button id="prevBtn" class="nav-btn" onclick="changeVerse(-1)" aria-label="Previous section">← PREV</button>
+                    <button id="nextBtn" class="nav-btn" onclick="changeVerse(1)" aria-label="Next section">NEXT →</button>
                 </div>
-                <div class="h-20"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        let allHymns = [];
-        let currentHymnSections = [];
-        let currentVerseIndex = 0;
-        let currentLang = 'CN';
+</div>
 
-        // Font size state (steps in rem, range 1.0 to 3.0)
-        const FONT_STEPS = [1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0];
-        let fontStepIndex = 3; // default 1.75rem
-        let inlineMode = false;
+<script>
+// ── Demo data (remove when using real JS files) ──────────────
+const hymns_cn = [
+    { id: 1, title: "上帝是爱", sections: [
+        { type: "verse", content: [
+            { cn: "上帝是爱，上帝是爱，", py: "shàngdì shì ài, shàngdì shì ài," },
+            { cn: "祂的慈爱永远长存。", py: "tā de cíài yǒngyuǎn chángcún." }
+        ]},
+        { type: "chorus", content: [
+            { cn: "哈利路亚，哈利路亚，", py: "hālìlùyǎ, hālìlùyǎ," },
+            { cn: "赞美主名，赞美主名！", py: "zànměi zhǔ míng, zànměi zhǔ míng!" }
+        ]},
+        { type: "verse", content: [
+            { cn: "祂的恩典每天更新，", py: "tā de ēndiǎn měitiān gēngxīn," },
+            { cn: "永远照耀我们心间。", py: "yǒngyuǎn zhàoyào wǒmen xīnjiān." }
+        ]}
+    ]},
+    { id: 2, title: "奇异恩典", sections: [
+        { type: "verse", content: [
+            { cn: "奇异恩典何等甘甜，", py: "qíyì ēndiǎn héděng gāntián," },
+            { cn: "我罪已得赦免。", py: "wǒ zuì yǐ dé shèmiǎn." }
+        ]},
+        { type: "verse", content: [
+            { cn: "前我失丧，今被寻回，", py: "qián wǒ shīsàng, jīn bèi xún huí," },
+            { cn: "瞎眼今得看见。", py: "xiāyǎn jīn dé kànjiàn." }
+        ]}
+    ]},
+    { id: 3, title: "荣耀归于至高神", sections: [
+        { type: "verse", content: [
+            { cn: "荣耀归于至高神，", py: "róngyào guīyú zhìgāo shén," },
+            { cn: "地上平安属祂民。", py: "dìshàng píngān shǔ tā mín." }
+        ]}
+    ]}
+];
+const hymns_en = [
+    { id: 1, title: "Amazing Grace", sections: [
+        { type: "verse", content: [
+            { cn: "Amazing grace! How sweet the sound", py: "" },
+            { cn: "That saved a wretch like me.", py: "" }
+        ]},
+        { type: "verse", content: [
+            { cn: "I once was lost, but now am found,", py: "" },
+            { cn: "Was blind, but now I see.", py: "" }
+        ]}
+    ]},
+    { id: 2, title: "Holy, Holy, Holy", sections: [
+        { type: "verse", content: [
+            { cn: "Holy, holy, holy! Lord God Almighty!", py: "" },
+            { cn: "Early in the morning our song shall rise to Thee.", py: "" }
+        ]}
+    ]}
+];
+// ─────────────────────────────────────────────────────────────
 
-        function changeFontSize(dir) {
-            fontStepIndex = Math.max(0, Math.min(FONT_STEPS.length - 1, fontStepIndex + dir));
-            const size = FONT_STEPS[fontStepIndex];
-            document.documentElement.style.setProperty('--lyric-size', size + 'rem');
-            document.getElementById('fontSizeLabel').innerText = size + 'r';
-            localStorage.setItem('pref_font_step', fontStepIndex);
+let allHymns = [];
+let currentHymnSections = [];
+let currentVerseIndex = 0;
+let currentLang = 'CN';
+
+const FONT_STEPS = [1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0];
+let fontStepIndex = 3;
+let inlineMode = false;
+
+// ── Startup ──────────────────────────────────────────────────
+window.addEventListener('load', () => {
+    fontStepIndex = parseInt(localStorage.getItem('pref_font_step') ?? 3);
+    inlineMode    = localStorage.getItem('pref_inline') === '1';
+    const savedLang = localStorage.getItem('pref_lang') || 'CN';
+
+    applyFontSize();
+    document.getElementById('inlineToggle').classList.toggle('on', inlineMode);
+    document.getElementById('inlineToggle').setAttribute('aria-pressed', inlineMode);
+
+    applyUI(savedLang);
+    loadData(savedLang);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('detailView').classList.contains('open')) return;
+        if (e.key === 'ArrowRight') changeVerse(1);
+        if (e.key === 'ArrowLeft')  changeVerse(-1);
+        if (e.key === 'Escape')     goBack();
+    });
+});
+
+// ── Language ─────────────────────────────────────────────────
+function switchLanguage(lang) {
+    if (currentLang === lang) return;
+    localStorage.setItem('pref_lang', lang);
+    applyUI(lang);
+    loadData(lang);
+    document.getElementById('searchBar').value = '';
+}
+
+function applyUI(lang) {
+    currentLang = lang;
+    const isCN = lang === 'CN';
+    document.getElementById('btnCN').classList.toggle('active', isCN);
+    document.getElementById('btnEN').classList.toggle('active', !isCN);
+    document.getElementById('btnCN').setAttribute('aria-pressed', isCN);
+    document.getElementById('btnEN').setAttribute('aria-pressed', !isCN);
+    document.getElementById('searchBar').placeholder = isCN ? '搜索编号或歌名…' : 'Search number or title…';
+}
+
+function loadData(lang) {
+    try {
+        allHymns = lang === 'CN'
+            ? (typeof hymns_cn !== 'undefined' ? hymns_cn : [])
+            : (typeof hymns_en !== 'undefined' ? hymns_en : []);
+
+        if (!allHymns.length) {
+            document.getElementById('listView').innerHTML = `
+                <div class="empty-state">
+                    <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                    <p>Data not found.<br>Make sure Hymnsc.js and Hymne.js are loaded.</p>
+                </div>`;
+            return;
         }
+        allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+        renderList(allHymns);
+    } catch(e) { console.error(e); }
+}
 
-        function toggleInlineMode() {
-            inlineMode = !inlineMode;
-            const box = document.getElementById('hymnLyrics');
-            const btn = document.getElementById('inlineToggle');
-            box.classList.toggle('inline-mode', inlineMode);
-            btn.classList.toggle('active', inlineMode);
-            localStorage.setItem('pref_inline', inlineMode ? '1' : '0');
-            updateDisplay();
+// ── List rendering ────────────────────────────────────────────
+function renderList(data) {
+    const list = document.getElementById('listView');
+    if (!data.length) {
+        list.innerHTML = `
+            <div class="empty-state">
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <p>No hymns match your search.</p>
+            </div>`;
+        return;
+    }
+
+    // DocumentFragment for performance
+    const frag = document.createDocumentFragment();
+    data.forEach(h => {
+        const btn = document.createElement('button');
+        btn.className = 'hymn-card';
+        btn.setAttribute('aria-label', `Hymn ${h.id}: ${h.title}`);
+        btn.onclick = () => showHymn(h.id);
+        btn.innerHTML = `
+            <span class="hymn-num">${String(h.id).padStart(3,'0')}</span>
+            <span class="hymn-name">${h.title}</span>
+            <svg class="hymn-arrow" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>`;
+        frag.appendChild(btn);
+    });
+    list.innerHTML = '';
+    list.appendChild(frag);
+}
+
+// Debounced search
+let searchTimer;
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('searchBar').addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(filterHymns, 120);
+    });
+});
+
+function filterHymns() {
+    const q = document.getElementById('searchBar').value.toLowerCase().trim();
+    renderList(q ? allHymns.filter(h =>
+        h.title.toLowerCase().includes(q) || String(h.id).includes(q)
+    ) : allHymns);
+}
+
+// ── Detail view ───────────────────────────────────────────────
+function showHymn(id) {
+    const hymn = allHymns.find(h => h.id == id);
+    if (!hymn) return;
+
+    document.getElementById('detailTitleHeader').textContent = hymn.title;
+    currentHymnSections = hymn.sections;
+    currentVerseIndex = 0;
+    updateDisplay();
+
+    const dv = document.getElementById('detailView');
+    dv.classList.add('open');
+    dv.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    dv.querySelector('.back-btn').focus();
+}
+
+function goBack() {
+    document.getElementById('detailView').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function updateDisplay() {
+    const sec  = currentHymnSections[currentVerseIndex];
+    const box  = document.getElementById('hymnLyrics');
+    const total = currentHymnSections.length;
+
+    box.classList.toggle('inline-mode', inlineMode);
+
+    box.innerHTML = sec.content.map(l => {
+        if (inlineMode) return `<div class="lyric-line">${buildInlineHTML(l.cn, l.py)}</div>`;
+        return `<div class="lyric-line">
+            <span class="cn-text">${l.cn}</span>
+            ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
+        </div>`;
+    }).join('');
+
+    // Badge
+    const isChorus = sec.type?.toLowerCase() === 'chorus';
+    document.getElementById('sectionBadge').textContent =
+        isChorus ? '副歌 · Chorus' : `Verse ${currentVerseIndex + 1} / ${total}`;
+
+    // Progress dots
+    const dotsEl = document.getElementById('progressDots');
+    dotsEl.innerHTML = currentHymnSections.map((s, i) => {
+        const label = s.type?.toLowerCase() === 'chorus' ? 'Chorus' : `Verse ${i + 1}`;
+        return `<button class="dot${i === currentVerseIndex ? ' active' : ''}"
+            onclick="jumpToVerse(${i})" role="tab"
+            aria-selected="${i === currentVerseIndex}" aria-label="${label}"></button>`;
+    }).join('');
+
+    document.getElementById('prevBtn').disabled = currentVerseIndex === 0;
+    document.getElementById('nextBtn').disabled = currentVerseIndex === total - 1;
+}
+
+function changeVerse(n) {
+    const next = currentVerseIndex + n;
+    if (next < 0 || next >= currentHymnSections.length) return;
+    currentVerseIndex = next;
+    updateDisplay();
+    const scroll = document.querySelector('.verse-scroll');
+    if (scroll) scroll.scrollTop = 0;
+}
+
+function jumpToVerse(i) {
+    currentVerseIndex = i;
+    updateDisplay();
+}
+
+// ── Font size ─────────────────────────────────────────────────
+function applyFontSize() {
+    const size = FONT_STEPS[fontStepIndex];
+    document.documentElement.style.setProperty('--lyric-size', size + 'rem');
+    document.getElementById('fontSizeLabel').textContent = size + 'r';
+}
+function changeFontSize(dir) {
+    fontStepIndex = Math.max(0, Math.min(FONT_STEPS.length - 1, fontStepIndex + dir));
+    applyFontSize();
+    localStorage.setItem('pref_font_step', fontStepIndex);
+}
+
+// ── Inline pinyin ─────────────────────────────────────────────
+function toggleInlineMode() {
+    inlineMode = !inlineMode;
+    const btn = document.getElementById('inlineToggle');
+    btn.classList.toggle('on', inlineMode);
+    btn.setAttribute('aria-pressed', inlineMode);
+    localStorage.setItem('pref_inline', inlineMode ? '1' : '0');
+    updateDisplay();
+}
+
+function buildInlineHTML(cn, py) {
+    if (!py) return `<span class="char-group"><span class="char-py">&nbsp;</span><span class="char-cn">${cn}</span></span>`;
+    const pyParts = py.trim().split(/\s+/);
+    const cnClean = cn.replace(/^[①②③④⑤⑥⑦⑧⑨⑩\[【副歌\]】\(\)（）]+\s*/, '');
+    const cnChars = cnClean.match(/[\u4e00-\u9fff][，。；：？！、""''「」『』（）…—～·]?|[^\u4e00-\u9fff]+/g) || [cnClean];
+    let html = '', pyIdx = 0;
+    for (const ch of cnChars) {
+        const isChinese = /[\u4e00-\u9fff]/.test(ch);
+        if (isChinese && pyIdx < pyParts.length) {
+            html += `<span class="char-group"><span class="char-py">${pyParts[pyIdx++]}</span><span class="char-cn">${ch}</span></span>`;
+        } else {
+            html += `<span class="char-group"><span class="char-py">&nbsp;</span><span class="char-cn" style="color:var(--muted)">${ch}</span></span>`;
         }
-
-        // Pair up CN characters with PY syllables for inline display
-        function buildInlineHTML(cn, py) {
-            if (!py) return `<div class="char-group"><span class="char-cn">${cn}</span></div>`;
-
-            // Split pinyin by spaces, split CN roughly by character
-            const pyParts = py.trim().split(/\s+/);
-            // Strip leading circle number like ① ② etc
-            const cnClean = cn.replace(/^[①②③④⑤⑥⑦⑧⑨⑩\[【【副歌\]】\(\)（）]+\s*/, '');
-            // Split on Chinese chars; keep punctuation attached to preceding char
-            const cnChars = cnClean.match(/[\u4e00-\u9fff][，。；：？！、""''「」『』（）…—～·]?|[^\u4e00-\u9fff]+/g) || [cnClean];
-
-            let html = '';
-            let pyIdx = 0;
-            for (let i = 0; i < cnChars.length; i++) {
-                const ch = cnChars[i];
-                const isChinese = /[\u4e00-\u9fff]/.test(ch);
-                if (isChinese && pyIdx < pyParts.length) {
-                    html += `<span class="char-group"><span class="char-py">${pyParts[pyIdx++]}</span><span class="char-cn">${ch}</span></span>`;
-                } else {
-                    html += `<span class="char-group"><span class="char-py">&nbsp;</span><span class="char-cn" style="color:#64748b">${ch}</span></span>`;
-                }
-            }
-            return html;
-        }
-
-        // 1. App Startup
-        window.onload = () => {
-            const savedLang = localStorage.getItem('pref_lang') || 'CN';
-            fontStepIndex = parseInt(localStorage.getItem('pref_font_step') ?? 3);
-            inlineMode = localStorage.getItem('pref_inline') === '1';
-            const size = FONT_STEPS[fontStepIndex];
-            document.documentElement.style.setProperty('--lyric-size', size + 'rem');
-            document.getElementById('fontSizeLabel').innerText = size + 'r';
-            document.getElementById('inlineToggle').classList.toggle('active', inlineMode);
-            applyUI(savedLang);
-            loadData(savedLang);
-        };
-
-        // 2. Language Management
-        function switchLanguage(lang) {
-            if (currentLang === lang) return;
-            localStorage.setItem('pref_lang', lang);
-            applyUI(lang);
-            loadData(lang);
-            document.getElementById('searchBar').value = ''; // Clear search on switch
-        }
-
-        function applyUI(lang) {
-            currentLang = lang;
-            document.getElementById('btnCN').className = `lang-btn ${lang === 'CN' ? 'lang-active' : 'lang-inactive'}`;
-            document.getElementById('btnEN').className = `lang-btn ${lang === 'EN' ? 'lang-active' : 'lang-inactive'}`;
-            document.getElementById('appTitle').innerText = lang === 'CN' ? '赞美诗' : 'Hymnal';
-            document.getElementById('searchBar').placeholder = lang === 'CN' ? '搜索编号或歌名...' : 'Search Number or Title...';
-        }
-
-        function loadData(lang) {
-            const listDiv = document.getElementById('listView');
-            
-            // Access variables loaded from script tags
-            try {
-                if (lang === 'CN') {
-                    allHymns = (typeof hymns_cn !== 'undefined') ? hymns_cn : [];
-                } else {
-                    allHymns = (typeof hymns_en !== 'undefined') ? hymns_en : [];
-                }
-
-                if (allHymns.length === 0) {
-                    listDiv.innerHTML = `<div class="text-center text-red-400 p-10 font-bold">Error: Data variable not found.<br><span class="text-xs font-normal">Ensure Hymnsc.js has "const hymns_cn" and Hymne.js has "const hymns_en".</span></div>`;
-                    return;
-                }
-
-                // Numeric Sort
-                allHymns.sort((a, b) => parseInt(a.id) - parseInt(b.id));
-                renderList(allHymns);
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        function renderList(data) {
-            const list = document.getElementById('listView');
-            list.innerHTML = data.map(h => `
-                <div class="card p-5 rounded-2xl flex items-center mb-3 shadow-lg" onclick="showHymn(${h.id})">
-                    <span class="hymn-id">${h.id}</span>
-                    <span class="flex-1 font-semibold">${h.title}</span>
-                    <svg class="text-slate-600" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>
-                </div>
-            `).join('');
-        }
-
-        function filterHymns() {
-            const q = document.getElementById('searchBar').value.toLowerCase().trim();
-            const filtered = allHymns.filter(h => 
-                h.title.toLowerCase().includes(q) || 
-                h.id.toString().includes(q)
-            );
-            renderList(filtered);
-        }
-
-        // 3. Detail View Navigation
-        function showHymn(id) {
-            const hymn = allHymns.find(h => h.id == id);
-            if(!hymn) return;
-            
-            document.getElementById('hymnTitle').innerText = hymn.title;
-            currentHymnSections = hymn.sections;
-            currentVerseIndex = 0;
-            updateDisplay();
-            
-            document.getElementById('detailView').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
-        }
-
-        function updateDisplay() {
-            const box = document.getElementById('hymnLyrics');
-            const sec = currentHymnSections[currentVerseIndex];
-            
-            box.classList.toggle('inline-mode', inlineMode);
-
-            box.innerHTML = sec.content.map(l => {
-                if (inlineMode) {
-                    return `<div class="lyric-line">${buildInlineHTML(l.cn, l.py)}</div>`;
-                }
-                return `
-                    <div class="lyric-line">
-                        <span class="cn-text">${l.cn}</span>
-                        ${l.py ? `<span class="py-text">${l.py}</span>` : ''}
-                    </div>`;
-            }).join('');
-
-            const label = (sec.type && sec.type.toLowerCase() === 'chorus') ? 'Chorus' : `Verse ${currentVerseIndex + 1}`;
-            document.getElementById('pageInfo').innerText = `${label} of ${currentHymnSections.length}`;
-            
-            document.getElementById('prevBtn').disabled = (currentVerseIndex === 0);
-            document.getElementById('nextBtn').disabled = (currentVerseIndex === currentHymnSections.length - 1);
-        }
-
-        function changeVerse(n) {
-            currentVerseIndex += n;
-            updateDisplay();
-            document.getElementById('detailView').scrollTo(0,0);
-        }
-
-        function goBack() {
-            document.getElementById('detailView').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-    </script>
+    }
+    return html;
+}
+</script>
 </body>
 </html>
