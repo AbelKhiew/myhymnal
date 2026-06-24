@@ -7,9 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- DATA FILES — keep your own scripts here -->
-    <!-- <script src="Hymnsc.js"></script> -->
-    <!-- <script src="Hymne.js"></script> -->
+    <script src="Hymne.js"></script>
+    <script src="Hymnsc.js"></script>
 
     <style>
         /* ── Tokens ─────────────────────────────────────────── */
@@ -511,59 +510,6 @@
 </div>
 
 <script>
-// ── Demo data (remove when using real JS files) ──────────────
-const hymns_cn = [
-    { id: 1, title: "上帝是爱", sections: [
-        { type: "verse", content: [
-            { cn: "上帝是爱，上帝是爱，", py: "shàngdì shì ài, shàngdì shì ài," },
-            { cn: "祂的慈爱永远长存。", py: "tā de cíài yǒngyuǎn chángcún." }
-        ]},
-        { type: "chorus", content: [
-            { cn: "哈利路亚，哈利路亚，", py: "hālìlùyǎ, hālìlùyǎ," },
-            { cn: "赞美主名，赞美主名！", py: "zànměi zhǔ míng, zànměi zhǔ míng!" }
-        ]},
-        { type: "verse", content: [
-            { cn: "祂的恩典每天更新，", py: "tā de ēndiǎn měitiān gēngxīn," },
-            { cn: "永远照耀我们心间。", py: "yǒngyuǎn zhàoyào wǒmen xīnjiān." }
-        ]}
-    ]},
-    { id: 2, title: "奇异恩典", sections: [
-        { type: "verse", content: [
-            { cn: "奇异恩典何等甘甜，", py: "qíyì ēndiǎn héděng gāntián," },
-            { cn: "我罪已得赦免。", py: "wǒ zuì yǐ dé shèmiǎn." }
-        ]},
-        { type: "verse", content: [
-            { cn: "前我失丧，今被寻回，", py: "qián wǒ shīsàng, jīn bèi xún huí," },
-            { cn: "瞎眼今得看见。", py: "xiāyǎn jīn dé kànjiàn." }
-        ]}
-    ]},
-    { id: 3, title: "荣耀归于至高神", sections: [
-        { type: "verse", content: [
-            { cn: "荣耀归于至高神，", py: "róngyào guīyú zhìgāo shén," },
-            { cn: "地上平安属祂民。", py: "dìshàng píngān shǔ tā mín." }
-        ]}
-    ]}
-];
-const hymns_en = [
-    { id: 1, title: "Amazing Grace", sections: [
-        { type: "verse", content: [
-            { cn: "Amazing grace! How sweet the sound", py: "" },
-            { cn: "That saved a wretch like me.", py: "" }
-        ]},
-        { type: "verse", content: [
-            { cn: "I once was lost, but now am found,", py: "" },
-            { cn: "Was blind, but now I see.", py: "" }
-        ]}
-    ]},
-    { id: 2, title: "Holy, Holy, Holy", sections: [
-        { type: "verse", content: [
-            { cn: "Holy, holy, holy! Lord God Almighty!", py: "" },
-            { cn: "Early in the morning our song shall rise to Thee.", py: "" }
-        ]}
-    ]}
-];
-// ─────────────────────────────────────────────────────────────
-
 let allHymns = [];
 let currentHymnSections = [];
 let currentVerseIndex = 0;
@@ -615,16 +561,19 @@ function applyUI(lang) {
 }
 
 function loadData(lang) {
+    const listDiv = document.getElementById('listView');
     try {
-        allHymns = lang === 'CN'
-            ? (typeof hymns_cn !== 'undefined' ? hymns_cn : [])
-            : (typeof hymns_en !== 'undefined' ? hymns_en : []);
+        if (lang === 'CN') {
+            allHymns = (typeof hymns_cn !== 'undefined') ? hymns_cn : [];
+        } else {
+            allHymns = (typeof hymns_en !== 'undefined') ? hymns_en : [];
+        }
 
         if (!allHymns.length) {
-            document.getElementById('listView').innerHTML = `
+            listDiv.innerHTML = `
                 <div class="empty-state">
                     <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-                    <p>Data not found.<br>Make sure Hymnsc.js and Hymne.js are loaded.</p>
+                    <p>Error: Data variable not found.<br>Ensure Hymnsc.js has "const hymns_cn" and Hymne.js has "const hymns_en".</p>
                 </div>`;
             return;
         }
