@@ -1,5 +1,151 @@
 const hymns_cn = [
   {
+    id: 274,
+    title: "晚雨降临",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { 
+            cn: "①晚雨圣灵已降临，居住众人内心，所有圣经之应许，日日越看越真；祈祷声音达天上，高呼：“哈利路亚！”选民进入真教会，天下一家相亲。", 
+            py: "wǎn yǔ shèng líng yǐ jiàng lín, jū zhù zhòng rén nèi xīn, suǒ yǒu shèng jīng zhī yìng xǔ, rì rì yuè kàn yuè zhēn; qí dǎo shēng yīn dá tiān shàng, gāo hū: “hā lì lù yà!” xuǎn mín jìn rù zhēn jiào huì, tiān xià yī jiā xiāng qīn." 
+          }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { 
+            cn: "②天国福音显出来，异端邪教消灭，世间众人趁此时，要快悔改罪孽；现在圣灵大降临，赐人得救印记，等到万国都归真，主恩一齐感激。", 
+            py: "tiān guó fú yīn xiǎn chū lái, yì duān xié jiào xiāo miè, shì jiān zhòng rén chèn cǐ shí, yào kuài huǐ gǎi zuì niè; xiàn zài shèng líng dà jiàng lín, cì rén dé jiù yìn jì, děng dào wàn guó dōu guī zhēn, zhǔ ēn yī qí gǎn jī." 
+          }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { 
+            cn: "③世界众人藉基督，得与天父相亲，同蒙应许受圣灵，感谢归给真神；生命、言行都改变，内外一概换新，救主恩惠深如海，圣会普遍奋兴。", 
+            py: "shì jiè zhòng rén jiè jī dū, dé yǔ tiān fù xiāng qīn, tóng méng yìng xǔ shòu shèng líng, gǎn xiè guī gěi zhēn shén; shēng mìng、 yán xíng dōu gǎi biàn, nèi wài yī gài huàn xīn, jiù zhǔ ēn huì shēn rú hǎi, shèng huì pǔ biàn fèn xīng." 
+          }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { 
+            cn: "④末世灵工大发展，到处大开恩门，收割庄稼要努力，遍行市、县、乡、村；无论贫富与贵贱，人人可得天恩，勿失良机快归主，主道永远长存。", 
+            py: "mò shì líng gōng dà fā zhǎn, dào chù dà kāi ēn mén, shōu gē zhuāng jià yào nǔ lì, biàn xíng shì、 xiàn、 xiāng、 cūn; wú lùn pín fù yǔ guì jiàn, rén rén kě dé tiān ēn, wù shī liáng jī kuài guī zhǔ, zhǔ dào yǒng yuǎn zhǎng cún." 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 294,
+    title: "我来就祢",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { 
+            cn: "①我听救主慈声，召我速来就祂，命我悔改一切恶行，祂血必洗无瑕。", 
+            py: "wǒ tīng jiù zhǔ cí shēng, zhào wǒ sù lái jiù tā, mìng wǒ huǐ gǎi yī qiè è háng, tā xuè bì xǐ wú xiá." 
+          },
+          { 
+            type: "chorus", 
+            cn: "[副歌] 主啊！我今来，我今来就祢！求主洗涤我身心，在祢大能血里！", 
+            py: "zhǔ ā! wǒ jīn lái, wǒ jīn lái jiù nǐ! qiú zhǔ xǐ dí wǒ shēn xīn, zài nǐ dà néng xuè lǐ!" 
+          }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { 
+            cn: "②我虽软弱、邪恶，主必扶持医治，主必尽除我诸愆尤，使我纯全无疵。", 
+            py: "wǒ suī ruǎn ruò xié è, zhǔ bì fú chí yī zhì, zhǔ bì jǐn chú wǒ zhū qiān yóu, shǐ wǒ chún quán wú cī." 
+          },
+          { 
+            type: "chorus", 
+            cn: "[副歌] 主啊！我今来，我今来就祢！求主洗涤我身心，在祢大能血里！", 
+            py: "zhǔ ā! wǒ jīn lái, wǒ jīn lái jiù nǐ! qiú zhǔ xǐ dí wǒ shēn xīn, zài nǐ dà néng xuè lǐ!" 
+          }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { 
+            cn: "③救主亲自应许，白赐恩惠丰盈，只要我肯信赖顺服，得救功夫必成。", 
+            py: "jiù zhǔ qīn zì yīng xǔ, bái cì ēn huì fēng yíng, zhǐ yào wǒ kěn xìn lài shùn fú, dé jiù gōng fū bì chéng." 
+          },
+          { 
+            type: "chorus", 
+            cn: "[副歌] 主啊！我今来，我今来就祢！求主洗涤我身心，在祢大能血里！", 
+            py: "zhǔ ā! wǒ jīn lái, wǒ jīn lái jiù nǐ! qiú zhǔ xǐ dí wǒ shēn xīn, zài nǐ dà néng xuè lǐ!" 
+          }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { 
+            cn: "④美哉，赎罪宝血！大哉拯救鸿恩！奇哉，神将爱子赐我，使我得进天门！", 
+            py: "měi zāi, shú zuì bǎo xuè! dà zāi zhěng jiù hóng ēn! qí zāi, shén jiāng ài zǐ cì wǒ, shǐ wǒ dé jìn tiān mén!" 
+          },
+          { 
+            type: "chorus", 
+            cn: "[副歌] 主啊！我今来，我今来就祢！求主洗涤我身心，在祢大能血里！", 
+            py: "zhǔ ā! wǒ jīn lái, wǒ jīn lái jiù nǐ! qiú zhǔ xǐ dí wǒ shēn xīn, zài nǐ dà néng xuè lǐ!" 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 143,
+    title: "我要投靠主",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { 
+            cn: "①主，我要投靠祢！灵魂全托付，无依，负罪迷路，惟主能救助；在天谁能比主？在地上更无！主死，释放罪奴，恩典临到吾。", 
+            py: "zhǔ, wǒ yào tóu kào nǐ! líng hún quán tuō fù, wú yī, fù zuì mí lù, wéi zhǔ néng jiù zhù; zài tiān shuí néng bǐ zhǔ? zài dì shàng gèng wú! zhǔ sǐ, shì fàng zuì nú, ēn diǎn lín dào wú." 
+          }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { 
+            cn: "②主，我要投靠祢！祢永远是神，满怀慈爱、怜悯，降生在凡尘；在世多行善事，处处显慈仁，代死钉在十架，救赎众罪人。", 
+            py: "zhǔ, wǒ yào tóu kào nǐ! nǐ yǒng yuǎn shì shén, mǎn huái cí ài, lián mǐn, jiàng shēng zài fán chén; zài shì duō xíng shàn shì, chù chù xiǎn cí rén, dài sǐ dīng zài shí jià, jiù shú zhòng zuì rén." 
+          }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { 
+            cn: "③主，我要投靠祢！全凭祢圣言，应许句句确实，教训亦长存；蒙赐圣灵启示，使我能入门，求主使我信心，日日扎深根。", 
+            py: "zhǔ, wǒ yào tóu kào nǐ! quán píng nǐ shèng yán, yīng xǔ jù jù què shí, jiào xùn yì zhǎng cún; méng cì shèng líng qǐ shì, shǐ wǒ néng rù mén, qiú zhǔ shǐ wǒ xìn xīn, rì rì zhā shēn gēn." 
+          }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { 
+            cn: "④主，我要投靠祢！无丝毫怀疑，因知祢深爱我，不撇为孤儿；主能体恤软弱，遇难能扶持，躲在祢恩翅下，安乐常吟诗。", 
+            py: "zhǔ, wǒ yào tóu kào nǐ! wú sī háo huái yí, yīn zhī nǐ shēn ài wǒ, bù piě wéi gū ér; zhǔ néng tǐ xù ruǎn ruò, yù nàn néng fú chí, duǒ zài nǐ ēn chì xià, ān lè cháng yín shī." 
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 123,
     title: "圣徒送行",
     sections: [
