@@ -1,5 +1,76 @@
 const hymns_cn = [
   {
+    id: 296,
+    title: "纪念主死",
+    sections: [
+      {
+        verse: 1,
+        content: [
+          { 
+            cn: "①今日我们在主面前，特来恭行圣礼；", 
+            py: "jīn rì wǒ men zài zhǔ miàn qián, tè lái gōng xíng shèng lǐ;" 
+          },
+          { 
+            cn: "如此谨遵我主遗言，我要纪念主死。", 
+            py: "rú cǐ jǐn zūn wǒ zhǔ yí yán, wǒ yào jì niàn zhǔ sǐ。" 
+          }
+        ]
+      },
+      {
+        verse: 2,
+        content: [
+          { 
+            cn: "②因主舍身做我灵饼，心内感念不已；", 
+            py: "yīn zhǔ shě shēn zuò wǒ líng bǐng, xīn nèi gǎn niàn bú yǐ;" 
+          },
+          { 
+            cn: "新约之杯与众同领，我要纪念主死。", 
+            py: "xīn yuē zhī bēi yǔ zhòng tóng lǐng, wǒ yào jì niàn zhǔ sǐ。" 
+          }
+        ]
+      },
+      {
+        verse: 3,
+        content: [
+          { 
+            cn: "③主在山园三次祈祷，负罪忧伤无比；", 
+            py: "zhǔ zài shān yuán sān cì qí dǎo, fù zuì yōu shāng wú bǐ;" 
+          },
+          { 
+            cn: "汗滴如血，满心苦恼，我要纪念主死。", 
+            py: "hàn dī rú xuè mǎn xīn kǔ nǎo, wǒ yào jì niàn zhǔ sǐ。" 
+          }
+        ]
+      },
+      {
+        verse: 4,
+        content: [
+          { 
+            cn: "④主钉十架髑髅山上，流血、舍命为祭；", 
+            py: "zhǔ dīng shí jià dú lóu shān shàng, liú xuè shě mìng wéi jì;" 
+          },
+          { 
+            cn: "真神羔羊为我献上，我要纪念主死。", 
+            py: "zhēn shén gāo yáng wéi wǒ xiàn shàng, wǒ yào jì niàn zhǔ sǐ。" 
+          }
+        ]
+      },
+      {
+        verse: 5,
+        content: [
+          { 
+            cn: "⑤我念主恩，我念主爱，念主为我舍己；", 
+            py: "wǒ niàn zhǔ ēn wǒ niàn zhǔ ài, niàn zhǔ wéi wǒ shě jǐ;" 
+          },
+          { 
+            cn: "有气在口，有脉在身，我要纪念主死。", 
+            py: "yǒu qì zài kǒu yǒu mài zài shēn, wǒ yào jì niàn zhǔ sǐ。" 
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 274,
     title: "晚雨降临",
     sections: [
