@@ -1287,7 +1287,7 @@ const hymns_cn = [
         verse: 4,
         content: [
           { cn: "④主啊！求祢领我回转，使我从新得力；", py: "zhǔ ā! qiú nǐ lǐng wǒ huí zhuǎn, shǐ wǒ cóng xīn dé lì;" },
-          { cn: "奋勇跑尽一生路程直到荣耀天色。", py: "fèn yǒng pǎo jìn yī shēng lù chéng zhí dào róng yào tiān sè。" }
+          { cn: "奋勇跑尽一生路程直到荣耀天邑。", py: "fèn yǒng pǎo jìn yī shēng lù chéng zhí dào róng yào tiān yì。" }
         ]
       }
     ]
@@ -1459,8 +1459,8 @@ const hymns_cn = [
         verse: 1,
         content: [
           { cn: "①我到大陆、海岛，传扬得救真道，罪中男、女、老、少都有极大苦恼；", py: "wǒ dào dà lù、 hǎi dǎo, chuán yáng dé jiù zhēn dào, zuì zhōng nán、 nǚ、 lǎo、 shǎo dōu yǒu jí dà kǔ nǎo;" },
-          { cn: "应当灵巧、驯良，快去寻找迷羊，保惠师已经到。", py: "yīng dāng líng qiǎo、 xùn liáng, kuài qù xún zhǎo mí yáng,bǎo huì shī yǐ jīng dào。" },
-          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }
+          { cn: "应当灵巧、驯良，快去寻找迷羊，保惠师已经到。", py: "yīng dāng líng qiǎo、 xùn liáng, kuài qù xún zhǎo mí yáng, bǎo huì shī yǐ jīng dào。" },
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào, bǎo huì shī yǐ jīng dào。" }
         ]
       },
       {
@@ -1468,14 +1468,14 @@ const hymns_cn = [
         content: [
           { cn: "②深夜黑暗退藏，天亮显出日光，许多危险风浪，现在转入康庄；", py: "shēn yè hēi àn tuì cáng, tiān liàng xiǎn chū rì guāng, xǔ duō wēi xiǎn fēng làng, xiàn zài zhuǎn rù kāng zhuāng;" },
           { cn: "速将救恩广传，工成必得奖赏，保惠师已经到。", py: "sù jiāng jiù ēn guǎng chuán, gōng chéng bì dé jiǎng shǎng, bǎo huì shī yǐ jīng dào。" },
-          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }        ]
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。 zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào, bǎo huì shī yǐ jīng dào。" }        ]
       },
       {
         verse: 3,
         content: [
           { cn: "③我主万王之王，权柄、能力无双，人若患病、附鬼，必得完全释放；", py: "wǒ zhǔ wàn wáng zhī wáng, quán bǐng、 néng lì wú shuāng, rén ruò huàn bìng、 fù guǐ, bì dé wán quán shì fàng;" },
           { cn: "末日凯歌齐唱，乐哉，进入天堂！保惠师已经到。", py: "mò rì kǎi gē qí chàng, lè zāi, jìn rù tiān táng! bǎo huì shī yǐ jīng dào。" },
-          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào,bǎo huì shī yǐ jīng dào。" }
+          { type: "chorus", cn: "[副歌] 保惠师已经到，保惠师已经到，圣灵真是至宝，世上无处可找。最好信息去报，最好信息去报，保惠师已经到。", py: " bǎo huì shī yǐ jīng dào, bǎo huì shī yǐ jīng dào, shèng líng zhēn shì zhì bǎo, shì shàng wú chù kě zhǎo。 zuì hǎo xìn xī qù bào, zuì hǎo xìn xī qù bào, bǎo huì shī yǐ jīng dào。" }
         ]
       }
     ]
@@ -2964,7 +2964,7 @@ const hymns_cn = [
         content: [
           { cn: "①万物造成,神定圣日,十诫惟此最先;", py: "wàn wù zào chéng, shén dìng shèng rì, shí jiè wéi cǐ zuì xiān;" },
           { cn: "新天、新地,永享安息,万律惟此长延,万律惟此长延;", py: "xīn tiān, xīn dì, yǒng xiǎng ān xī, wàn lǜ wéi cǐ cháng yán, wàn lǜ wéi cǐ cháng yán;" },
-          { cn: "万神,万律,惟此长延。", py: "wàn shén, wàn lǜ, wéi cǐ cháng yán。" }
+          { cn: "万律,万律,惟此长延。", py: "wàn lǜ, wàn lǜ, wéi cǐ cháng yán。" }
         ]
       },
       {
@@ -3562,7 +3562,7 @@ const hymns_cn = [
         content: [
           { cn: "②圣哉, 圣哉, 圣哉, 群圣皆跪拜！", py: "shèng zāi, shèng zāi, shèng zāi, qún shèng jiē guì bài!" },
           { cn: "各以华丽冠冕, 捧在宝座面前；", py: "gè yǐ huá lì guān miǎn, pěng zài bǎo zuò miàn qián;" },
-          { cn: "权柄、尊贵、荣耀, 审判, 都归羔羊。", py: "quán bǐng, zūn guì, róng yào, shěn pàn, dōu guī gāo yáng." },
+          { cn: "权柄、尊贵、荣耀, 都归被杀羔羊。", py: "quán bǐng, zūn guì, róng yào, dōu guī bèi shā gāo yáng." },
           { cn: "昔在而今在, 永在万万年。", py: "xī zài ér jīn zài, yǒng zài wàn wàn nián." }
         ]
       },
@@ -3704,7 +3704,7 @@ const hymns_cn = [
         content: [
           { cn: "②万有赞美天父, 永在、全智之神。", py: "wàn yǒu zàn měi tiān fù, yǒng zài, quán zhì zhī shén." },
           { cn: "天地万物齐声唱诗, 赞美祂大圣名；", py: "tiān dì wàn wù qí shēng chàng shī, zàn měi tā dà shèng míng;" },
-          { cn: "走兽、飞鸟、昆虫、牲畜、家禽, 族类,", py: "zǒu shòu, fēi niǎo, kūn chóng, shēng chù, jiā qín, zú lèi," },
+          { cn: "走兽、飞鸟、昆虫、牲畜、家禽, 家禽,", py: "zǒu shòu, fēi niǎo, kūn chóng, shēng chù, jiā qín, jiā qín," },
           { cn: "都是天父创造、养活, 各从其类滋生。", py: "dōu shì tiān fù chuàng zào, yǎng huó, gè cóng qí lèi zī shēng." }
         ]
       },
@@ -3748,44 +3748,6 @@ const hymns_cn = [
           { cn: "赐福繁殖, 养育群生, 自古以来, 主恩昌盛。", py: "cì fú fán zhí, yǎng yù qún shēng, zì gǔ yǐ lái, zhǔ ēn chāng shèng." },
           { cn: "上主在天, 虽不能见, 藉着万物可以证明；", py: "shàng zhǔ zài tiān, suī bù néng jiàn, jiè zhe wàn wù kě yǐ zhèng míng:" },
           { cn: "万有所本, 万有所靠, 万有所归, 独一真神。", py: "wàn yǒu suǒ běn, wàn yǒu suǒ kào, wàn yǒu suǒ guī, dú yī zhēn shén." }
-        ]
-      }
-    ]
-  },
-  {
-    id: 7,
-    title: "万有齐颂主",
-    sections: [
-      {
-        verse: 1,
-        content: [
-          { cn: "①欢乐, 欢乐, 赞美至尊独一神；灵命更新, 齐向朝阳吐清馨。", py: "huān lè, huān lè, zàn měi zhì zūn dú yī shén; líng mìng gèng xīn, qí xiàng cháo yáng tǔ qīng xīn." },
-          { cn: "罪瘴、恶氛, 求主扫尽, 愁雾、疑云俱廓清！", py: "zuì zhàng, è fēn, qiú zhǔ sào jìn, chóu wù, yí yún jù kuò qīng!" },
-          { cn: "我们当以颂赞为祭, 结出美果在嘴唇。", py: "wǒ men dāng yǐ sòng zàn wéi jì, jié chū měi guǒ zài zuǐ chún." }
-        ]
-      },
-      {
-        verse: 2,
-        content: [
-          { cn: "②宇宙, 万有, 一同显映主荣光；千万天使, 灿烂群星, 排列环绕齐颂扬。", py: "yǔ zhòu, wàn yǒu, yī tóng xiǎn yìng zhǔ róng guāng; qiān wàn tiān shǐ, càn làn qún xīng, pái liè huán rào qí sòng yáng." },
-          { cn: "高山、茂林、清风、明月, 好鸟吟叫, 百花香；", py: "gāo shān, mào lín, qīng fēng, míng yuè, hǎo niǎo yín jiào, bǎi huā xiāng;" },
-          { cn: "鸣泉漱石, 海浪拍岸, 都在颂主而欢唱。", py: "míng quán shù shí, hǎi làng pāi àn, dōu zài sòng zhǔ ér huān chàng." }
-        ]
-      },
-      {
-        verse: 3,
-        content: [
-          { cn: "③永存怜悯, 广行赦免, 万恩万福出天宫；平安泉源, 欢乐江河, 一切福气永充丰。", py: "yǒng cún lián mǐn, guǎng xíng shè miǎn, wàn ēn wàn fú chū tiān gōng; píng ān quán yuán, huān lè jiāng hé, yī qiè fú qì yǒng chōng fēng." },
-          { cn: "慈爱天父！养育群生, 活命存留祢爱中；", py: "cí ài tiān fù! yǎng yù qún shēng, huó mìng cún liú nǐ ài zhōng;" },
-          { cn: "我等圣民蒙主救赎, 属灵福气更无穷！", py: "wǒ děng shèng mín méng zhǔ jiù shú, shǔ líng fú qì gèng wú qióng!" }
-        ]
-      },
-      {
-        verse: 4,
-        content: [
-          { cn: "④天父大爱, 自天显明, 阳光、雨、露、常照临；诸天欢乐, 万有称颂, 荣耀归与主圣名！", py: "tiān fù dà ài zì tiān xiǎn míng, yáng guāng yù lù cháng zhào lín; zhū tiān huān lè, wàn yǒu chēng sòng, róng yào guī yǔ zhǔ shèng míng!" },
-          { cn: "受造之物服在虚空, 一同叹息到如今；", py: "shòu zào zhī wù fú zài xū kōng, yī tóng tàn xī dào rú jīn;" },
-          { cn: "切望神子显现出来, 脱离辖制庆复兴！", py: "qiè wàng shén zǐ xiǎn xiàn chū lái, tuō lí xiá zhì qìng fù xīng!" }
         ]
       }
     ]
@@ -4105,7 +4067,7 @@ const hymns_cn = [
         verse: 1,
         content: [
           { cn: "①大哉，圣哉，耶稣圣名！天上万军颂扬，", py: "dà zāi shèng zāi, yē sū shèng míng! tiān shàng wàn jūn sòng yáng," },
-          { cn: "天上万军颂扬，奉献冠冕，极其荣光：", py: "tiān shàng wàn jūn sòng yáng, fèng xiàn guān miǎn, jí qí róng guāng:" },
+          { cn: "天上万军颂扬，奉献冠冕，极其荣光；", py: "tiān shàng wàn jūn sòng yáng, fèng xiàn guān miǎn, jí qí róng guāng；" },
           { cn: "歌颂祂，歌颂！歌颂！歌颂祂，歌颂祂为君王！", py: "gē sòng tā, gē sòng! gē sòng! gē sòng tā, gē sòng tā wéi jūn wáng!" }
         ]
       },
@@ -4113,7 +4075,7 @@ const hymns_cn = [
         verse: 2,
         content: [
           { cn: "②天上、地下，主名至上，应该敬畏、颂扬，", py: "tiān shàng dì xià, zhǔ míng zhì shàng, yīng gāi jìng wèi sòng yáng," },
-          { cn: "应该敬畏、颂扬；万膝跪拜，万口歌唱：", py: "yīng gāi jìng wèi sòng yáng; wàn xī guì bài, wàn kǒu gē chàng:" },
+          { cn: "应该敬畏、颂扬；万膝跪拜，万口歌唱；", py: "yīng gāi jìng wèi sòng yáng; wàn xī guì bài, wàn kǒu gē chàng；" },
           { cn: "歌颂祂，歌颂！歌颂！歌颂祂，歌颂祂为君王！", py: "gē sòng tā, gē sòng! gē sòng! gē sòng tā, gē sòng tā wéi jūn wáng!" }
         ]
       },
@@ -4121,7 +4083,7 @@ const hymns_cn = [
         verse: 3,
         content: [
           { cn: "③尊贵、荣耀、智慧、力量，都归被杀羔羊，", py: "zūn guì róng yào, zhì huì lì liàng, dōu guī bèi shā gāo yáng," },
-          { cn: "都归被杀羔羊；圣徒、天使，赞美无疆：", py: "dōu guī bèi shā gāo yáng; shèng tú tiān shǐ, zàn měi wú jiāng:" },
+          { cn: "都归被杀羔羊；圣徒、天使，赞美无疆；", py: "dōu guī bèi shā gāo yáng; shèng tú tiān shǐ, zàn měi wú jiāng；" },
           { cn: "歌颂祂，歌颂！歌颂！歌颂祂，歌颂祂永为王！", py: "gē sòng tā, gē sòng! gē sòng! gē sòng tā, gē sòng tā yǒng wéi wáng!" }
         ]
       }
